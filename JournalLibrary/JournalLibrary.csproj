@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataConnectors\IDataConnector.cs" />
+    <Compile Include="DataConnectors\TextFileConnector.cs" />
+    <Compile Include="DataConnectors\TextFileProcessor.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

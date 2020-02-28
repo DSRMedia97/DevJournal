@@ -5,9 +5,16 @@ using System.Text;
 
 namespace JournalLibrary.Models
 {
-    class CategoryModel
+    public class CategoryModel
     {
         int ID { get; set; }
         string CategoryName { get; set; }
+
+        public CategoryModel() { }
+
+        public CategoryModel(string name)
+        {
+            CategoryName = name;
+        }
     }
 }

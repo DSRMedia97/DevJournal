@@ -5,13 +5,23 @@ using System.Text;
 
 namespace JournalLibrary.Models
 {
-    class BookModel
+    public class BookModel
     {
         int ID { get; set; }
-        string BookName { get; set; }
-        string AuthorName { get; set; }
-        List<CategoryModel> Categories { get; set; }
-        double Price { get; set; }
-        bool Read { get; set; }
+        public string BookName { get; set; }
+        public string AuthorName { get; set; }
+        public List<CategoryModel> Categories { get; set; }
+        public double Price { get; set; }
+        public bool Read { get; set; }
+
+        public BookModel() { }
+
+        public BookModel( string name, string author, double price, bool read )
+        {
+            BookName = name;
+            AuthorName = author;
+            Price = price;
+            Read = read;
+        }
     }
 }
