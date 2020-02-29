@@ -93,8 +93,9 @@
             this.BookSubmitButton.TabIndex = 6;
             this.BookSubmitButton.Text = "Save Book";
             this.BookSubmitButton.UseVisualStyleBackColor = true;
+            this.BookSubmitButton.Click += new System.EventHandler(this.BookSubmitButton_Click);
             // 
-            // AddBookForm
+            // BookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,7 +107,7 @@
             this.Controls.Add(this.AuthorLabel);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.TitleLabel);
-            this.Name = "AddBookForm";
+            this.Name = "BookForm";
             this.Text = "Edit Book";
             this.ResumeLayout(false);
             this.PerformLayout();

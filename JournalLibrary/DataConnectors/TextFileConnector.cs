@@ -9,9 +9,34 @@ namespace JournalLibrary.DataConnectors
 {
     class TextFileConnector : IDataConnector
     {
+        public List<BookModel> LoadAllBooks()
+        {
+            return GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
+        }
+
+        public void UpdateBookModel(BookModel model)
+        {
+            List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
+
+            //TODO - Update the BookModel in books that has the same ID as model
+        }
+
         public void CreateBookModel(BookModel model)
         {
-            throw new NotImplementedException();
+            List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
+
+            int currentID = 1;
+
+            if (books.Count() > 0)
+            {
+                currentID = books.OrderByDescending(x => x.ID).First().ID + 1;
+            }
+
+            model.ID = currentID;
+
+            books.Add(model);
+
+            books.SaveToBookFile();
         }
     }
 }

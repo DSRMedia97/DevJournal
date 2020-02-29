@@ -8,20 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevJournalUI.EditElementForms;
+using DevJournalUI.Interfaces;
+using JournalLibrary;
 using JournalLibrary.Models;
 
 namespace DevJournalUI.ViewElementForms
 {
-    public partial class BookViewerForm : Form
+    public partial class BookViewerForm : Form, IBookRequester
     {
-        private List<BookModel> allAvailableBooks = new List<BookModel>();
+        private List<BookModel> allAvailableBooks = GlobalConfig.Connection.LoadAllBooks();
         private BookModel selectedBook = new BookModel();
 
         public BookViewerForm()
         {
             InitializeComponent();
 
-            CreateSampleData();
+            //CreateSampleData();
             WireUpLists();
         }
 
@@ -40,23 +42,38 @@ namespace DevJournalUI.ViewElementForms
 
         private void NewBookButton_Click(object sender, EventArgs e)
         {
-            BookForm frm = new BookForm();
+            BookForm frm = new BookForm(this);
             frm.Text = "Add New Book";
             frm.Show();
         }
 
+        public void BookComplete(BookModel model)
+        {
+            allAvailableBooks.Add(model);
+
+            WireUpLists();
+        }
+
         private void EditBookButton_Click(object sender, EventArgs e)
         {
-            BookForm frm = new BookForm(selectedBook);
+            BookForm frm = new BookForm(this, selectedBook);
             frm.Text = "Edit Book";
             frm.Show();
+        }
+
+        public void BookUpdate(BookModel model)
+        {
+            WireUpLists();
         }
 
         private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //TODO - app will crash if it fails to cast to BookModel
             selectedBook = (BookModel)BookListBox.SelectedItem;
-            RefreshSelectedBookData();
+            if(selectedBook != null)
+            {
+                RefreshSelectedBookData();
+            }
         }
 
         private void RefreshSelectedBookData()

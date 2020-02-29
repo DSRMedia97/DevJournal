@@ -7,7 +7,7 @@ namespace JournalLibrary.Models
 {
     public class BookModel
     {
-        int ID { get; set; }
+        public int ID { get; set; }
         public string BookName { get; set; }
         public string AuthorName { get; set; }
         public List<CategoryModel> Categories { get; set; }

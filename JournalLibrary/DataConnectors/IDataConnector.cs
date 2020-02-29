@@ -8,6 +8,10 @@ namespace JournalLibrary.DataConnectors
 {
     public interface IDataConnector
     {
+        List<BookModel> LoadAllBooks();
+
+        void UpdateBookModel(BookModel model);
+
         void CreateBookModel(BookModel model);
     }
 }
