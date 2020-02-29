@@ -62,7 +62,11 @@ namespace DevJournalUI.EditElementForms
                 book.AuthorName = AuthorTextBox.Text;
                 book.Price = double.Parse(PriceTextBox.Text);
 
+                GlobalConfig.Connection.UpdateBookModel(book);
 
+                callingForm.BookUpdate(book);
+
+                this.Close();
             }
         }
     }

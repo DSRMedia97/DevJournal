@@ -18,7 +18,9 @@ namespace JournalLibrary.DataConnectors
         {
             List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
 
-            //TODO - Update the BookModel in books that has the same ID as model
+            books[books.FindIndex(x => x.ID == model.ID)] = model;
+
+            books.SaveToBookFile();
         }
 
         public void CreateBookModel(BookModel model)
