@@ -81,7 +81,7 @@ namespace DevJournalUI.ViewElementForms
             SelectedBookTitleLabel.Text = selectedBook.BookName;
             SelectedBookAuthorValue.Text = selectedBook.AuthorName;
             SelectedBookPriceValue.Text = $"${ selectedBook.Price.ToString()}";
-            SelectedBookReadValue.Text = selectedBook.Read.ToString();
+            SelectedBookReadValue.Checked = selectedBook.Read;
         }
     }
 }

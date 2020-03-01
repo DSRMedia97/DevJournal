@@ -37,7 +37,7 @@
             this.SelectedBookReadLabel = new System.Windows.Forms.Label();
             this.SelectedBookAuthorValue = new System.Windows.Forms.Label();
             this.SelectedBookPriceValue = new System.Windows.Forms.Label();
-            this.SelectedBookReadValue = new System.Windows.Forms.Label();
+            this.SelectedBookReadValue = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // BookListBox
@@ -126,11 +126,12 @@
             // SelectedBookReadValue
             // 
             this.SelectedBookReadValue.AutoSize = true;
-            this.SelectedBookReadValue.Location = new System.Drawing.Point(376, 161);
+            this.SelectedBookReadValue.Enabled = false;
+            this.SelectedBookReadValue.Location = new System.Drawing.Point(379, 160);
             this.SelectedBookReadValue.Name = "SelectedBookReadValue";
-            this.SelectedBookReadValue.Size = new System.Drawing.Size(22, 13);
-            this.SelectedBookReadValue.TabIndex = 9;
-            this.SelectedBookReadValue.Text = "< >";
+            this.SelectedBookReadValue.Size = new System.Drawing.Size(15, 14);
+            this.SelectedBookReadValue.TabIndex = 10;
+            this.SelectedBookReadValue.UseVisualStyleBackColor = true;
             // 
             // BookViewerForm
             // 
@@ -165,6 +166,6 @@
         private System.Windows.Forms.Label SelectedBookReadLabel;
         private System.Windows.Forms.Label SelectedBookAuthorValue;
         private System.Windows.Forms.Label SelectedBookPriceValue;
-        private System.Windows.Forms.Label SelectedBookReadValue;
+        private System.Windows.Forms.CheckBox SelectedBookReadValue;
     }
 }

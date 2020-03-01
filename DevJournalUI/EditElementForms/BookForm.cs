@@ -18,6 +18,10 @@ namespace DevJournalUI.EditElementForms
         private IBookRequester callingForm;
         private BookModel book;
 
+        /// <summary>
+        /// Constructor for adding a new book with no existing data.
+        /// </summary>
+        /// <param name="caller">The form creating the BookForm object.</param>
         public BookForm(IBookRequester caller)
         {
             InitializeComponent();
@@ -25,15 +29,21 @@ namespace DevJournalUI.EditElementForms
             callingForm = caller;
         }
 
+        /// <summary>
+        /// Constructor for editing a BookModel that contains existing data.
+        /// </summary>
+        /// <param name="caller">The form creating the BookForm object.</param>
+        /// <param name="model">The BookModel that is to be edited.</param>
         public BookForm(IBookRequester caller, BookModel model)
         {
             book = model;
 
             InitializeComponent();
 
-            this.TitleTextBox.Text = book.BookName;
-            this.AuthorTextBox.Text = book.AuthorName;
-            this.PriceTextBox.Text = book.Price.ToString();
+            TitleTextBox.Text = book.BookName;
+            AuthorTextBox.Text = book.AuthorName;
+            PriceTextBox.Text = book.Price.ToString();
+            ReadCheckBoxValue.Checked = book.Read;
 
             callingForm = caller;
         }
@@ -41,33 +51,83 @@ namespace DevJournalUI.EditElementForms
         private void BookSubmitButton_Click(object sender, EventArgs e)
         {
             //TODO - Form validation
-            if (book == null)
+            if (ValidFormData())
             {
-                BookModel b = new BookModel();
+                if (book == null)
+                {
+                    BookModel b = new BookModel();
 
-                b.BookName = TitleTextBox.Text;
-                b.AuthorName = AuthorTextBox.Text;
-                b.Price = double.Parse(PriceTextBox.Text);
-                b.Read = false;
+                    b.BookName = TitleTextBox.Text;
+                    b.AuthorName = AuthorTextBox.Text;
+                    b.Price = double.Parse(PriceTextBox.Text);
+                    b.Read = ReadCheckBoxValue.Checked;
 
-                GlobalConfig.Connection.CreateBookModel(b);
+                    GlobalConfig.Connection.CreateBookModel(b);
 
-                callingForm.BookComplete(b);
+                    callingForm.BookComplete(b);
 
-                this.Close();
+                    this.Close();
+                }
+                else if (book != null)
+                {
+                    book.BookName = TitleTextBox.Text;
+                    book.AuthorName = AuthorTextBox.Text;
+                    book.Price = double.Parse(PriceTextBox.Text);
+                    book.Read = ReadCheckBoxValue.Checked;
+
+                    GlobalConfig.Connection.UpdateBookModel(book);
+
+                    callingForm.BookUpdate(book);
+
+                    this.Close();
+                } 
             }
-            else if (book != null)
+        }
+
+        private bool ValidFormData()
+        {
+            bool output = false;
+            bool validTitle = false;
+            bool validAuthor = false;
+            double price = 0;
+            bool validPrice = false;
+            
+            //Title can't be blank and can't contain commas
+            if(TitleTextBox.Text.Length > 0 && !TitleTextBox.Text.Contains(","))
             {
-                book.BookName = TitleTextBox.Text;
-                book.AuthorName = AuthorTextBox.Text;
-                book.Price = double.Parse(PriceTextBox.Text);
-
-                GlobalConfig.Connection.UpdateBookModel(book);
-
-                callingForm.BookUpdate(book);
-
-                this.Close();
+                validTitle = true;
             }
+            else
+            {
+                //TODO - error handling
+            }
+
+            //Author name can't be blank and can't contain commas
+            if (AuthorTextBox.Text.Length > 0 && !AuthorTextBox.Text.Contains(","))
+            {
+                validAuthor = true;
+            }
+            else
+            {
+                //TODO - error handling
+            }
+
+            //Price has to be a valid number, not alphanumeric
+            if (double.TryParse(PriceTextBox.Text, out price))
+            {
+                validPrice = true;
+            }
+            else
+            {
+                //TODO - error handling
+            }
+
+            //if all fields pass checks then update output
+            if (validTitle && validAuthor && validPrice)
+            {
+                output = true;
+            }
+            return output;
         }
     }
 }
