@@ -17,7 +17,9 @@ namespace DevJournalUI.ViewElementForms
     public partial class BookViewerForm : Form, IBookRequester
     {
         private List<BookModel> allAvailableBooks = GlobalConfig.Connection.LoadAllBooks();
+        private List<BookModel> selectedBooks = GlobalConfig.Connection.LoadAllBooks();
         private BookModel selectedBook = new BookModel();
+        private double totalCost = 0;
 
         public BookViewerForm()
         {
@@ -25,6 +27,7 @@ namespace DevJournalUI.ViewElementForms
 
             //CreateSampleData();
             WireUpLists();
+            RefreshTotalCost();
         }
 
         private void CreateSampleData()
@@ -36,7 +39,7 @@ namespace DevJournalUI.ViewElementForms
         private void WireUpLists()
         {
             BookListBox.DataSource = null;
-            BookListBox.DataSource = allAvailableBooks;
+            BookListBox.DataSource = selectedBooks;
             BookListBox.DisplayMember = "BookName";
         }
 
@@ -50,7 +53,7 @@ namespace DevJournalUI.ViewElementForms
         public void BookComplete(BookModel model)
         {
             allAvailableBooks.Add(model);
-
+            RefreshSelectedBookList();
             WireUpLists();
         }
 
@@ -63,12 +66,45 @@ namespace DevJournalUI.ViewElementForms
 
         public void BookUpdate(BookModel model)
         {
+            RefreshSelectedBookList();
             WireUpLists();
+        }
+
+        //TODO - not scalable; increase in memory usage every time this runs.
+        private void RefreshSelectedBookList()
+        {
+            selectedBooks.Clear();
+
+            foreach (BookModel b in allAvailableBooks)
+            {
+                //if Unread Only checkbox is marked and the book is unread add it to the list
+                if (UnreadOnlyCheckBox.Checked && !b.Read)
+                {
+                    selectedBooks.Add(b);
+                }
+                else if (!UnreadOnlyCheckBox.Checked)
+                {
+                    selectedBooks.Add(b);
+                }
+            }
+
+            RefreshTotalCost();
+        }
+
+        private void RefreshTotalCost()
+        {
+            totalCost = 0f;
+
+            foreach (BookModel b in selectedBooks)
+            {
+                totalCost += b.Price;    
+            }
+
+            TotalCostValue.Text = totalCost.ToString();
         }
 
         private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TODO - app will crash if it fails to cast to BookModel
             selectedBook = (BookModel)BookListBox.SelectedItem;
             if(selectedBook != null)
             {
@@ -82,6 +118,12 @@ namespace DevJournalUI.ViewElementForms
             SelectedBookAuthorValue.Text = selectedBook.AuthorName;
             SelectedBookPriceValue.Text = $"${ selectedBook.Price.ToString()}";
             SelectedBookReadValue.Checked = selectedBook.Read;
+        }
+
+        private void UnreadOnlyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshSelectedBookList();
+            WireUpLists();
         }
     }
 }

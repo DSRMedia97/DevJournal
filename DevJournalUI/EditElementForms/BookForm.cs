@@ -50,7 +50,6 @@ namespace DevJournalUI.EditElementForms
 
         private void BookSubmitButton_Click(object sender, EventArgs e)
         {
-            //TODO - Form validation
             if (ValidFormData())
             {
                 if (book == null)

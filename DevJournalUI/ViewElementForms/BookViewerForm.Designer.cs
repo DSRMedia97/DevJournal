@@ -38,6 +38,9 @@
             this.SelectedBookAuthorValue = new System.Windows.Forms.Label();
             this.SelectedBookPriceValue = new System.Windows.Forms.Label();
             this.SelectedBookReadValue = new System.Windows.Forms.CheckBox();
+            this.UnreadOnlyCheckBox = new System.Windows.Forms.CheckBox();
+            this.TotalCostValue = new System.Windows.Forms.Label();
+            this.TotalCostLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BookListBox
@@ -133,11 +136,43 @@
             this.SelectedBookReadValue.TabIndex = 10;
             this.SelectedBookReadValue.UseVisualStyleBackColor = true;
             // 
+            // UnreadOnlyCheckBox
+            // 
+            this.UnreadOnlyCheckBox.AutoSize = true;
+            this.UnreadOnlyCheckBox.Location = new System.Drawing.Point(81, 82);
+            this.UnreadOnlyCheckBox.Name = "UnreadOnlyCheckBox";
+            this.UnreadOnlyCheckBox.Size = new System.Drawing.Size(118, 17);
+            this.UnreadOnlyCheckBox.TabIndex = 11;
+            this.UnreadOnlyCheckBox.Text = "Unread Books Only";
+            this.UnreadOnlyCheckBox.UseVisualStyleBackColor = true;
+            this.UnreadOnlyCheckBox.CheckedChanged += new System.EventHandler(this.UnreadOnlyCheckBox_CheckedChanged);
+            // 
+            // TotalCostValue
+            // 
+            this.TotalCostValue.AutoSize = true;
+            this.TotalCostValue.Location = new System.Drawing.Point(142, 401);
+            this.TotalCostValue.Name = "TotalCostValue";
+            this.TotalCostValue.Size = new System.Drawing.Size(22, 13);
+            this.TotalCostValue.TabIndex = 13;
+            this.TotalCostValue.Text = "< >";
+            // 
+            // TotalCostLabel
+            // 
+            this.TotalCostLabel.AutoSize = true;
+            this.TotalCostLabel.Location = new System.Drawing.Point(78, 401);
+            this.TotalCostLabel.Name = "TotalCostLabel";
+            this.TotalCostLabel.Size = new System.Drawing.Size(58, 13);
+            this.TotalCostLabel.TabIndex = 12;
+            this.TotalCostLabel.Text = "Total Cost:";
+            // 
             // BookViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 450);
+            this.Controls.Add(this.TotalCostValue);
+            this.Controls.Add(this.TotalCostLabel);
+            this.Controls.Add(this.UnreadOnlyCheckBox);
             this.Controls.Add(this.SelectedBookReadValue);
             this.Controls.Add(this.SelectedBookPriceValue);
             this.Controls.Add(this.SelectedBookAuthorValue);
@@ -167,5 +202,8 @@
         private System.Windows.Forms.Label SelectedBookAuthorValue;
         private System.Windows.Forms.Label SelectedBookPriceValue;
         private System.Windows.Forms.CheckBox SelectedBookReadValue;
+        private System.Windows.Forms.CheckBox UnreadOnlyCheckBox;
+        private System.Windows.Forms.Label TotalCostValue;
+        private System.Windows.Forms.Label TotalCostLabel;
     }
 }
