@@ -24,5 +24,24 @@ namespace JournalLibrary.Models
             Read = read;
             Categories = categories;
         }
+
+        public string FullCategoryValue
+        {
+            get
+            {
+                string output = "";
+
+                foreach (CategoryModel c in Categories)
+                {
+                    output += $"{ c.CategoryName }, ";
+                }
+                if (output.Length > 0)
+                {
+                    output = output.Substring(0, output.Length - 2);
+                }
+
+                return output;
+            }
+        }
     }
 }

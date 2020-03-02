@@ -41,6 +41,14 @@
             this.UnreadOnlyCheckBox = new System.Windows.Forms.CheckBox();
             this.TotalCostValue = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
+            this.CategoriesLabel = new System.Windows.Forms.Label();
+            this.CategoriesValue = new System.Windows.Forms.Label();
+            this.FilterListGroupBox = new System.Windows.Forms.GroupBox();
+            this.SelectedBookDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.FilterCategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.FilterCategoryLabel = new System.Windows.Forms.Label();
+            this.FilterListGroupBox.SuspendLayout();
+            this.SelectedBookDetailsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // BookListBox
@@ -75,7 +83,7 @@
             // SelectedBookTitleLabel
             // 
             this.SelectedBookTitleLabel.AutoSize = true;
-            this.SelectedBookTitleLabel.Location = new System.Drawing.Point(328, 105);
+            this.SelectedBookTitleLabel.Location = new System.Drawing.Point(22, 18);
             this.SelectedBookTitleLabel.Name = "SelectedBookTitleLabel";
             this.SelectedBookTitleLabel.Size = new System.Drawing.Size(22, 13);
             this.SelectedBookTitleLabel.TabIndex = 3;
@@ -84,7 +92,7 @@
             // SelectedBookAuthorLabel
             // 
             this.SelectedBookAuthorLabel.AutoSize = true;
-            this.SelectedBookAuthorLabel.Location = new System.Drawing.Point(328, 135);
+            this.SelectedBookAuthorLabel.Location = new System.Drawing.Point(22, 48);
             this.SelectedBookAuthorLabel.Name = "SelectedBookAuthorLabel";
             this.SelectedBookAuthorLabel.Size = new System.Drawing.Size(41, 13);
             this.SelectedBookAuthorLabel.TabIndex = 4;
@@ -93,7 +101,7 @@
             // SelectedBookPriceLabel
             // 
             this.SelectedBookPriceLabel.AutoSize = true;
-            this.SelectedBookPriceLabel.Location = new System.Drawing.Point(328, 148);
+            this.SelectedBookPriceLabel.Location = new System.Drawing.Point(22, 61);
             this.SelectedBookPriceLabel.Name = "SelectedBookPriceLabel";
             this.SelectedBookPriceLabel.Size = new System.Drawing.Size(31, 13);
             this.SelectedBookPriceLabel.TabIndex = 5;
@@ -102,7 +110,7 @@
             // SelectedBookReadLabel
             // 
             this.SelectedBookReadLabel.AutoSize = true;
-            this.SelectedBookReadLabel.Location = new System.Drawing.Point(328, 161);
+            this.SelectedBookReadLabel.Location = new System.Drawing.Point(22, 74);
             this.SelectedBookReadLabel.Name = "SelectedBookReadLabel";
             this.SelectedBookReadLabel.Size = new System.Drawing.Size(36, 13);
             this.SelectedBookReadLabel.TabIndex = 6;
@@ -111,7 +119,7 @@
             // SelectedBookAuthorValue
             // 
             this.SelectedBookAuthorValue.AutoSize = true;
-            this.SelectedBookAuthorValue.Location = new System.Drawing.Point(376, 135);
+            this.SelectedBookAuthorValue.Location = new System.Drawing.Point(70, 48);
             this.SelectedBookAuthorValue.Name = "SelectedBookAuthorValue";
             this.SelectedBookAuthorValue.Size = new System.Drawing.Size(22, 13);
             this.SelectedBookAuthorValue.TabIndex = 7;
@@ -120,7 +128,7 @@
             // SelectedBookPriceValue
             // 
             this.SelectedBookPriceValue.AutoSize = true;
-            this.SelectedBookPriceValue.Location = new System.Drawing.Point(376, 148);
+            this.SelectedBookPriceValue.Location = new System.Drawing.Point(70, 61);
             this.SelectedBookPriceValue.Name = "SelectedBookPriceValue";
             this.SelectedBookPriceValue.Size = new System.Drawing.Size(22, 13);
             this.SelectedBookPriceValue.TabIndex = 8;
@@ -130,7 +138,7 @@
             // 
             this.SelectedBookReadValue.AutoSize = true;
             this.SelectedBookReadValue.Enabled = false;
-            this.SelectedBookReadValue.Location = new System.Drawing.Point(379, 160);
+            this.SelectedBookReadValue.Location = new System.Drawing.Point(73, 73);
             this.SelectedBookReadValue.Name = "SelectedBookReadValue";
             this.SelectedBookReadValue.Size = new System.Drawing.Size(15, 14);
             this.SelectedBookReadValue.TabIndex = 10;
@@ -139,7 +147,7 @@
             // UnreadOnlyCheckBox
             // 
             this.UnreadOnlyCheckBox.AutoSize = true;
-            this.UnreadOnlyCheckBox.Location = new System.Drawing.Point(81, 82);
+            this.UnreadOnlyCheckBox.Location = new System.Drawing.Point(44, 46);
             this.UnreadOnlyCheckBox.Name = "UnreadOnlyCheckBox";
             this.UnreadOnlyCheckBox.Size = new System.Drawing.Size(118, 17);
             this.UnreadOnlyCheckBox.TabIndex = 11;
@@ -165,26 +173,90 @@
             this.TotalCostLabel.TabIndex = 12;
             this.TotalCostLabel.Text = "Total Cost:";
             // 
+            // CategoriesLabel
+            // 
+            this.CategoriesLabel.AutoSize = true;
+            this.CategoriesLabel.Location = new System.Drawing.Point(22, 98);
+            this.CategoriesLabel.Name = "CategoriesLabel";
+            this.CategoriesLabel.Size = new System.Drawing.Size(60, 13);
+            this.CategoriesLabel.TabIndex = 14;
+            this.CategoriesLabel.Text = "Categories:";
+            // 
+            // CategoriesValue
+            // 
+            this.CategoriesValue.AutoSize = true;
+            this.CategoriesValue.Location = new System.Drawing.Point(88, 98);
+            this.CategoriesValue.Name = "CategoriesValue";
+            this.CategoriesValue.Size = new System.Drawing.Size(22, 13);
+            this.CategoriesValue.TabIndex = 15;
+            this.CategoriesValue.Text = "< >";
+            // 
+            // FilterListGroupBox
+            // 
+            this.FilterListGroupBox.Controls.Add(this.FilterCategoryLabel);
+            this.FilterListGroupBox.Controls.Add(this.FilterCategoryDropdown);
+            this.FilterListGroupBox.Controls.Add(this.UnreadOnlyCheckBox);
+            this.FilterListGroupBox.Location = new System.Drawing.Point(37, 27);
+            this.FilterListGroupBox.Name = "FilterListGroupBox";
+            this.FilterListGroupBox.Size = new System.Drawing.Size(213, 72);
+            this.FilterListGroupBox.TabIndex = 16;
+            this.FilterListGroupBox.TabStop = false;
+            this.FilterListGroupBox.Text = "Filters";
+            // 
+            // SelectedBookDetailsGroupBox
+            // 
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookTitleLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.CategoriesValue);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.CategoriesLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorValue);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceValue);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadValue);
+            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(290, 105);
+            this.SelectedBookDetailsGroupBox.Name = "SelectedBookDetailsGroupBox";
+            this.SelectedBookDetailsGroupBox.Size = new System.Drawing.Size(284, 162);
+            this.SelectedBookDetailsGroupBox.TabIndex = 17;
+            this.SelectedBookDetailsGroupBox.TabStop = false;
+            this.SelectedBookDetailsGroupBox.Text = "Current Book";
+            // 
+            // FilterCategoryDropdown
+            // 
+            this.FilterCategoryDropdown.FormattingEnabled = true;
+            this.FilterCategoryDropdown.Location = new System.Drawing.Point(80, 19);
+            this.FilterCategoryDropdown.Name = "FilterCategoryDropdown";
+            this.FilterCategoryDropdown.Size = new System.Drawing.Size(127, 21);
+            this.FilterCategoryDropdown.TabIndex = 12;
+            this.FilterCategoryDropdown.SelectedIndexChanged += new System.EventHandler(this.FilterCategoryDropdown_SelectedIndexChanged);
+            // 
+            // FilterCategoryLabel
+            // 
+            this.FilterCategoryLabel.AutoSize = true;
+            this.FilterCategoryLabel.Location = new System.Drawing.Point(7, 22);
+            this.FilterCategoryLabel.Name = "FilterCategoryLabel";
+            this.FilterCategoryLabel.Size = new System.Drawing.Size(67, 13);
+            this.FilterCategoryLabel.TabIndex = 13;
+            this.FilterCategoryLabel.Text = "By Category:";
+            // 
             // BookViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 450);
+            this.Controls.Add(this.SelectedBookDetailsGroupBox);
+            this.Controls.Add(this.FilterListGroupBox);
             this.Controls.Add(this.TotalCostValue);
             this.Controls.Add(this.TotalCostLabel);
-            this.Controls.Add(this.UnreadOnlyCheckBox);
-            this.Controls.Add(this.SelectedBookReadValue);
-            this.Controls.Add(this.SelectedBookPriceValue);
-            this.Controls.Add(this.SelectedBookAuthorValue);
-            this.Controls.Add(this.SelectedBookReadLabel);
-            this.Controls.Add(this.SelectedBookPriceLabel);
-            this.Controls.Add(this.SelectedBookAuthorLabel);
-            this.Controls.Add(this.SelectedBookTitleLabel);
             this.Controls.Add(this.EditBookButton);
             this.Controls.Add(this.NewBookButton);
             this.Controls.Add(this.BookListBox);
             this.Name = "BookViewerForm";
             this.Text = "BookViewerForm";
+            this.FilterListGroupBox.ResumeLayout(false);
+            this.FilterListGroupBox.PerformLayout();
+            this.SelectedBookDetailsGroupBox.ResumeLayout(false);
+            this.SelectedBookDetailsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +277,11 @@
         private System.Windows.Forms.CheckBox UnreadOnlyCheckBox;
         private System.Windows.Forms.Label TotalCostValue;
         private System.Windows.Forms.Label TotalCostLabel;
+        private System.Windows.Forms.Label CategoriesLabel;
+        private System.Windows.Forms.Label CategoriesValue;
+        private System.Windows.Forms.GroupBox FilterListGroupBox;
+        private System.Windows.Forms.GroupBox SelectedBookDetailsGroupBox;
+        private System.Windows.Forms.Label FilterCategoryLabel;
+        private System.Windows.Forms.ComboBox FilterCategoryDropdown;
     }
 }

@@ -50,11 +50,20 @@ namespace DevJournalUI.EditElementForms
             AuthorTextBox.Text = book.AuthorName;
             PriceTextBox.Text = book.Price.ToString();
             ReadCheckBoxValue.Checked = book.Read;
-            //selectedCategories = book.Categories;
+            selectedCategories = book.Categories;
 
             callingForm = caller;
 
+            WireUpCategories();
             WireUpLists();
+        }
+
+        private void WireUpCategories()
+        {
+            foreach (CategoryModel c in selectedCategories)
+            {
+                availableCategories.Remove(availableCategories.Where(x => x.ID == c.ID).First());
+            }
         }
 
         private void WireUpLists()

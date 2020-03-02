@@ -34,6 +34,7 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
         public static List<BookModel> ConvertToBookModels(this List<string> lines)
         {
             List<BookModel> output = new List<BookModel>();
+            List<CategoryModel> categories = GlobalConfig.Connection.LoadAllCategories();
 
             foreach(string line in lines)
             {
@@ -46,7 +47,16 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
                 b.AuthorName = cols[2];
                 b.Price = double.Parse(cols[3]);
                 b.Read = bool.Parse(cols[4]);
-                //b.Categories = cols[5];
+
+                string[] categoryIDs = cols[5].Split('|');
+
+                if (categoryIDs[0] != "")
+                {
+                    foreach (string id in categoryIDs)
+                    {
+                        b.Categories.Add(categories.Where(x => x.ID == int.Parse(id)).First());
+                    }
+                }
 
                 output.Add(b);
             }
