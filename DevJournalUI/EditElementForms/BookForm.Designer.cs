@@ -37,6 +37,15 @@
             this.BookSubmitButton = new System.Windows.Forms.Button();
             this.ReadLabel = new System.Windows.Forms.Label();
             this.ReadCheckBoxValue = new System.Windows.Forms.CheckBox();
+            this.AvailableCategoriesListBox = new System.Windows.Forms.ListBox();
+            this.SelectedCategoriesListBox = new System.Windows.Forms.ListBox();
+            this.CategoriesGroupBox = new System.Windows.Forms.GroupBox();
+            this.AddNewCategoryButton = new System.Windows.Forms.Button();
+            this.SelectedCategoriesLabel = new System.Windows.Forms.Label();
+            this.AvailableCategoriesLabel = new System.Windows.Forms.Label();
+            this.RemoveFromSelectedButton = new System.Windows.Forms.Button();
+            this.AddToSelectedButton = new System.Windows.Forms.Button();
+            this.CategoriesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -115,11 +124,92 @@
             this.ReadCheckBoxValue.TabIndex = 8;
             this.ReadCheckBoxValue.UseVisualStyleBackColor = true;
             // 
+            // AvailableCategoriesListBox
+            // 
+            this.AvailableCategoriesListBox.FormattingEnabled = true;
+            this.AvailableCategoriesListBox.Location = new System.Drawing.Point(6, 37);
+            this.AvailableCategoriesListBox.Name = "AvailableCategoriesListBox";
+            this.AvailableCategoriesListBox.Size = new System.Drawing.Size(115, 134);
+            this.AvailableCategoriesListBox.TabIndex = 9;
+            // 
+            // SelectedCategoriesListBox
+            // 
+            this.SelectedCategoriesListBox.FormattingEnabled = true;
+            this.SelectedCategoriesListBox.Location = new System.Drawing.Point(182, 37);
+            this.SelectedCategoriesListBox.Name = "SelectedCategoriesListBox";
+            this.SelectedCategoriesListBox.Size = new System.Drawing.Size(120, 134);
+            this.SelectedCategoriesListBox.TabIndex = 10;
+            // 
+            // CategoriesGroupBox
+            // 
+            this.CategoriesGroupBox.Controls.Add(this.AddNewCategoryButton);
+            this.CategoriesGroupBox.Controls.Add(this.SelectedCategoriesLabel);
+            this.CategoriesGroupBox.Controls.Add(this.AvailableCategoriesLabel);
+            this.CategoriesGroupBox.Controls.Add(this.RemoveFromSelectedButton);
+            this.CategoriesGroupBox.Controls.Add(this.AddToSelectedButton);
+            this.CategoriesGroupBox.Controls.Add(this.AvailableCategoriesListBox);
+            this.CategoriesGroupBox.Controls.Add(this.SelectedCategoriesListBox);
+            this.CategoriesGroupBox.Location = new System.Drawing.Point(211, 12);
+            this.CategoriesGroupBox.Name = "CategoriesGroupBox";
+            this.CategoriesGroupBox.Size = new System.Drawing.Size(308, 177);
+            this.CategoriesGroupBox.TabIndex = 11;
+            this.CategoriesGroupBox.TabStop = false;
+            this.CategoriesGroupBox.Text = "Edit Categories";
+            // 
+            // AddNewCategoryButton
+            // 
+            this.AddNewCategoryButton.Location = new System.Drawing.Point(127, 122);
+            this.AddNewCategoryButton.Name = "AddNewCategoryButton";
+            this.AddNewCategoryButton.Size = new System.Drawing.Size(49, 23);
+            this.AddNewCategoryButton.TabIndex = 15;
+            this.AddNewCategoryButton.Text = "New";
+            this.AddNewCategoryButton.UseVisualStyleBackColor = true;
+            this.AddNewCategoryButton.Click += new System.EventHandler(this.AddNewCategoryButton_Click);
+            // 
+            // SelectedCategoriesLabel
+            // 
+            this.SelectedCategoriesLabel.AutoSize = true;
+            this.SelectedCategoriesLabel.Location = new System.Drawing.Point(182, 17);
+            this.SelectedCategoriesLabel.Name = "SelectedCategoriesLabel";
+            this.SelectedCategoriesLabel.Size = new System.Drawing.Size(105, 13);
+            this.SelectedCategoriesLabel.TabIndex = 14;
+            this.SelectedCategoriesLabel.Text = "Selected Categories:";
+            // 
+            // AvailableCategoriesLabel
+            // 
+            this.AvailableCategoriesLabel.AutoSize = true;
+            this.AvailableCategoriesLabel.Location = new System.Drawing.Point(7, 18);
+            this.AvailableCategoriesLabel.Name = "AvailableCategoriesLabel";
+            this.AvailableCategoriesLabel.Size = new System.Drawing.Size(106, 13);
+            this.AvailableCategoriesLabel.TabIndex = 13;
+            this.AvailableCategoriesLabel.Text = "Available Categories:";
+            // 
+            // RemoveFromSelectedButton
+            // 
+            this.RemoveFromSelectedButton.Location = new System.Drawing.Point(127, 93);
+            this.RemoveFromSelectedButton.Name = "RemoveFromSelectedButton";
+            this.RemoveFromSelectedButton.Size = new System.Drawing.Size(49, 23);
+            this.RemoveFromSelectedButton.TabIndex = 12;
+            this.RemoveFromSelectedButton.Text = "<<";
+            this.RemoveFromSelectedButton.UseVisualStyleBackColor = true;
+            this.RemoveFromSelectedButton.Click += new System.EventHandler(this.RemoveFromSelectedButton_Click);
+            // 
+            // AddToSelectedButton
+            // 
+            this.AddToSelectedButton.Location = new System.Drawing.Point(127, 64);
+            this.AddToSelectedButton.Name = "AddToSelectedButton";
+            this.AddToSelectedButton.Size = new System.Drawing.Size(49, 23);
+            this.AddToSelectedButton.TabIndex = 11;
+            this.AddToSelectedButton.Text = ">>";
+            this.AddToSelectedButton.UseVisualStyleBackColor = true;
+            this.AddToSelectedButton.Click += new System.EventHandler(this.AddToSelectedButton_Click);
+            // 
             // BookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(232, 220);
+            this.ClientSize = new System.Drawing.Size(531, 211);
+            this.Controls.Add(this.CategoriesGroupBox);
             this.Controls.Add(this.ReadCheckBoxValue);
             this.Controls.Add(this.ReadLabel);
             this.Controls.Add(this.BookSubmitButton);
@@ -131,6 +221,8 @@
             this.Controls.Add(this.TitleLabel);
             this.Name = "BookForm";
             this.Text = "Edit Book";
+            this.CategoriesGroupBox.ResumeLayout(false);
+            this.CategoriesGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +239,14 @@
         private System.Windows.Forms.Button BookSubmitButton;
         private System.Windows.Forms.Label ReadLabel;
         private System.Windows.Forms.CheckBox ReadCheckBoxValue;
+        private System.Windows.Forms.ListBox AvailableCategoriesListBox;
+        private System.Windows.Forms.ListBox SelectedCategoriesListBox;
+        private System.Windows.Forms.GroupBox CategoriesGroupBox;
+        private System.Windows.Forms.Button AddNewCategoryButton;
+        private System.Windows.Forms.Label SelectedCategoriesLabel;
+        private System.Windows.Forms.Label AvailableCategoriesLabel;
+        private System.Windows.Forms.Button RemoveFromSelectedButton;
+        private System.Windows.Forms.Button AddToSelectedButton;
     }
 }
 

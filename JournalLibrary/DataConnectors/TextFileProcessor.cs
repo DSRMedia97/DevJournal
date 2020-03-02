@@ -53,6 +53,25 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
             return output;
         }
+
+        public static List<CategoryModel> ConvertToCategoryModels(this List<string> lines)
+        {
+            List<CategoryModel> output = new List<CategoryModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+
+                CategoryModel c = new CategoryModel();
+
+                c.ID = int.Parse(cols[0]);
+                c.CategoryName = cols[1];
+
+                output.Add(c);
+            }
+
+            return output;
+        }
         #endregion
 
         #region Save to File Methods
@@ -60,12 +79,35 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
         {
             List<string> lines = new List<string>();
 
-            foreach(BookModel b in models)
+            foreach (BookModel b in models)
             {
-                lines.Add($"{ b.ID },{ b.BookName },{ b.AuthorName },{ b.Price },{ b.Read },{ b.Categories }");
+                string categoryIDs = "";
+
+                foreach (CategoryModel c in b.Categories)
+                {
+                    categoryIDs += $"{ c.ID.ToString() }|";
+                }
+                if (categoryIDs.Length > 0)
+                {
+                    categoryIDs = categoryIDs.Substring(0, categoryIDs.Length - 1);
+                }
+
+                lines.Add($"{ b.ID },{ b.BookName },{ b.AuthorName },{ b.Price },{ b.Read },{ categoryIDs }");
             }
 
             File.WriteAllLines(GlobalConfig.BooksFile.FullFilePath(), lines);
+        }
+
+        public static void SaveToCategoryFile(this List<CategoryModel> models)
+        {
+            List<string> lines = new List<string>();
+
+            foreach(CategoryModel c in models)
+            {
+                lines.Add($"{ c.ID },{ c.CategoryName }");
+            }
+
+            File.WriteAllLines(GlobalConfig.CategoriesFile.FullFilePath(), lines);
         }
         #endregion
 

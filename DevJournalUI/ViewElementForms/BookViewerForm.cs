@@ -25,15 +25,8 @@ namespace DevJournalUI.ViewElementForms
         {
             InitializeComponent();
 
-            //CreateSampleData();
             WireUpLists();
             RefreshTotalCost();
-        }
-
-        private void CreateSampleData()
-        {
-            allAvailableBooks.Add(new BookModel("Gotham Knights", "Bruce Wayne", 10.40, false));
-            allAvailableBooks.Add(new BookModel("Smallville", "Clark Kent", 4.95, true));
         }
 
         private void WireUpLists()

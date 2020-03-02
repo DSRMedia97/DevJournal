@@ -14,6 +14,11 @@ namespace JournalLibrary.DataConnectors
             return GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
         }
 
+        public List<CategoryModel> LoadAllCategories()
+        {
+            return GlobalConfig.CategoriesFile.FullFilePath().LoadFile().ConvertToCategoryModels();
+        }
+
         public void UpdateBookModel(BookModel model)
         {
             List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
@@ -39,6 +44,24 @@ namespace JournalLibrary.DataConnectors
             books.Add(model);
 
             books.SaveToBookFile();
+        }
+
+        public void CreateCategoryModel(CategoryModel model)
+        {
+            List<CategoryModel> categories = GlobalConfig.CategoriesFile.FullFilePath().LoadFile().ConvertToCategoryModels();
+
+            int currentID = 1;
+
+            if (categories.Count() > 0)
+            {
+                currentID = categories.OrderByDescending(x => x.ID).First().ID + 1;
+            }
+
+            model.ID = currentID;
+
+            categories.Add(model);
+
+            categories.SaveToCategoryFile();
         }
     }
 }

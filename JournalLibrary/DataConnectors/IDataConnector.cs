@@ -10,8 +10,12 @@ namespace JournalLibrary.DataConnectors
     {
         List<BookModel> LoadAllBooks();
 
+        List<CategoryModel> LoadAllCategories();
+
         void UpdateBookModel(BookModel model);
 
         void CreateBookModel(BookModel model);
+
+        void CreateCategoryModel(CategoryModel model);
     }
 }

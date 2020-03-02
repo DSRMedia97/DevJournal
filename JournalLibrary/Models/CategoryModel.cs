@@ -7,8 +7,8 @@ namespace JournalLibrary.Models
 {
     public class CategoryModel
     {
-        int ID { get; set; }
-        string CategoryName { get; set; }
+        public int ID { get; set; }
+        public string CategoryName { get; set; }
 
         public CategoryModel() { }
 

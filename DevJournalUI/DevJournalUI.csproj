@@ -52,7 +52,14 @@
     <Compile Include="EditElementForms\BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditElementForms\CategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditElementForms\CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IBookRequester.cs" />
+    <Compile Include="Interfaces\ICategoryRequester.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewElementForms\BookViewerForm.cs">
@@ -63,6 +70,9 @@
     </Compile>
     <EmbeddedResource Include="EditElementForms\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditElementForms\CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

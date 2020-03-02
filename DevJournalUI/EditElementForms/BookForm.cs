@@ -8,15 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JournalLibrary;
+using JournalLibrary.DataConnectors;
 using JournalLibrary.Models;
 using DevJournalUI.Interfaces;
 
 namespace DevJournalUI.EditElementForms
 {
-    public partial class BookForm : Form
+    public partial class BookForm : Form, ICategoryRequester
     {
         private IBookRequester callingForm;
         private BookModel book;
+
+        private List<CategoryModel> availableCategories = GlobalConfig.Connection.LoadAllCategories();
+        private List<CategoryModel> selectedCategories = new List<CategoryModel>();
 
         /// <summary>
         /// Constructor for adding a new book with no existing data.
@@ -27,6 +31,8 @@ namespace DevJournalUI.EditElementForms
             InitializeComponent();
 
             callingForm = caller;
+
+            WireUpLists();
         }
 
         /// <summary>
@@ -44,8 +50,29 @@ namespace DevJournalUI.EditElementForms
             AuthorTextBox.Text = book.AuthorName;
             PriceTextBox.Text = book.Price.ToString();
             ReadCheckBoxValue.Checked = book.Read;
+            //selectedCategories = book.Categories;
 
             callingForm = caller;
+
+            WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            AvailableCategoriesListBox.DataSource = null;
+            SelectedCategoriesListBox.DataSource = null;
+
+            AvailableCategoriesListBox.DataSource = availableCategories;
+            AvailableCategoriesListBox.DisplayMember = "CategoryName";
+
+            SelectedCategoriesListBox.DataSource = selectedCategories;
+            SelectedCategoriesListBox.DisplayMember = "CategoryName";
+        }
+
+        public void CategoryComplete(CategoryModel model)
+        {
+            selectedCategories.Add(model);
+            WireUpLists();
         }
 
         private void BookSubmitButton_Click(object sender, EventArgs e)
@@ -60,6 +87,10 @@ namespace DevJournalUI.EditElementForms
                     b.AuthorName = AuthorTextBox.Text;
                     b.Price = double.Parse(PriceTextBox.Text);
                     b.Read = ReadCheckBoxValue.Checked;
+                    foreach (CategoryModel category in selectedCategories)
+                    {
+                        b.Categories.Add(category);
+                    }
 
                     GlobalConfig.Connection.CreateBookModel(b);
 
@@ -73,6 +104,11 @@ namespace DevJournalUI.EditElementForms
                     book.AuthorName = AuthorTextBox.Text;
                     book.Price = double.Parse(PriceTextBox.Text);
                     book.Read = ReadCheckBoxValue.Checked;
+                    book.Categories = new List<CategoryModel>();
+                    foreach (CategoryModel category in selectedCategories)
+                    {
+                        book.Categories.Add(category);
+                    }
 
                     GlobalConfig.Connection.UpdateBookModel(book);
 
@@ -127,6 +163,40 @@ namespace DevJournalUI.EditElementForms
                 output = true;
             }
             return output;
+        }
+
+        private void AddNewCategoryButton_Click(object sender, EventArgs e)
+        {
+            CategoryForm frm = new CategoryForm(this);
+            frm.Show();
+        }
+
+        private void AddToSelectedButton_Click(object sender, EventArgs e)
+        {
+            if (AvailableCategoriesListBox.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                selectedCategories.Add((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+                availableCategories.Remove((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+            }
+            WireUpLists();
+        }
+
+        private void RemoveFromSelectedButton_Click(object sender, EventArgs e)
+        {
+            if (SelectedCategoriesListBox.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                selectedCategories.Remove((CategoryModel)SelectedCategoriesListBox.SelectedItem);
+                availableCategories.Add((CategoryModel)SelectedCategoriesListBox.SelectedItem);
+            }
+            WireUpLists();
         }
     }
 }
