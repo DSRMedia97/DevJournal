@@ -57,6 +57,7 @@ namespace DevJournalUI.ViewElementForms
         public void BookComplete(BookModel model)
         {
             allAvailableBooks.Add(model);
+            RefreshCategories();
             RefreshSelectedBookList();
             WireUpLists();
         }
@@ -71,6 +72,7 @@ namespace DevJournalUI.ViewElementForms
         public void BookUpdate(BookModel model)
         {
             allAvailableBooks[allAvailableBooks.FindIndex(x => x.ID == model.ID)] = model;
+            RefreshCategories();
             RefreshSelectedBookList();
             WireUpLists();
         }
