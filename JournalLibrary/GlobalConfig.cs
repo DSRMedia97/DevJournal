@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JournalLibrary.DataConnectors;
+using System.Configuration;
 
 namespace JournalLibrary
 {
@@ -17,7 +18,8 @@ namespace JournalLibrary
         {
             if (db == DatabaseType.Sql)
             {
-                //TODO - implement Sql connection
+                SQLConnector sql = new SQLConnector();
+                Connection = sql;
             }
             else if (db == DatabaseType.TextFile)
             {
@@ -28,6 +30,11 @@ namespace JournalLibrary
             {
                 throw new NullReferenceException("Data source not defined.");
             }
+        }
+
+        public static string CnnString(string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }
