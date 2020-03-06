@@ -135,6 +135,8 @@ namespace DevJournalUI.EditElementForms
             bool validAuthor = false;
             double price = 0;
             bool validPrice = false;
+
+            string errorMessage = "";
             
             //Title can't be blank and can't contain commas
             if(TitleTextBox.Text.Length > 0 && !TitleTextBox.Text.Contains(","))
@@ -143,7 +145,7 @@ namespace DevJournalUI.EditElementForms
             }
             else
             {
-                //TODO - error handling
+                errorMessage += "Title cannot be blank and cannot contain commas. ";
             }
 
             //Author name can't be blank and can't contain commas
@@ -153,7 +155,7 @@ namespace DevJournalUI.EditElementForms
             }
             else
             {
-                //TODO - error handling
+                errorMessage += "Author name cannot be blank and cannot contain commas. ";
             }
 
             //Price has to be a valid number, not alphanumeric
@@ -163,13 +165,17 @@ namespace DevJournalUI.EditElementForms
             }
             else
             {
-                //TODO - error handling
+                errorMessage += "Price is not in the correct format. ";
             }
 
             //if all fields pass checks then update output
             if (validTitle && validAuthor && validPrice)
             {
                 output = true;
+            }
+            else
+            {
+                MessageBox.Show($"{ errorMessage }", "Formatting Error");
             }
             return output;
         }

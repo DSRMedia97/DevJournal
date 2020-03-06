@@ -32,18 +32,36 @@ namespace DevJournalUI.EditElementForms
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            //Create CategoryModel
-            CategoryModel model = new CategoryModel();
-            //TODO - form validation to make sure there are no commas
-            model.CategoryName = CategoryNameValue.Text;
+            if (ValidData())
+            {
+                //Create CategoryModel
+                CategoryModel model = new CategoryModel();
+                model.CategoryName = CategoryNameValue.Text;
 
-            //Save new category to DB
-            GlobalConfig.Connection.CreateCategoryModel(model);
+                //Save new category to DB
+                GlobalConfig.Connection.CreateCategoryModel(model);
 
-            //Return new category to Book
-            callingForm.CategoryComplete(model);
+                //Return new category to Book
+                callingForm.CategoryComplete(model);
 
-            this.Close();
+                this.Close(); 
+            }
+            else
+            {
+                MessageBox.Show("Category names cannot be blank and cannot commas.", "Incorrect Category Name");
+            }
+        }
+
+        private bool ValidData()
+        {
+            bool output = false;
+
+            if (CategoryNameValue.Text != "" && !CategoryNameValue.Text.Contains(","))
+            {
+                output = true;
+            }
+
+            return output;
         }
     }
 }
