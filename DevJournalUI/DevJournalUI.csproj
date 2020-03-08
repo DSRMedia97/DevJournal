@@ -68,6 +68,12 @@
     <Compile Include="ViewElementForms\BookViewerForm.Designer.cs">
       <DependentUpon>BookViewerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewElementForms\DevOverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewElementForms\DevOverviewForm.Designer.cs">
+      <DependentUpon>DevOverviewForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EditElementForms\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="ViewElementForms\BookViewerForm.resx">
       <DependentUpon>BookViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewElementForms\DevOverviewForm.resx">
+      <DependentUpon>DevOverviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

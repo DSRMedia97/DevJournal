@@ -19,9 +19,9 @@ namespace DevJournalUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             //initialize data connections
-            JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.Sql);
+            JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.TextFile);
 
-            Application.Run(new BookViewerForm());
+            Application.Run(new DevOverviewForm());
         }
     }
 }
