@@ -90,16 +90,16 @@ namespace DevJournalUI.ViewElementForms
                 //If there is a category selected in the dropdown and it's not 1 ("All") then add books that match the category id.
                 if (category !=null && category.ID != 1)
                 {
-                    foreach (BookModel b in allAvailableBooks)
-                    {
-                        foreach (CategoryModel c in b.Categories)
-                        {
-                            if (c.ID == category.ID)
-                            {
-                                selectedBooks.Add(b);
-                            }
-                        }
-                    }
+                    //foreach (BookModel b in allAvailableBooks)
+                    //{
+                    //    foreach (CategoryModel c in b.Categories)
+                    //    {
+                    //        if (c.ID == category.ID)
+                    //        {
+                    //            selectedBooks.Add(b);
+                    //        }
+                    //    }
+                    //}
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
@@ -115,19 +115,19 @@ namespace DevJournalUI.ViewElementForms
             {
                 if (category != null && category.ID != 1)
                 {
-                    foreach (BookModel b in allAvailableBooks)
-                    {
-                        if (!b.Read)
-                        {
-                            foreach (CategoryModel c in b.Categories)
-                            {
-                                if (c.ID == category.ID)
-                                {
-                                    selectedBooks.Add(b);
-                                }
-                            } 
-                        }
-                    }
+                    //foreach (BookModel b in allAvailableBooks)
+                    //{
+                    //    if (!b.Read)
+                    //    {
+                    //        foreach (CategoryModel c in b.Categories)
+                    //        {
+                    //            if (c.ID == category.ID)
+                    //            {
+                    //                selectedBooks.Add(b);
+                    //            }
+                    //        } 
+                    //    }
+                    //}
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
@@ -172,7 +172,6 @@ namespace DevJournalUI.ViewElementForms
             SelectedBookAuthorValue.Text = selectedBook.AuthorName;
             SelectedBookPriceValue.Text = $"${ selectedBook.Price.ToString()}";
             SelectedBookReadValue.Checked = selectedBook.Read;
-            CategoriesValue.Text = selectedBook.FullCategoryValue;
         }
 
         private void UnreadOnlyCheckBox_CheckedChanged(object sender, EventArgs e)

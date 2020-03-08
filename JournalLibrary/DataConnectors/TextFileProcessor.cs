@@ -34,7 +34,6 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
         public static List<BookModel> ConvertToBookModels(this List<string> lines)
         {
             List<BookModel> output = new List<BookModel>();
-            List<CategoryModel> categories = GlobalConfig.Connection.LoadAllCategories();
 
             foreach(string line in lines)
             {
@@ -49,14 +48,6 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
                 b.Read = bool.Parse(cols[4]);
 
                 string[] categoryIDs = cols[5].Split('|');
-
-                if (categoryIDs[0] != "")
-                {
-                    foreach (string id in categoryIDs)
-                    {
-                        b.Categories.Add(categories.Where(x => x.ID == int.Parse(id)).First());
-                    }
-                }
 
                 output.Add(b);
             }
@@ -91,18 +82,7 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
             foreach (BookModel b in models)
             {
-                string categoryIDs = "";
-
-                foreach (CategoryModel c in b.Categories)
-                {
-                    categoryIDs += $"{ c.ID.ToString() }|";
-                }
-                if (categoryIDs.Length > 0)
-                {
-                    categoryIDs = categoryIDs.Substring(0, categoryIDs.Length - 1);
-                }
-
-                lines.Add($"{ b.ID },{ b.BookName },{ b.AuthorName },{ b.Price },{ b.Read },{ categoryIDs }");
+                lines.Add($"{ b.ID },{ b.BookName },{ b.AuthorName },{ b.Price },{ b.Read }");
             }
 
             File.WriteAllLines(GlobalConfig.BooksFile.FullFilePath(), lines);
@@ -114,7 +94,8 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
             foreach(CategoryModel c in models)
             {
-                lines.Add($"{ c.ID },{ c.CategoryName }");
+                //TODO - bookIDs
+                lines.Add($"{ c.ID },{ c.CategoryName },{ c.Hours },");
             }
 
             File.WriteAllLines(GlobalConfig.CategoriesFile.FullFilePath(), lines);

@@ -50,7 +50,6 @@ namespace DevJournalUI.EditElementForms
             AuthorTextBox.Text = book.AuthorName;
             PriceTextBox.Text = book.Price.ToString();
             ReadCheckBoxValue.Checked = book.Read;
-            selectedCategories = book.Categories;
 
             callingForm = caller;
 
@@ -96,10 +95,6 @@ namespace DevJournalUI.EditElementForms
                     b.AuthorName = AuthorTextBox.Text;
                     b.Price = double.Parse(PriceTextBox.Text);
                     b.Read = ReadCheckBoxValue.Checked;
-                    foreach (CategoryModel category in selectedCategories)
-                    {
-                        b.Categories.Add(category);
-                    }
 
                     GlobalConfig.Connection.CreateBookModel(b);
 
@@ -113,11 +108,6 @@ namespace DevJournalUI.EditElementForms
                     book.AuthorName = AuthorTextBox.Text;
                     book.Price = double.Parse(PriceTextBox.Text);
                     book.Read = ReadCheckBoxValue.Checked;
-                    book.Categories = new List<CategoryModel>();
-                    foreach (CategoryModel category in selectedCategories)
-                    {
-                        book.Categories.Add(category);
-                    }
 
                     GlobalConfig.Connection.UpdateBookModel(book);
 
