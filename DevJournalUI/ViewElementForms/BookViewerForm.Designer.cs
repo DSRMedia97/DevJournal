@@ -41,12 +41,10 @@
             this.UnreadOnlyCheckBox = new System.Windows.Forms.CheckBox();
             this.TotalCostValue = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
-            this.CategoriesLabel = new System.Windows.Forms.Label();
-            this.CategoriesValue = new System.Windows.Forms.Label();
             this.FilterListGroupBox = new System.Windows.Forms.GroupBox();
-            this.SelectedBookDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.FilterCategoryDropdown = new System.Windows.Forms.ComboBox();
             this.FilterCategoryLabel = new System.Windows.Forms.Label();
+            this.FilterCategoryDropdown = new System.Windows.Forms.ComboBox();
+            this.SelectedBookDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.FilterListGroupBox.SuspendLayout();
             this.SelectedBookDetailsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -173,24 +171,6 @@
             this.TotalCostLabel.TabIndex = 12;
             this.TotalCostLabel.Text = "Total Cost:";
             // 
-            // CategoriesLabel
-            // 
-            this.CategoriesLabel.AutoSize = true;
-            this.CategoriesLabel.Location = new System.Drawing.Point(22, 98);
-            this.CategoriesLabel.Name = "CategoriesLabel";
-            this.CategoriesLabel.Size = new System.Drawing.Size(60, 13);
-            this.CategoriesLabel.TabIndex = 14;
-            this.CategoriesLabel.Text = "Categories:";
-            // 
-            // CategoriesValue
-            // 
-            this.CategoriesValue.AutoSize = true;
-            this.CategoriesValue.Location = new System.Drawing.Point(88, 98);
-            this.CategoriesValue.Name = "CategoriesValue";
-            this.CategoriesValue.Size = new System.Drawing.Size(22, 13);
-            this.CategoriesValue.TabIndex = 15;
-            this.CategoriesValue.Text = "< >";
-            // 
             // FilterListGroupBox
             // 
             this.FilterListGroupBox.Controls.Add(this.FilterCategoryLabel);
@@ -203,23 +183,14 @@
             this.FilterListGroupBox.TabStop = false;
             this.FilterListGroupBox.Text = "Filters";
             // 
-            // SelectedBookDetailsGroupBox
+            // FilterCategoryLabel
             // 
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorLabel);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookTitleLabel);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.CategoriesValue);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceLabel);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.CategoriesLabel);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadLabel);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorValue);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceValue);
-            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadValue);
-            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(290, 105);
-            this.SelectedBookDetailsGroupBox.Name = "SelectedBookDetailsGroupBox";
-            this.SelectedBookDetailsGroupBox.Size = new System.Drawing.Size(284, 162);
-            this.SelectedBookDetailsGroupBox.TabIndex = 17;
-            this.SelectedBookDetailsGroupBox.TabStop = false;
-            this.SelectedBookDetailsGroupBox.Text = "Current Book";
+            this.FilterCategoryLabel.AutoSize = true;
+            this.FilterCategoryLabel.Location = new System.Drawing.Point(7, 22);
+            this.FilterCategoryLabel.Name = "FilterCategoryLabel";
+            this.FilterCategoryLabel.Size = new System.Drawing.Size(67, 13);
+            this.FilterCategoryLabel.TabIndex = 13;
+            this.FilterCategoryLabel.Text = "By Category:";
             // 
             // FilterCategoryDropdown
             // 
@@ -230,14 +201,21 @@
             this.FilterCategoryDropdown.TabIndex = 12;
             this.FilterCategoryDropdown.SelectedIndexChanged += new System.EventHandler(this.FilterCategoryDropdown_SelectedIndexChanged);
             // 
-            // FilterCategoryLabel
+            // SelectedBookDetailsGroupBox
             // 
-            this.FilterCategoryLabel.AutoSize = true;
-            this.FilterCategoryLabel.Location = new System.Drawing.Point(7, 22);
-            this.FilterCategoryLabel.Name = "FilterCategoryLabel";
-            this.FilterCategoryLabel.Size = new System.Drawing.Size(67, 13);
-            this.FilterCategoryLabel.TabIndex = 13;
-            this.FilterCategoryLabel.Text = "By Category:";
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookTitleLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadLabel);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorValue);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceValue);
+            this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadValue);
+            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(290, 105);
+            this.SelectedBookDetailsGroupBox.Name = "SelectedBookDetailsGroupBox";
+            this.SelectedBookDetailsGroupBox.Size = new System.Drawing.Size(284, 162);
+            this.SelectedBookDetailsGroupBox.TabIndex = 17;
+            this.SelectedBookDetailsGroupBox.TabStop = false;
+            this.SelectedBookDetailsGroupBox.Text = "Current Book";
             // 
             // BookViewerForm
             // 
@@ -277,8 +255,6 @@
         private System.Windows.Forms.CheckBox UnreadOnlyCheckBox;
         private System.Windows.Forms.Label TotalCostValue;
         private System.Windows.Forms.Label TotalCostLabel;
-        private System.Windows.Forms.Label CategoriesLabel;
-        private System.Windows.Forms.Label CategoriesValue;
         private System.Windows.Forms.GroupBox FilterListGroupBox;
         private System.Windows.Forms.GroupBox SelectedBookDetailsGroupBox;
         private System.Windows.Forms.Label FilterCategoryLabel;

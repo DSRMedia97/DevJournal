@@ -59,6 +59,13 @@ namespace DevJournalUI.EditElementForms
 
         private void WireUpCategories()
         {
+            foreach (CategoryModel c in availableCategories)
+            {
+                if (c.BookIds.Contains(book.ID))
+                {
+                    selectedCategories.Add(c);
+                }
+            }
             foreach (CategoryModel c in selectedCategories)
             {
                 availableCategories.Remove(availableCategories.Where(x => x.ID == c.ID).First());
@@ -96,7 +103,7 @@ namespace DevJournalUI.EditElementForms
                     b.Price = double.Parse(PriceTextBox.Text);
                     b.Read = ReadCheckBoxValue.Checked;
 
-                    GlobalConfig.Connection.CreateBookModel(b);
+                    GlobalConfig.Connection.CreateBookModel(b, selectedCategories);
 
                     callingForm.BookComplete(b);
 
@@ -109,7 +116,7 @@ namespace DevJournalUI.EditElementForms
                     book.Price = double.Parse(PriceTextBox.Text);
                     book.Read = ReadCheckBoxValue.Checked;
 
-                    GlobalConfig.Connection.UpdateBookModel(book);
+                    GlobalConfig.Connection.UpdateBookModel(book, selectedCategories);
 
                     callingForm.BookUpdate(book);
 

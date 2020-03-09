@@ -10,7 +10,7 @@ namespace JournalLibrary.Models
         public int ID { get; set; }
         public string CategoryName { get; set; }
         public double Hours { get; set; }
-        public List<int> BookIDs { get; set; } = new List<int>();
+        public List<int> BookIds { get; set; } = new List<int>();
 
         public CategoryModel() { }
 
@@ -19,11 +19,11 @@ namespace JournalLibrary.Models
             CategoryName = name;
         }
 
-        public CategoryModel(string name, double hours, List<int> bookIDs)
+        public CategoryModel(string name, double hours, List<int> bookIds)
         {
             CategoryName = name;
             Hours = hours;
-            BookIDs = bookIDs;
+            BookIds = bookIds;
         }
 
         public void AddHours(double timeToAdd)

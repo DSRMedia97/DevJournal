@@ -19,7 +19,7 @@ namespace DevJournalUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             //initialize data connections
-            JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.TextFile);
+            JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.Sql);
 
             Application.Run(new DevOverviewForm());
         }

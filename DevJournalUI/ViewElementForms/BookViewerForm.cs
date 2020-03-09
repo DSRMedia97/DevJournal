@@ -84,22 +84,17 @@ namespace DevJournalUI.ViewElementForms
 
             CategoryModel category = (CategoryModel)FilterCategoryDropdown.SelectedItem;
 
+            //TODO - opportunity for refactor
             //When "Unread Only" is left unmarked we want all books regardless of read status
             if (!UnreadOnlyCheckBox.Checked)
             {
                 //If there is a category selected in the dropdown and it's not 1 ("All") then add books that match the category id.
                 if (category !=null && category.ID != 1)
                 {
-                    //foreach (BookModel b in allAvailableBooks)
-                    //{
-                    //    foreach (CategoryModel c in b.Categories)
-                    //    {
-                    //        if (c.ID == category.ID)
-                    //        {
-                    //            selectedBooks.Add(b);
-                    //        }
-                    //    }
-                    //}
+                    foreach (int id in category.BookIds)
+                    {
+                        selectedBooks.Add(allAvailableBooks.Where(x => x.ID == id).First());
+                    }
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
@@ -115,19 +110,13 @@ namespace DevJournalUI.ViewElementForms
             {
                 if (category != null && category.ID != 1)
                 {
-                    //foreach (BookModel b in allAvailableBooks)
-                    //{
-                    //    if (!b.Read)
-                    //    {
-                    //        foreach (CategoryModel c in b.Categories)
-                    //        {
-                    //            if (c.ID == category.ID)
-                    //            {
-                    //                selectedBooks.Add(b);
-                    //            }
-                    //        } 
-                    //    }
-                    //}
+                    foreach (int id in category.BookIds)
+                    {
+                        if (!allAvailableBooks.Where(x => x.ID == id).First().Read)
+                        {
+                            selectedBooks.Add(allAvailableBooks.Where(x => x.ID == id).First());
+                        }
+                    }
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
