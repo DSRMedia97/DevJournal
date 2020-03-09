@@ -59,6 +59,8 @@ namespace DevJournalUI.EditElementForms
 
         private void WireUpCategories()
         {
+            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+
             foreach (CategoryModel c in availableCategories)
             {
                 if (c.BookIds.Contains(book.ID))

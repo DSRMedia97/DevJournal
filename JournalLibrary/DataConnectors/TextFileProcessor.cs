@@ -47,8 +47,6 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
                 b.Price = double.Parse(cols[3]);
                 b.Read = bool.Parse(cols[4]);
 
-                string[] categoryIDs = cols[5].Split('|');
-
                 output.Add(b);
             }
 
@@ -67,6 +65,18 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
                 c.ID = int.Parse(cols[0]);
                 c.CategoryName = cols[1];
+                c.StudyHours = double.Parse(cols[2]);
+                c.PracticeHours = double.Parse(cols[3]);
+
+                if (cols[4] != "")
+                {
+                    string[] bookIds = cols[4].Split('|');
+
+                    foreach (string id in bookIds)
+                    {
+                        c.BookIds.Add(int.Parse(id));
+                    } 
+                }
 
                 output.Add(c);
             }
@@ -91,11 +101,23 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
         public static void SaveToCategoryFile(this List<CategoryModel> models)
         {
             List<string> lines = new List<string>();
+            string tempBookIds = "";
 
             foreach(CategoryModel c in models)
             {
-                //TODO - bookIDs
-                lines.Add($"{ c.ID },{ c.CategoryName },{ c.Hours },");
+                tempBookIds = "";
+
+                foreach (int bookId in c.BookIds)
+                {
+                    tempBookIds += $"{ bookId.ToString() }|";
+                }
+
+                if (c.BookIds.Count() > 0)
+                {
+                    tempBookIds = tempBookIds.Substring(0, tempBookIds.Length - 1);
+                }
+
+                lines.Add($"{ c.ID },{ c.CategoryName },{ c.StudyHours },{ c.PracticeHours },{ tempBookIds }");
             }
 
             File.WriteAllLines(GlobalConfig.CategoriesFile.FullFilePath(), lines);

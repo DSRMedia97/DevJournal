@@ -21,11 +21,11 @@ namespace JournalLibrary
                 SQLConnector sql = new SQLConnector();
                 Connection = sql;
             }
-            //else if (db == DatabaseType.TextFile)
-            //{
-            //    TextFileConnector text = new TextFileConnector();
-            //    Connection = text;
-            //}
+            else if (db == DatabaseType.TextFile)
+            {
+                TextFileConnector text = new TextFileConnector();
+                Connection = text;
+            }
             else
             {
                 throw new NullReferenceException("Data source not defined.");
