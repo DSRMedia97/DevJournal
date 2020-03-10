@@ -9,8 +9,7 @@ namespace JournalLibrary.Models
     {
         public int ID { get; set; }
         public string CategoryName { get; set; }
-        public double StudyHours { get; set; }
-        public double PracticeHours { get; set; }
+        public List<TrainingModel> Trainings { get; set; } = new List<TrainingModel>();
         public List<int> BookIds { get; set; } = new List<int>();
 
         public CategoryModel() { }
@@ -18,21 +17,25 @@ namespace JournalLibrary.Models
         public CategoryModel(string name)
         {
             CategoryName = name;
-            StudyHours = 0;
-            PracticeHours = 0;
         }
 
-        public CategoryModel(string name, double studyHours, double practiceHours, List<int> bookIds)
+        public CategoryModel(string name, List<TrainingModel> trainings, List<int> bookIds)
         {
             CategoryName = name;
-            StudyHours = studyHours;
-            PracticeHours = practiceHours;
+            Trainings = trainings;
             BookIds = bookIds;
         }
 
-        public double TotalHours()
+        public double TotalStudyTime()
         {
-            return PracticeHours + StudyHours;
+            double output = 0;
+
+            foreach (StudyTrainingModel studyTraining in Trainings)
+            {
+                output += studyTraining.Time;
+            }
+
+            return output;
         }
     }
 }

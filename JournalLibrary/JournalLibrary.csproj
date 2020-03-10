@@ -52,6 +52,9 @@
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\PracticeTrainingModel.cs" />
+    <Compile Include="Models\StudyTrainingModel.cs" />
+    <Compile Include="Models\TrainingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

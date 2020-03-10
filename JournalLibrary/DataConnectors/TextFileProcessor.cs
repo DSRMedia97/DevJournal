@@ -65,12 +65,10 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
                 c.ID = int.Parse(cols[0]);
                 c.CategoryName = cols[1];
-                c.StudyHours = double.Parse(cols[2]);
-                c.PracticeHours = double.Parse(cols[3]);
 
-                if (cols[4] != "")
+                if (cols[3] != "")
                 {
-                    string[] bookIds = cols[4].Split('|');
+                    string[] bookIds = cols[3].Split('|');
 
                     foreach (string id in bookIds)
                     {
@@ -117,7 +115,8 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
                     tempBookIds = tempBookIds.Substring(0, tempBookIds.Length - 1);
                 }
 
-                lines.Add($"{ c.ID },{ c.CategoryName },{ c.StudyHours },{ c.PracticeHours },{ tempBookIds }");
+                //TODO - Save List Training Ids in col[3]
+                lines.Add($"{ c.ID },{ c.CategoryName },{ 0 },{ tempBookIds }");
             }
 
             File.WriteAllLines(GlobalConfig.CategoriesFile.FullFilePath(), lines);
