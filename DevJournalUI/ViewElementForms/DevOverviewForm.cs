@@ -45,6 +45,9 @@ namespace DevJournalUI.ViewElementForms
         private void viewBooksToolStripLibraryItem_Click(object sender, EventArgs e)
         {
             Form frm = new BookViewerForm();
+            frm.TopLevel = false;
+            tabPage1.Controls.Add(frm);
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
@@ -57,7 +60,7 @@ namespace DevJournalUI.ViewElementForms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            TrainingModel trainingModel = new StudyTrainingModel(double.Parse(HoursStudiedTextBox.Text), DateTime.Parse(dateTimePicker1.Text), int.Parse(BookReadTextBox.Text));
+            TrainingModel trainingModel = new StudyTrainingModel(double.Parse(HoursStudiedTextBox.Text), DateTime.Parse(dateTimePicker1.Text), int.Parse(BookReadTextBox.Text), TrainingModel.Source.Book);
             selectedCategory.Trainings.Add(trainingModel);
         }
     }

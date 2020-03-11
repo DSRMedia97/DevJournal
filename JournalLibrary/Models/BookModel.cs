@@ -5,9 +5,8 @@ using System.Text;
 
 namespace JournalLibrary.Models
 {
-    public class BookModel
+    public class BookModel : LibraryModel
     {
-        public int ID { get; set; }
         public string BookName { get; set; }
         public string AuthorName { get; set; }
         public double Price { get; set; }
@@ -15,7 +14,7 @@ namespace JournalLibrary.Models
 
         public BookModel() { }
 
-        public BookModel( string name, string author, double price, bool read)
+        public BookModel(string name, string author, double price, bool read)
         {
             BookName = name;
             AuthorName = author;

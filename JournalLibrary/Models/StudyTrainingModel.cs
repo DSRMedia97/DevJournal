@@ -7,15 +7,16 @@ namespace JournalLibrary.Models
 {
     public class StudyTrainingModel : TrainingModel
     {
-        public int BookStudiedId { get; set; }
+        public int StudyMaterialId { get; set; }
 
         public StudyTrainingModel() { }
 
-        public StudyTrainingModel(double time, DateTime date, int bookId)
+        public StudyTrainingModel(double time, DateTime date, int materialID, Source source)
         {
             Time = time;
             Date = date;
-            BookStudiedId = bookId;
+            StudyMaterialId = materialID;
+            trainingSource = source;
         }
     }
 }

@@ -10,12 +10,13 @@ namespace JournalLibrary.Models
         public int Id { get; set; }
         public double Time { get; set; }
         public DateTime Date { get; set; } = new DateTime();
+        public Source trainingSource { get; set; }
 
         public enum Source
         {
             Project, 
-            YouTube,
-            Book
+            Book,
+            YouTube
         }
     }
 }

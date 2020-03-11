@@ -7,7 +7,7 @@ namespace JournalLibrary.Models
 {
     class PracticeTrainingModel : TrainingModel
     {
-        public string ProjectName { get; set; } // eventually swap this for ProjectModel
+        public string ProjectName { get; set; } // TODO - eventually swap this for ProjectModel
 
         public PracticeTrainingModel() { }
 
@@ -16,6 +16,7 @@ namespace JournalLibrary.Models
             Time = time;
             Date = date;
             ProjectName = name;
+            trainingSource = Source.Project;
         }
     }
 }
