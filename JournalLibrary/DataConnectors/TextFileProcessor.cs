@@ -42,7 +42,7 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
                 BookModel b = new BookModel();
 
                 b.ID = int.Parse(cols[0]);
-                b.BookName = cols[1];
+                b.Title = cols[1];
                 b.AuthorName = cols[2];
                 b.Price = double.Parse(cols[3]);
                 b.Read = bool.Parse(cols[4]);
@@ -65,16 +65,7 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
                 c.ID = int.Parse(cols[0]);
                 c.CategoryName = cols[1];
-
-                if (cols[3] != "")
-                {
-                    string[] bookIds = cols[3].Split('|');
-
-                    foreach (string id in bookIds)
-                    {
-                        c.BookIds.Add(int.Parse(id));
-                    } 
-                }
+                //TODO - read TrainingModels
 
                 output.Add(c);
             }
@@ -90,7 +81,7 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
 
             foreach (BookModel b in models)
             {
-                lines.Add($"{ b.ID },{ b.BookName },{ b.AuthorName },{ b.Price },{ b.Read }");
+                lines.Add($"{ b.ID },{ b.Title },{ b.AuthorName },{ b.Price },{ b.Read }");
             }
 
             File.WriteAllLines(GlobalConfig.BooksFile.FullFilePath(), lines);
@@ -99,24 +90,11 @@ namespace JournalLibrary.DataConnectors.TextFileHelpers
         public static void SaveToCategoryFile(this List<CategoryModel> models)
         {
             List<string> lines = new List<string>();
-            string tempBookIds = "";
 
             foreach(CategoryModel c in models)
             {
-                tempBookIds = "";
-
-                foreach (int bookId in c.BookIds)
-                {
-                    tempBookIds += $"{ bookId.ToString() }|";
-                }
-
-                if (c.BookIds.Count() > 0)
-                {
-                    tempBookIds = tempBookIds.Substring(0, tempBookIds.Length - 1);
-                }
-
                 //TODO - Save List Training Ids in col[3]
-                lines.Add($"{ c.ID },{ c.CategoryName },{ 0 },{ tempBookIds }");
+                lines.Add($"{ c.ID },{ c.CategoryName },{ 0 }");
             }
 
             File.WriteAllLines(GlobalConfig.CategoriesFile.FullFilePath(), lines);

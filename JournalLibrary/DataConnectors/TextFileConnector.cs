@@ -26,8 +26,6 @@ namespace JournalLibrary.DataConnectors
             books[books.FindIndex(x => x.ID == model.ID)] = model;
 
             books.SaveToBookFile();
-
-            UpdateCategoryBookIDs(model.ID, selectedCategories);
         }
 
         public void CreateBookModel(BookModel model, List<CategoryModel> selectedCategories)
@@ -46,25 +44,10 @@ namespace JournalLibrary.DataConnectors
             books.Add(model);
 
             books.SaveToBookFile();
-
-            UpdateCategoryBookIDs(model.ID, selectedCategories);
         }
 
-        private void UpdateCategoryBookIDs(int bookId, List<CategoryModel> selectedCategories)
+        private void UpdateCategoryBookIDs()
         {
-            List<CategoryModel> allCategories = GlobalConfig.CategoriesFile.FullFilePath().LoadFile().ConvertToCategoryModels();
-            foreach (CategoryModel c in allCategories)
-            {
-                if (c.BookIds.Contains(bookId) && !selectedCategories.Exists(x => x.ID == c.ID))
-                {
-                    allCategories[allCategories.FindIndex(x => x.ID == c.ID)].BookIds.Remove(bookId);
-                }
-                else if (!c.BookIds.Contains(bookId) && selectedCategories.Exists(x => x.ID == c.ID))
-                {
-                    allCategories[allCategories.FindIndex(x => x.ID == c.ID)].BookIds.Add(bookId);
-                }
-            }
-            allCategories.SaveToCategoryFile();
         }
 
         public void CreateCategoryModel(CategoryModel model)

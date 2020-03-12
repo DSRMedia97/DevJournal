@@ -36,7 +36,7 @@ namespace DevJournalUI.ViewElementForms
         {
             BookListBox.DataSource = null;
             BookListBox.DataSource = selectedBooks;
-            BookListBox.DisplayMember = "BookName";
+            BookListBox.DisplayMember = "Title";
         }
 
         private void RefreshCategories()
@@ -91,10 +91,7 @@ namespace DevJournalUI.ViewElementForms
                 //If there is a category selected in the dropdown and it's not 1 ("All") then add books that match the category id.
                 if (category !=null && category.ID != 1)
                 {
-                    foreach (int id in category.BookIds)
-                    {
-                        selectedBooks.Add(allAvailableBooks.Where(x => x.ID == id).First());
-                    }
+                    //TODO - add book to selectedBooks
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
@@ -110,13 +107,7 @@ namespace DevJournalUI.ViewElementForms
             {
                 if (category != null && category.ID != 1)
                 {
-                    foreach (int id in category.BookIds)
-                    {
-                        if (!allAvailableBooks.Where(x => x.ID == id).First().Read)
-                        {
-                            selectedBooks.Add(allAvailableBooks.Where(x => x.ID == id).First());
-                        }
-                    }
+                    //TODO - add book to selectedBooks if !Read
                 }
                 //If there is no category selected or the category is 1 ("All") then add all available books.
                 else if (category == null || category.ID == 1)
@@ -157,7 +148,7 @@ namespace DevJournalUI.ViewElementForms
 
         private void RefreshSelectedBookData()
         {
-            SelectedBookTitleLabel.Text = selectedBook.BookName;
+            SelectedBookTitleLabel.Text = selectedBook.Title;
             SelectedBookAuthorValue.Text = selectedBook.AuthorName;
             SelectedBookPriceValue.Text = $"${ selectedBook.Price.ToString()}";
             SelectedBookReadValue.Checked = selectedBook.Read;

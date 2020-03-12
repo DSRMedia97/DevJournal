@@ -46,7 +46,7 @@ namespace DevJournalUI.EditElementForms
 
             InitializeComponent();
 
-            TitleTextBox.Text = book.BookName;
+            TitleTextBox.Text = book.Title;
             AuthorTextBox.Text = book.AuthorName;
             PriceTextBox.Text = book.Price.ToString();
             ReadCheckBoxValue.Checked = book.Read;
@@ -63,10 +63,7 @@ namespace DevJournalUI.EditElementForms
 
             foreach (CategoryModel c in availableCategories)
             {
-                if (c.BookIds.Contains(book.ID))
-                {
-                    selectedCategories.Add(c);
-                }
+                //TODO - remove already assigned categories and add them to selectedCategories
             }
             foreach (CategoryModel c in selectedCategories)
             {
@@ -100,7 +97,7 @@ namespace DevJournalUI.EditElementForms
                 {
                     BookModel b = new BookModel();
 
-                    b.BookName = TitleTextBox.Text;
+                    b.Title = TitleTextBox.Text;
                     b.AuthorName = AuthorTextBox.Text;
                     b.Price = double.Parse(PriceTextBox.Text);
                     b.Read = ReadCheckBoxValue.Checked;
@@ -113,7 +110,7 @@ namespace DevJournalUI.EditElementForms
                 }
                 else if (book != null)
                 {
-                    book.BookName = TitleTextBox.Text;
+                    book.Title = TitleTextBox.Text;
                     book.AuthorName = AuthorTextBox.Text;
                     book.Price = double.Parse(PriceTextBox.Text);
                     book.Read = ReadCheckBoxValue.Checked;

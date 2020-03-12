@@ -7,7 +7,6 @@ namespace JournalLibrary.Models
 {
     public class BookModel : LibraryModel
     {
-        public string BookName { get; set; }
         public string AuthorName { get; set; }
         public double Price { get; set; }
         public bool Read { get; set; }
@@ -16,7 +15,7 @@ namespace JournalLibrary.Models
 
         public BookModel(string name, string author, double price, bool read)
         {
-            BookName = name;
+            Title = name;
             AuthorName = author;
             Price = price;
             Read = read;

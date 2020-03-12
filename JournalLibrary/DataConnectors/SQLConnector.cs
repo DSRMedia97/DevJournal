@@ -18,7 +18,7 @@ namespace JournalLibrary.DataConnectors
             {
                 var p = new DynamicParameters();
 
-                p.Add("@BookName", model.BookName);
+                p.Add("@BookName", model.Title);
                 p.Add("@AuthorName", model.AuthorName);
                 p.Add("@Price", model.Price);
                 p.Add("@HasRead", model.Read);
@@ -74,16 +74,6 @@ namespace JournalLibrary.DataConnectors
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 output = connection.Query<CategoryModel>("dbo.spCategories_GetAll").ToList();
-
-                var p = new DynamicParameters();
-
-                foreach (CategoryModel c in output)
-                {
-                    p = new DynamicParameters();
-                    p.Add("@Categoryid", c.ID);
-
-                    c.BookIds = connection.Query<int>("dbo.spBookCategories_GetByCategory", p, commandType: CommandType.StoredProcedure).ToList();
-                }
             }
 
             return output;   
@@ -95,7 +85,7 @@ namespace JournalLibrary.DataConnectors
             {
                 var p = new DynamicParameters();
 
-                p.Add("@BookName", model.BookName);
+                p.Add("@BookName", model.Title);
                 p.Add("@AuthorName", model.AuthorName);
                 p.Add("@Price", model.Price);
                 p.Add("@HasRead", model.Read);
