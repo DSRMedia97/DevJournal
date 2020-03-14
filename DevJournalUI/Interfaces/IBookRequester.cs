@@ -10,6 +10,5 @@ namespace DevJournalUI.Interfaces
     public interface IBookRequester
     {
         void BookComplete(BookModel model);
-        void BookUpdate(BookModel model);
     }
 }

@@ -14,9 +14,6 @@ namespace DevJournalUI.ViewElementForms
 {
     public partial class DevOverviewForm : Form
     {
-        private List<CategoryModel> categories = GlobalConfig.Connection.LoadAllCategories();
-        private CategoryModel selectedCategory = new CategoryModel();
-
         public DevOverviewForm()
         {
             InitializeComponent();

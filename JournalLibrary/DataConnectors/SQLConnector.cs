@@ -67,6 +67,45 @@ namespace JournalLibrary.DataConnectors
             return output;
         }
 
+        public List<BookModel> LoadBooksByCategory(int categoryID, bool unreadOnly)
+        {
+            List<BookModel> output = new List<BookModel>();
+
+            var p = new DynamicParameters();
+
+            p.Add("@Categoryid", categoryID);
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                if (unreadOnly)
+                {
+                    output = connection.Query<BookModel>("dbo.spBooks_GetUnreadByCategory", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+                else
+                {
+                    output = connection.Query<BookModel>("dbo.spBooks_GetByCategory", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+
+            return output;
+        }
+
+        public List<CategoryModel> LoadCategoriesByBook(int bookID)
+        {
+            List<CategoryModel> output = new List<CategoryModel>();
+
+            var p = new DynamicParameters();
+
+            p.Add("@Bookid", bookID);
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<CategoryModel>("dbo.spCategories_GetByBook", p, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            return output;
+        }
+
         public List<CategoryModel> LoadAllCategories()
         {
             List<CategoryModel> output = new List<CategoryModel>();

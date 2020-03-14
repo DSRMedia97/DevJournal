@@ -10,6 +10,10 @@ namespace JournalLibrary.DataConnectors
     {
         List<BookModel> LoadAllBooks();
 
+        List<BookModel> LoadBooksByCategory(int categoryID, bool unreadOnly);
+
+        List<CategoryModel> LoadCategoriesByBook(int bookID);
+
         List<CategoryModel> LoadAllCategories();
 
         void UpdateBookModel(BookModel model, List<CategoryModel> currentCategories);

@@ -10,7 +10,7 @@ namespace JournalLibrary
     public static class GlobalConfig
     {
         public const string BooksFile = "BookModels.csv";
-        public const string OnlineCoursesFile = "OnlineCourseModels.csv";
+        public const string BooksByCategoryFile = "BookCategoryLinks.csv";
         public const string CategoriesFile = "CategoryModels.csv";
 
         public static IDataConnector Connection { get; private set; }

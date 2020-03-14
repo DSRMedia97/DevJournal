@@ -17,7 +17,6 @@ namespace DevJournalUI.ViewElementForms
 {
     public partial class BookViewerForm : Form, IBookRequester
     {
-        private List<BookModel> allAvailableBooks = GlobalConfig.Connection.LoadAllBooks();
         private List<BookModel> selectedBooks = new List<BookModel>();
         private BookModel selectedBook = new BookModel();
         private List<CategoryModel> availableCategories = new List<CategoryModel>();
@@ -45,6 +44,7 @@ namespace DevJournalUI.ViewElementForms
             FilterCategoryDropdown.DataSource = null;
             FilterCategoryDropdown.DataSource = availableCategories;
             FilterCategoryDropdown.DisplayMember = "CategoryName";
+            FilterCategoryDropdown.SelectedIndex = 0;
         }
 
         private void NewBookButton_Click(object sender, EventArgs e)
@@ -56,7 +56,6 @@ namespace DevJournalUI.ViewElementForms
 
         public void BookComplete(BookModel model)
         {
-            allAvailableBooks.Add(model);
             RefreshCategories();
             RefreshSelectedBookList();
             WireUpLists();
@@ -69,58 +68,18 @@ namespace DevJournalUI.ViewElementForms
             frm.Show();
         }
 
-        public void BookUpdate(BookModel model)
-        {
-            allAvailableBooks[allAvailableBooks.FindIndex(x => x.ID == model.ID)] = model;
-            RefreshCategories();
-            RefreshSelectedBookList();
-            WireUpLists();
-        }
-
-        //TODO - not scalable; increase in memory usage every time this runs.
         private void RefreshSelectedBookList()
         {
             selectedBooks.Clear();
 
             CategoryModel category = (CategoryModel)FilterCategoryDropdown.SelectedItem;
-
-            //TODO - opportunity for refactor
-            //When "Unread Only" is left unmarked we want all books regardless of read status
-            if (!UnreadOnlyCheckBox.Checked)
+            
+            if (category == null)
             {
-                //If there is a category selected in the dropdown and it's not 1 ("All") then add books that match the category id.
-                if (category !=null && category.ID != 1)
-                {
-                    //TODO - add book to selectedBooks
-                }
-                //If there is no category selected or the category is 1 ("All") then add all available books.
-                else if (category == null || category.ID == 1)
-                {
-                    foreach (BookModel b in allAvailableBooks)
-                    {
-                        selectedBooks.Add(b);
-                    }
-                }
+                category = new CategoryModel();
+                category.ID = 1;
             }
-            //We need to check read status in operations
-            else if (UnreadOnlyCheckBox.Checked)
-            {
-                if (category != null && category.ID != 1)
-                {
-                    //TODO - add book to selectedBooks if !Read
-                }
-                //If there is no category selected or the category is 1 ("All") then add all available books.
-                else if (category == null || category.ID == 1)
-                {
-                    foreach (BookModel b in allAvailableBooks)
-                    {
-                        if (!b.Read)
-                        {
-                            selectedBooks.Add(b); 
-                        }
-                    }
-                }
-            }
+            selectedBooks = GlobalConfig.Connection.LoadBooksByCategory(category.ID, UnreadOnlyCheckBox.Checked);
 
             RefreshTotalCost();
         }

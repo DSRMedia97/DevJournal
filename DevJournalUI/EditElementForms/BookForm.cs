@@ -32,6 +32,7 @@ namespace DevJournalUI.EditElementForms
 
             callingForm = caller;
 
+            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
             WireUpLists();
         }
 
@@ -53,18 +54,15 @@ namespace DevJournalUI.EditElementForms
 
             callingForm = caller;
 
-            WireUpCategories();
+            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+            WireUpExistingCategories();
             WireUpLists();
         }
 
-        private void WireUpCategories()
+        private void WireUpExistingCategories()
         {
-            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+            selectedCategories = GlobalConfig.Connection.LoadCategoriesByBook(book.ID);
 
-            foreach (CategoryModel c in availableCategories)
-            {
-                //TODO - remove already assigned categories and add them to selectedCategories
-            }
             foreach (CategoryModel c in selectedCategories)
             {
                 availableCategories.Remove(availableCategories.Where(x => x.ID == c.ID).First());
@@ -117,7 +115,7 @@ namespace DevJournalUI.EditElementForms
 
                     GlobalConfig.Connection.UpdateBookModel(book, selectedCategories);
 
-                    callingForm.BookUpdate(book);
+                    callingForm.BookComplete(book);
 
                     this.Close();
                 } 
