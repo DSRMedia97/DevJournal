@@ -139,6 +139,7 @@ namespace JournalLibrary.DataConnectors
                 p.Add("@Bookid", model.ID);
                 storedCategories = connection.Query<CategoryModel>("spBookCategories_GetByBook", p, commandType: CommandType.StoredProcedure).ToList();
 
+                //TODO - refactor
                 //currentCategories list and storedCategories are both null then do nothing - nothing to update
                 if (currentCategories != null && storedCategories != null)
                 {
