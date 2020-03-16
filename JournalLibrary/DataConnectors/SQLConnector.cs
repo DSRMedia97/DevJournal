@@ -55,6 +55,34 @@ namespace JournalLibrary.DataConnectors
             }
         }
 
+        public void CreateOnlineCourseModel(OnlineCourseModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+
+                p.Add("@CourseName", model.Title);
+                p.Add("@CourseLink", model.CourseLink);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spOnlineCourses_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.ID = p.Get<int>("@id");
+            }
+        }
+
+        public List<OnlineCourseModel> LoadAllOnlineCourses()
+        {
+            List<OnlineCourseModel> output = new List<OnlineCourseModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<OnlineCourseModel>("dbo.spOnlineCourses_GetAll").ToList();
+            }
+
+            return output;
+        }
+
         public List<BookModel> LoadAllBooks()
         {
             List<BookModel> output = new List<BookModel>();

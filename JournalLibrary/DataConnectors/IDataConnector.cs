@@ -16,10 +16,14 @@ namespace JournalLibrary.DataConnectors
 
         List<CategoryModel> LoadAllCategories();
 
+        List<OnlineCourseModel> LoadAllOnlineCourses();
+
         void UpdateBookModel(BookModel model, List<CategoryModel> currentCategories);
 
         void CreateBookModel(BookModel model, List<CategoryModel> currentCategories);
 
         void CreateCategoryModel(CategoryModel model);
+
+        void CreateOnlineCourseModel(OnlineCourseModel model);
     }
 }

@@ -36,6 +36,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.viewOnlineCoursesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +70,8 @@
             // libraryToolStripHeader
             // 
             this.libraryToolStripHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewBooksToolStripLibraryItem});
+            this.viewBooksToolStripLibraryItem,
+            this.viewOnlineCoursesToolStripMenuItem});
             this.libraryToolStripHeader.Name = "libraryToolStripHeader";
             this.libraryToolStripHeader.Size = new System.Drawing.Size(55, 20);
             this.libraryToolStripHeader.Text = "Library";
@@ -77,7 +79,7 @@
             // viewBooksToolStripLibraryItem
             // 
             this.viewBooksToolStripLibraryItem.Name = "viewBooksToolStripLibraryItem";
-            this.viewBooksToolStripLibraryItem.Size = new System.Drawing.Size(134, 22);
+            this.viewBooksToolStripLibraryItem.Size = new System.Drawing.Size(182, 22);
             this.viewBooksToolStripLibraryItem.Text = "View Books";
             this.viewBooksToolStripLibraryItem.Click += new System.EventHandler(this.viewBooksToolStripLibraryItem_Click);
             // 
@@ -111,6 +113,13 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // viewOnlineCoursesToolStripMenuItem
+            // 
+            this.viewOnlineCoursesToolStripMenuItem.Name = "viewOnlineCoursesToolStripMenuItem";
+            this.viewOnlineCoursesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.viewOnlineCoursesToolStripMenuItem.Text = "View Online Courses";
+            this.viewOnlineCoursesToolStripMenuItem.Click += new System.EventHandler(this.viewOnlineCoursesToolStripMenuItem_Click);
+            // 
             // DevOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,5 +148,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem viewOnlineCoursesToolStripMenuItem;
     }
 }

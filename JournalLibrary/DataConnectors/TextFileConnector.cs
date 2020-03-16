@@ -31,6 +31,12 @@ namespace JournalLibrary.DataConnectors
             return GlobalConfig.CategoriesFile.FullFilePath().LoadFile().ConvertToCategoryModels();
         }
 
+        public List<OnlineCourseModel> LoadAllOnlineCourses()
+        {
+            //TODO - 
+            return new List<OnlineCourseModel>();
+        }
+
         public void UpdateBookModel(BookModel model, List<CategoryModel> selectedCategories)
         {
             List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
@@ -61,6 +67,11 @@ namespace JournalLibrary.DataConnectors
         private void UpdateCategoryBookLinks(int categoryID, int bookID)
         {
 
+        }
+
+        public void CreateOnlineCourseModel(OnlineCourseModel model)
+        {
+            //TODO - 
         }
 
         public void CreateCategoryModel(CategoryModel model)

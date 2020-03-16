@@ -54,7 +54,7 @@
             this.BookListBox.FormattingEnabled = true;
             this.BookListBox.Location = new System.Drawing.Point(37, 105);
             this.BookListBox.Name = "BookListBox";
-            this.BookListBox.Size = new System.Drawing.Size(213, 225);
+            this.BookListBox.Size = new System.Drawing.Size(320, 225);
             this.BookListBox.TabIndex = 0;
             this.BookListBox.SelectedIndexChanged += new System.EventHandler(this.BookListBox_SelectedIndexChanged);
             // 
@@ -70,7 +70,7 @@
             // 
             // EditBookButton
             // 
-            this.EditBookButton.Location = new System.Drawing.Point(92, 365);
+            this.EditBookButton.Location = new System.Drawing.Point(453, 273);
             this.EditBookButton.Name = "EditBookButton";
             this.EditBookButton.Size = new System.Drawing.Size(98, 23);
             this.EditBookButton.TabIndex = 2;
@@ -82,6 +82,7 @@
             // 
             this.SelectedBookTitleLabel.AutoSize = true;
             this.SelectedBookTitleLabel.Location = new System.Drawing.Point(22, 18);
+            this.SelectedBookTitleLabel.MaximumSize = new System.Drawing.Size(260, 0);
             this.SelectedBookTitleLabel.Name = "SelectedBookTitleLabel";
             this.SelectedBookTitleLabel.Size = new System.Drawing.Size(22, 13);
             this.SelectedBookTitleLabel.TabIndex = 3;
@@ -108,7 +109,7 @@
             // SelectedBookReadLabel
             // 
             this.SelectedBookReadLabel.AutoSize = true;
-            this.SelectedBookReadLabel.Location = new System.Drawing.Point(22, 74);
+            this.SelectedBookReadLabel.Location = new System.Drawing.Point(22, 78);
             this.SelectedBookReadLabel.Name = "SelectedBookReadLabel";
             this.SelectedBookReadLabel.Size = new System.Drawing.Size(36, 13);
             this.SelectedBookReadLabel.TabIndex = 6;
@@ -136,7 +137,7 @@
             // 
             this.SelectedBookReadValue.AutoSize = true;
             this.SelectedBookReadValue.Enabled = false;
-            this.SelectedBookReadValue.Location = new System.Drawing.Point(73, 73);
+            this.SelectedBookReadValue.Location = new System.Drawing.Point(73, 77);
             this.SelectedBookReadValue.Name = "SelectedBookReadValue";
             this.SelectedBookReadValue.Size = new System.Drawing.Size(15, 14);
             this.SelectedBookReadValue.TabIndex = 10;
@@ -156,7 +157,7 @@
             // TotalCostValue
             // 
             this.TotalCostValue.AutoSize = true;
-            this.TotalCostValue.Location = new System.Drawing.Point(142, 401);
+            this.TotalCostValue.Location = new System.Drawing.Point(294, 341);
             this.TotalCostValue.Name = "TotalCostValue";
             this.TotalCostValue.Size = new System.Drawing.Size(22, 13);
             this.TotalCostValue.TabIndex = 13;
@@ -165,7 +166,7 @@
             // TotalCostLabel
             // 
             this.TotalCostLabel.AutoSize = true;
-            this.TotalCostLabel.Location = new System.Drawing.Point(78, 401);
+            this.TotalCostLabel.Location = new System.Drawing.Point(230, 341);
             this.TotalCostLabel.Name = "TotalCostLabel";
             this.TotalCostLabel.Size = new System.Drawing.Size(58, 13);
             this.TotalCostLabel.TabIndex = 12;
@@ -210,7 +211,7 @@
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorValue);
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceValue);
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadValue);
-            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(290, 105);
+            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(363, 105);
             this.SelectedBookDetailsGroupBox.Name = "SelectedBookDetailsGroupBox";
             this.SelectedBookDetailsGroupBox.Size = new System.Drawing.Size(284, 162);
             this.SelectedBookDetailsGroupBox.TabIndex = 17;
@@ -221,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 450);
+            this.ClientSize = new System.Drawing.Size(659, 380);
             this.Controls.Add(this.SelectedBookDetailsGroupBox);
             this.Controls.Add(this.FilterListGroupBox);
             this.Controls.Add(this.TotalCostValue);

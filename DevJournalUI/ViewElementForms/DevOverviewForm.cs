@@ -32,5 +32,11 @@ namespace DevJournalUI.ViewElementForms
             //frm.Dock = DockStyle.Fill;
             frm.Show();
         }
+
+        private void viewOnlineCoursesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new OnlineCoursesViewerForm();
+            form.Show();
+        }
     }
 }
