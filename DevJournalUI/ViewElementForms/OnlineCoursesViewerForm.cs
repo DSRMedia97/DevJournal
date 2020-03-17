@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using JournalLibrary;
 using JournalLibrary.Models;
 using DevJournalUI.Interfaces;
@@ -17,6 +18,7 @@ namespace DevJournalUI.ViewElementForms
     public partial class OnlineCoursesViewerForm : Form, IOnlineCourseRequester
     {
         private List<OnlineCourseModel> allCourses = GlobalConfig.Connection.LoadAllOnlineCourses();
+        private OnlineCourseModel selectedCourse = new OnlineCourseModel();
 
         public OnlineCoursesViewerForm()
         {
@@ -42,6 +44,29 @@ namespace DevJournalUI.ViewElementForms
         {
             OnlineCourseForm frm = new OnlineCourseForm(this);
             frm.Show();
+        }
+
+        private void CoursesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCourse = (OnlineCourseModel)CoursesListBox.SelectedItem;
+            if (selectedCourse != null)
+            {
+                RefreshSelectedCourseLink();
+            }
+        }
+
+        private void RefreshSelectedCourseLink()
+        {
+            CourseLink.Text = selectedCourse.CourseLink;
+            CourseLink.LinkVisited = false;
+        }
+
+        private void CourseLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (selectedCourse.CourseLink != null)
+            {
+                System.Diagnostics.Process.Start(selectedCourse.CourseLink);
+            }
         }
     }
 }
