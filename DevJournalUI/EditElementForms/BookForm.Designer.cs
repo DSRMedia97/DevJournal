@@ -40,7 +40,6 @@
             this.AvailableCategoriesListBox = new System.Windows.Forms.ListBox();
             this.SelectedCategoriesListBox = new System.Windows.Forms.ListBox();
             this.CategoriesGroupBox = new System.Windows.Forms.GroupBox();
-            this.AddNewCategoryButton = new System.Windows.Forms.Button();
             this.SelectedCategoriesLabel = new System.Windows.Forms.Label();
             this.AvailableCategoriesLabel = new System.Windows.Forms.Label();
             this.RemoveFromSelectedButton = new System.Windows.Forms.Button();
@@ -142,7 +141,6 @@
             // 
             // CategoriesGroupBox
             // 
-            this.CategoriesGroupBox.Controls.Add(this.AddNewCategoryButton);
             this.CategoriesGroupBox.Controls.Add(this.SelectedCategoriesLabel);
             this.CategoriesGroupBox.Controls.Add(this.AvailableCategoriesLabel);
             this.CategoriesGroupBox.Controls.Add(this.RemoveFromSelectedButton);
@@ -155,16 +153,6 @@
             this.CategoriesGroupBox.TabIndex = 11;
             this.CategoriesGroupBox.TabStop = false;
             this.CategoriesGroupBox.Text = "Edit Categories";
-            // 
-            // AddNewCategoryButton
-            // 
-            this.AddNewCategoryButton.Location = new System.Drawing.Point(127, 122);
-            this.AddNewCategoryButton.Name = "AddNewCategoryButton";
-            this.AddNewCategoryButton.Size = new System.Drawing.Size(49, 23);
-            this.AddNewCategoryButton.TabIndex = 15;
-            this.AddNewCategoryButton.Text = "New";
-            this.AddNewCategoryButton.UseVisualStyleBackColor = true;
-            this.AddNewCategoryButton.Click += new System.EventHandler(this.AddNewCategoryButton_Click);
             // 
             // SelectedCategoriesLabel
             // 
@@ -242,7 +230,6 @@
         private System.Windows.Forms.ListBox AvailableCategoriesListBox;
         private System.Windows.Forms.ListBox SelectedCategoriesListBox;
         private System.Windows.Forms.GroupBox CategoriesGroupBox;
-        private System.Windows.Forms.Button AddNewCategoryButton;
         private System.Windows.Forms.Label SelectedCategoriesLabel;
         private System.Windows.Forms.Label AvailableCategoriesLabel;
         private System.Windows.Forms.Button RemoveFromSelectedButton;
