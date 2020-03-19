@@ -31,9 +31,9 @@ namespace DevJournalUI.EditElementForms
                 OnlineCourseModel course = new OnlineCourseModel();
 
                 course.Title = CourseTitleValue.Text;
-                course.CourseLink = CourseLinkValue.Text;
+                course.CourseLink = CheckForFullLinkPath(CourseLinkValue.Text);
 
-                GlobalConfig.Connection.CreateOnlineCourseModel(course);
+                //GlobalConfig.Connection.CreateOnlineCourseModel(course);
 
                 callingForm.CourseComplete(course);
 
@@ -46,7 +46,7 @@ namespace DevJournalUI.EditElementForms
             bool output = false;
 
             bool validTitle = false;
-            bool validLink = false;
+            bool validLinkLength = false;
 
             string errorMessage = "";
 
@@ -58,22 +58,40 @@ namespace DevJournalUI.EditElementForms
             {
                 errorMessage += "Title cannot be blank. ";
             }
-            if (CourseLinkValue.Text.Length > 0)
+
+            //"http://" is 7 characters -- link must include at least this string
+            if (CourseLinkValue.Text.Length > 8)
             {
-                validLink = true;
+                validLinkLength = true;
             }
             else
             {
-                errorMessage += "Course link cannot be blank. ";
+                errorMessage += "Course link is not valid. ";
             }
 
-            if (validTitle && validLink)
+            if (validTitle && validLinkLength)
             {
                 output = true;
             }
             else
             {
                 MessageBox.Show($"{ errorMessage }", "Formatting Error");
+            }
+
+            return output;
+        }
+
+        private string CheckForFullLinkPath(string link)
+        {
+            string output = "";
+
+            if (link.Substring(0,7) != "http://" && link.Substring(0,8) != "https://")
+            {
+                output = "http://" + link;
+            }
+            else
+            {
+                output = link;
             }
 
             return output;
