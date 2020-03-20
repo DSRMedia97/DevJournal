@@ -9,6 +9,6 @@ namespace DevJournalUI.Interfaces
 {
     public interface IOnlineCourseRequester
     {
-        void CourseComplete(OnlineCourseModel model);
+        void CourseComplete();
     }
 }

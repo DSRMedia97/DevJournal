@@ -32,14 +32,20 @@
             this.CourseTitleLabel = new System.Windows.Forms.Label();
             this.CourseLinkLabel = new System.Windows.Forms.Label();
             this.CourseLinkValue = new System.Windows.Forms.TextBox();
-            this.AddCourseButton = new System.Windows.Forms.Button();
+            this.SaveCourseButton = new System.Windows.Forms.Button();
+            this.CategoriesGroupBox = new System.Windows.Forms.GroupBox();
+            this.SelectedCategoriesListBox = new System.Windows.Forms.ListBox();
+            this.RemoveFromSelectedCategoriesButton = new System.Windows.Forms.Button();
+            this.AddToSelectedCategoriesButton = new System.Windows.Forms.Button();
+            this.AvailableCategoriesListBox = new System.Windows.Forms.ListBox();
+            this.CategoriesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // CourseTitleValue
             // 
             this.CourseTitleValue.Location = new System.Drawing.Point(81, 12);
             this.CourseTitleValue.Name = "CourseTitleValue";
-            this.CourseTitleValue.Size = new System.Drawing.Size(330, 20);
+            this.CourseTitleValue.Size = new System.Drawing.Size(376, 20);
             this.CourseTitleValue.TabIndex = 0;
             // 
             // CourseTitleLabel
@@ -64,31 +70,82 @@
             // 
             this.CourseLinkValue.Location = new System.Drawing.Point(81, 38);
             this.CourseLinkValue.Name = "CourseLinkValue";
-            this.CourseLinkValue.Size = new System.Drawing.Size(330, 20);
+            this.CourseLinkValue.Size = new System.Drawing.Size(376, 20);
             this.CourseLinkValue.TabIndex = 2;
             // 
-            // AddCourseButton
+            // SaveCourseButton
             // 
-            this.AddCourseButton.Location = new System.Drawing.Point(160, 64);
-            this.AddCourseButton.Name = "AddCourseButton";
-            this.AddCourseButton.Size = new System.Drawing.Size(110, 23);
-            this.AddCourseButton.TabIndex = 4;
-            this.AddCourseButton.Text = "Add Course";
-            this.AddCourseButton.UseVisualStyleBackColor = true;
-            this.AddCourseButton.Click += new System.EventHandler(this.AddCourseButton_Click);
+            this.SaveCourseButton.Location = new System.Drawing.Point(176, 283);
+            this.SaveCourseButton.Name = "SaveCourseButton";
+            this.SaveCourseButton.Size = new System.Drawing.Size(110, 23);
+            this.SaveCourseButton.TabIndex = 4;
+            this.SaveCourseButton.Text = "Save Course";
+            this.SaveCourseButton.UseVisualStyleBackColor = true;
+            this.SaveCourseButton.Click += new System.EventHandler(this.SaveCourseButton_Click);
+            // 
+            // CategoriesGroupBox
+            // 
+            this.CategoriesGroupBox.Controls.Add(this.SelectedCategoriesListBox);
+            this.CategoriesGroupBox.Controls.Add(this.RemoveFromSelectedCategoriesButton);
+            this.CategoriesGroupBox.Controls.Add(this.AddToSelectedCategoriesButton);
+            this.CategoriesGroupBox.Controls.Add(this.AvailableCategoriesListBox);
+            this.CategoriesGroupBox.Location = new System.Drawing.Point(13, 72);
+            this.CategoriesGroupBox.Name = "CategoriesGroupBox";
+            this.CategoriesGroupBox.Size = new System.Drawing.Size(444, 205);
+            this.CategoriesGroupBox.TabIndex = 5;
+            this.CategoriesGroupBox.TabStop = false;
+            this.CategoriesGroupBox.Text = "Assign Categories";
+            // 
+            // SelectedCategoriesListBox
+            // 
+            this.SelectedCategoriesListBox.FormattingEnabled = true;
+            this.SelectedCategoriesListBox.Location = new System.Drawing.Point(260, 20);
+            this.SelectedCategoriesListBox.Name = "SelectedCategoriesListBox";
+            this.SelectedCategoriesListBox.Size = new System.Drawing.Size(175, 173);
+            this.SelectedCategoriesListBox.TabIndex = 3;
+            // 
+            // RemoveFromSelectedCategoriesButton
+            // 
+            this.RemoveFromSelectedCategoriesButton.Location = new System.Drawing.Point(188, 108);
+            this.RemoveFromSelectedCategoriesButton.Name = "RemoveFromSelectedCategoriesButton";
+            this.RemoveFromSelectedCategoriesButton.Size = new System.Drawing.Size(66, 23);
+            this.RemoveFromSelectedCategoriesButton.TabIndex = 2;
+            this.RemoveFromSelectedCategoriesButton.Text = "<<";
+            this.RemoveFromSelectedCategoriesButton.UseVisualStyleBackColor = true;
+            this.RemoveFromSelectedCategoriesButton.Click += new System.EventHandler(this.RemoveFromSelectedCategoriesButton_Click);
+            // 
+            // AddToSelectedCategoriesButton
+            // 
+            this.AddToSelectedCategoriesButton.Location = new System.Drawing.Point(188, 78);
+            this.AddToSelectedCategoriesButton.Name = "AddToSelectedCategoriesButton";
+            this.AddToSelectedCategoriesButton.Size = new System.Drawing.Size(66, 23);
+            this.AddToSelectedCategoriesButton.TabIndex = 1;
+            this.AddToSelectedCategoriesButton.Text = ">>";
+            this.AddToSelectedCategoriesButton.UseVisualStyleBackColor = true;
+            this.AddToSelectedCategoriesButton.Click += new System.EventHandler(this.AddToSelectedCategoriesButton_Click);
+            // 
+            // AvailableCategoriesListBox
+            // 
+            this.AvailableCategoriesListBox.FormattingEnabled = true;
+            this.AvailableCategoriesListBox.Location = new System.Drawing.Point(7, 20);
+            this.AvailableCategoriesListBox.Name = "AvailableCategoriesListBox";
+            this.AvailableCategoriesListBox.Size = new System.Drawing.Size(175, 173);
+            this.AvailableCategoriesListBox.TabIndex = 0;
             // 
             // OnlineCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 101);
-            this.Controls.Add(this.AddCourseButton);
+            this.ClientSize = new System.Drawing.Size(473, 318);
+            this.Controls.Add(this.CategoriesGroupBox);
+            this.Controls.Add(this.SaveCourseButton);
             this.Controls.Add(this.CourseLinkLabel);
             this.Controls.Add(this.CourseLinkValue);
             this.Controls.Add(this.CourseTitleLabel);
             this.Controls.Add(this.CourseTitleValue);
             this.Name = "OnlineCourseForm";
             this.Text = "OnlineCourseForm";
+            this.CategoriesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,6 +157,11 @@
         private System.Windows.Forms.Label CourseTitleLabel;
         private System.Windows.Forms.Label CourseLinkLabel;
         private System.Windows.Forms.TextBox CourseLinkValue;
-        private System.Windows.Forms.Button AddCourseButton;
+        private System.Windows.Forms.Button SaveCourseButton;
+        private System.Windows.Forms.GroupBox CategoriesGroupBox;
+        private System.Windows.Forms.ListBox SelectedCategoriesListBox;
+        private System.Windows.Forms.Button RemoveFromSelectedCategoriesButton;
+        private System.Windows.Forms.Button AddToSelectedCategoriesButton;
+        private System.Windows.Forms.ListBox AvailableCategoriesListBox;
     }
 }

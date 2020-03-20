@@ -19,16 +19,26 @@ namespace DevJournalUI.ViewElementForms
     {
         private List<BookModel> selectedBooks = new List<BookModel>();
         private BookModel selectedBook = new BookModel();
-        private List<CategoryModel> availableCategories = new List<CategoryModel>();
+        private List<CategoryModel> availableCategories = GlobalConfig.Connection.LoadAllCategories();
         private double totalCost = 0;
 
         public BookViewerForm()
         {
             InitializeComponent();
 
-            RefreshCategories();
+            this.Text = "Book Library";
+
             RefreshSelectedBookList();
+            WireUpDropDowns();
             WireUpLists();
+        }
+
+        private void WireUpDropDowns()
+        {
+            FilterCategoryDropdown.DataSource = null;
+            FilterCategoryDropdown.DataSource = availableCategories;
+            FilterCategoryDropdown.DisplayMember = "CategoryName";
+            FilterCategoryDropdown.SelectedIndex = 0;
         }
 
         private void WireUpLists()
@@ -38,25 +48,14 @@ namespace DevJournalUI.ViewElementForms
             BookListBox.DisplayMember = "Title";
         }
 
-        private void RefreshCategories()
-        {
-            availableCategories = GlobalConfig.Connection.LoadAllCategories();
-            FilterCategoryDropdown.DataSource = null;
-            FilterCategoryDropdown.DataSource = availableCategories;
-            FilterCategoryDropdown.DisplayMember = "CategoryName";
-            FilterCategoryDropdown.SelectedIndex = 0;
-        }
-
         private void NewBookButton_Click(object sender, EventArgs e)
         {
             BookForm frm = new BookForm(this);
-            frm.Text = "Add New Book";
             frm.Show();
         }
 
-        public void BookComplete(BookModel model)
+        public void BookComplete()
         {
-            RefreshCategories();
             RefreshSelectedBookList();
             WireUpLists();
         }
@@ -64,7 +63,6 @@ namespace DevJournalUI.ViewElementForms
         private void EditBookButton_Click(object sender, EventArgs e)
         {
             BookForm frm = new BookForm(this, selectedBook);
-            frm.Text = "Edit Book";
             frm.Show();
         }
 

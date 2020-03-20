@@ -74,6 +74,11 @@ namespace JournalLibrary.DataConnectors
             //TODO - 
         }
 
+        public void UpdateOnlineCourseModel(OnlineCourseModel model)
+        {
+            //TODO - 
+        }
+
         public void CreateCategoryModel(CategoryModel model)
         {
             List<CategoryModel> categories = GlobalConfig.CategoriesFile.FullFilePath().LoadFile().ConvertToCategoryModels();

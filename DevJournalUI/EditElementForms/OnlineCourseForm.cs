@@ -15,27 +15,73 @@ namespace DevJournalUI.EditElementForms
 {
     public partial class OnlineCourseForm : Form
     {
-        IOnlineCourseRequester callingForm;
+        private IOnlineCourseRequester callingForm;
+        private OnlineCourseModel course;
+
+        private List<CategoryModel> availableCategories = GlobalConfig.Connection.LoadAllCategories();
+        private List<CategoryModel> selectedCategories = new List<CategoryModel>();
 
         public OnlineCourseForm(IOnlineCourseRequester caller)
         {
             InitializeComponent();
 
+            this.Text = "Add New Course";
+
             callingForm = caller;
+
+            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+            WireUpLists();
         }
 
-        private void AddCourseButton_Click(object sender, EventArgs e)
+        public OnlineCourseForm(IOnlineCourseRequester caller, OnlineCourseModel model)
+        {
+            course = model;
+            callingForm = caller;
+
+            InitializeComponent();
+
+            this.Text = $"Edit { course.Title }";
+
+            CourseTitleValue.Text = course.Title;
+            CourseLinkValue.Text = course.CourseLink;
+
+            availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+            WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            AvailableCategoriesListBox.DataSource = null;
+            AvailableCategoriesListBox.DataSource = availableCategories;
+            AvailableCategoriesListBox.DisplayMember = "CategoryName";
+
+            SelectedCategoriesListBox.DataSource = null;
+            SelectedCategoriesListBox.DataSource = selectedCategories;
+            SelectedCategoriesListBox.DisplayMember = "CategoryName";
+        }
+
+        private void SaveCourseButton_Click(object sender, EventArgs e)
         {
             if (ValidData())
             {
-                OnlineCourseModel course = new OnlineCourseModel();
+                if (course == null)
+                {
+                    OnlineCourseModel c = new OnlineCourseModel();
 
-                course.Title = CourseTitleValue.Text;
-                course.CourseLink = CheckForFullLinkPath(CourseLinkValue.Text);
+                    c.Title = CourseTitleValue.Text;
+                    c.CourseLink = CheckForFullLinkPath(CourseLinkValue.Text);
 
-                //GlobalConfig.Connection.CreateOnlineCourseModel(course);
+                    GlobalConfig.Connection.CreateOnlineCourseModel(c);
+                }
+                else if (course != null)
+                {
+                    course.Title = CourseTitleValue.Text;
+                    course.CourseLink = CourseLinkValue.Text;
 
-                callingForm.CourseComplete(course);
+                    GlobalConfig.Connection.UpdateOnlineCourseModel(course);
+                }
+
+                callingForm.CourseComplete();
 
                 this.Close();
             }
@@ -95,6 +141,34 @@ namespace DevJournalUI.EditElementForms
             }
 
             return output;
+        }
+
+        private void AddToSelectedCategoriesButton_Click(object sender, EventArgs e)
+        {
+            if (AvailableCategoriesListBox.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                selectedCategories.Add((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+                availableCategories.Remove((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+            }
+            WireUpLists();
+        }
+
+        private void RemoveFromSelectedCategoriesButton_Click(object sender, EventArgs e)
+        {
+            if (SelectedCategoriesListBox.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                selectedCategories.Remove((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+                availableCategories.Add((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+            }
+            WireUpLists();
         }
     }
 }

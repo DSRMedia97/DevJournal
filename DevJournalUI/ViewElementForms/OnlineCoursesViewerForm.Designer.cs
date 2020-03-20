@@ -32,6 +32,7 @@
             this.AddCourseButton = new System.Windows.Forms.Button();
             this.CourseLink = new System.Windows.Forms.LinkLabel();
             this.CourseLinkLabel = new System.Windows.Forms.Label();
+            this.EditSelectedCourseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CoursesListBox
@@ -74,11 +75,22 @@
             this.CourseLinkLabel.TabIndex = 3;
             this.CourseLinkLabel.Text = "Course Link:";
             // 
+            // EditSelectedCourseButton
+            // 
+            this.EditSelectedCourseButton.Location = new System.Drawing.Point(450, 96);
+            this.EditSelectedCourseButton.Name = "EditSelectedCourseButton";
+            this.EditSelectedCourseButton.Size = new System.Drawing.Size(118, 23);
+            this.EditSelectedCourseButton.TabIndex = 4;
+            this.EditSelectedCourseButton.Text = "Edit Selected";
+            this.EditSelectedCourseButton.UseVisualStyleBackColor = true;
+            this.EditSelectedCourseButton.Click += new System.EventHandler(this.EditSelectedCourseButton_Click);
+            // 
             // OnlineCoursesViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 268);
+            this.Controls.Add(this.EditSelectedCourseButton);
             this.Controls.Add(this.CourseLinkLabel);
             this.Controls.Add(this.CourseLink);
             this.Controls.Add(this.AddCourseButton);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button AddCourseButton;
         private System.Windows.Forms.LinkLabel CourseLink;
         private System.Windows.Forms.Label CourseLinkLabel;
+        private System.Windows.Forms.Button EditSelectedCourseButton;
     }
 }

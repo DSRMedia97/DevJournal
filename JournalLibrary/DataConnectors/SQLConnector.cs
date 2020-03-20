@@ -223,5 +223,20 @@ namespace JournalLibrary.DataConnectors
                 }
             }
         }
+
+        public void UpdateOnlineCourseModel(OnlineCourseModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+
+                p.Add("@CourseName", model.Title);
+                p.Add("@CourseLink", model.CourseLink);
+                p.Add("@id", model.ID);
+
+                //call sp to update book model -- similar to CreateBook but without the output id
+                connection.Execute("dbo.spOnlineCourses_Update", p, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

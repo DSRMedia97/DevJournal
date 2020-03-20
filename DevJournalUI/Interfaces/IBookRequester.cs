@@ -9,6 +9,6 @@ namespace DevJournalUI.Interfaces
 {
     public interface IBookRequester
     {
-        void BookComplete(BookModel model);
+        void BookComplete();
     }
 }

@@ -152,7 +152,7 @@
             this.CategoriesGroupBox.Size = new System.Drawing.Size(308, 177);
             this.CategoriesGroupBox.TabIndex = 11;
             this.CategoriesGroupBox.TabStop = false;
-            this.CategoriesGroupBox.Text = "Edit Categories";
+            this.CategoriesGroupBox.Text = "Assign Categories";
             // 
             // SelectedCategoriesLabel
             // 
@@ -174,7 +174,7 @@
             // 
             // RemoveFromSelectedButton
             // 
-            this.RemoveFromSelectedButton.Location = new System.Drawing.Point(127, 93);
+            this.RemoveFromSelectedButton.Location = new System.Drawing.Point(127, 103);
             this.RemoveFromSelectedButton.Name = "RemoveFromSelectedButton";
             this.RemoveFromSelectedButton.Size = new System.Drawing.Size(49, 23);
             this.RemoveFromSelectedButton.TabIndex = 12;
@@ -184,7 +184,7 @@
             // 
             // AddToSelectedButton
             // 
-            this.AddToSelectedButton.Location = new System.Drawing.Point(127, 64);
+            this.AddToSelectedButton.Location = new System.Drawing.Point(127, 74);
             this.AddToSelectedButton.Name = "AddToSelectedButton";
             this.AddToSelectedButton.Size = new System.Drawing.Size(49, 23);
             this.AddToSelectedButton.TabIndex = 11;

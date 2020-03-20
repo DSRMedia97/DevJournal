@@ -34,9 +34,11 @@ namespace DevJournalUI.ViewElementForms
             CoursesListBox.DisplayMember = "Title";
         }
 
-        public void CourseComplete (OnlineCourseModel model)
+        public void CourseComplete ()
         {
-            allCourses.Add(model);
+            allCourses.Clear();
+
+            allCourses = GlobalConfig.Connection.LoadAllOnlineCourses();
             WireUpLists();
         }
 
@@ -44,6 +46,12 @@ namespace DevJournalUI.ViewElementForms
         {
             OnlineCourseForm frm = new OnlineCourseForm(this);
             frm.Show();
+        }
+
+        private void EditSelectedCourseButton_Click(object sender, EventArgs e)
+        {
+            OnlineCourseForm form = new OnlineCourseForm(this, selectedCourse);
+            form.Show();
         }
 
         private void CoursesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,5 +76,6 @@ namespace DevJournalUI.ViewElementForms
                 System.Diagnostics.Process.Start(selectedCourse.CourseLink);
             }
         }
+
     }
 }

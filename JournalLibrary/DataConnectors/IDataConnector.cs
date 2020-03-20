@@ -24,6 +24,8 @@ namespace JournalLibrary.DataConnectors
 
         void CreateCategoryModel(CategoryModel model);
 
+        void UpdateOnlineCourseModel(OnlineCourseModel model);
+
         void CreateOnlineCourseModel(OnlineCourseModel model);
     }
 }

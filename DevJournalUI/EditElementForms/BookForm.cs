@@ -14,7 +14,7 @@ using DevJournalUI.Interfaces;
 
 namespace DevJournalUI.EditElementForms
 {
-    public partial class BookForm : Form, ICategoryRequester
+    public partial class BookForm : Form
     {
         private IBookRequester callingForm;
         private BookModel book;
@@ -29,6 +29,8 @@ namespace DevJournalUI.EditElementForms
         public BookForm(IBookRequester caller)
         {
             InitializeComponent();
+
+            this.Text = "Add New Book";
 
             callingForm = caller;
 
@@ -46,6 +48,8 @@ namespace DevJournalUI.EditElementForms
             book = model;
 
             InitializeComponent();
+
+            this.Text = $"Edit { model.Title }";
 
             TitleTextBox.Text = book.Title;
             AuthorTextBox.Text = book.AuthorName;
@@ -81,12 +85,6 @@ namespace DevJournalUI.EditElementForms
             SelectedCategoriesListBox.DisplayMember = "CategoryName";
         }
 
-        public void CategoryComplete(CategoryModel model)
-        {
-            selectedCategories.Add(model);
-            WireUpLists();
-        }
-
         private void BookSubmitButton_Click(object sender, EventArgs e)
         {
             if (ValidFormData())
@@ -101,10 +99,6 @@ namespace DevJournalUI.EditElementForms
                     b.Read = ReadCheckBoxValue.Checked;
 
                     GlobalConfig.Connection.CreateBookModel(b, selectedCategories);
-
-                    callingForm.BookComplete(b);
-
-                    this.Close();
                 }
                 else if (book != null)
                 {
@@ -114,11 +108,11 @@ namespace DevJournalUI.EditElementForms
                     book.Read = ReadCheckBoxValue.Checked;
 
                     GlobalConfig.Connection.UpdateBookModel(book, selectedCategories);
+                }
 
-                    callingForm.BookComplete(book);
+                callingForm.BookComplete();
 
-                    this.Close();
-                } 
+                this.Close();
             }
         }
 
@@ -172,12 +166,6 @@ namespace DevJournalUI.EditElementForms
                 MessageBox.Show($"{ errorMessage }", "Formatting Error");
             }
             return output;
-        }
-
-        private void AddNewCategoryButton_Click(object sender, EventArgs e)
-        {
-            CategoryForm frm = new CategoryForm(this);
-            frm.Show();
         }
 
         private void AddToSelectedButton_Click(object sender, EventArgs e)
