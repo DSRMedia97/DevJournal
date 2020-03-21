@@ -46,6 +46,7 @@ namespace DevJournalUI.EditElementForms
             CourseLinkValue.Text = course.CourseLink;
 
             availableCategories.Remove(availableCategories.Where(x => x.ID == 1).First());
+            WireUpExistingCategories();
             WireUpLists();
         }
 
@@ -60,6 +61,16 @@ namespace DevJournalUI.EditElementForms
             SelectedCategoriesListBox.DisplayMember = "CategoryName";
         }
 
+        private void WireUpExistingCategories()
+        {
+            selectedCategories = GlobalConfig.Connection.LoadCategoriesByOnlineCourse(course.ID);
+
+            foreach (CategoryModel c in selectedCategories)
+            {
+                availableCategories.Remove(availableCategories.Where(x => x.ID == c.ID).First());
+            }
+        }
+
         private void SaveCourseButton_Click(object sender, EventArgs e)
         {
             if (ValidData())
@@ -71,14 +82,14 @@ namespace DevJournalUI.EditElementForms
                     c.Title = CourseTitleValue.Text;
                     c.CourseLink = CheckForFullLinkPath(CourseLinkValue.Text);
 
-                    GlobalConfig.Connection.CreateOnlineCourseModel(c);
+                    GlobalConfig.Connection.CreateOnlineCourseModel(c, selectedCategories);
                 }
                 else if (course != null)
                 {
                     course.Title = CourseTitleValue.Text;
                     course.CourseLink = CourseLinkValue.Text;
 
-                    GlobalConfig.Connection.UpdateOnlineCourseModel(course);
+                    GlobalConfig.Connection.UpdateOnlineCourseModel(course, selectedCategories);
                 }
 
                 callingForm.CourseComplete();

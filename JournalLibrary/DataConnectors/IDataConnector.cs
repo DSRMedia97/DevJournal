@@ -14,6 +14,8 @@ namespace JournalLibrary.DataConnectors
 
         List<CategoryModel> LoadCategoriesByBook(int bookID);
 
+        List<CategoryModel> LoadCategoriesByOnlineCourse(int courseID);
+
         List<CategoryModel> LoadAllCategories();
 
         List<OnlineCourseModel> LoadAllOnlineCourses();
@@ -24,8 +26,8 @@ namespace JournalLibrary.DataConnectors
 
         void CreateCategoryModel(CategoryModel model);
 
-        void UpdateOnlineCourseModel(OnlineCourseModel model);
+        void UpdateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories);
 
-        void CreateOnlineCourseModel(OnlineCourseModel model);
+        void CreateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories);
     }
 }

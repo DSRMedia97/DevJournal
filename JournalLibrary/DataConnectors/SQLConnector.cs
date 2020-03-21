@@ -55,7 +55,7 @@ namespace JournalLibrary.DataConnectors
             }
         }
 
-        public void CreateOnlineCourseModel(OnlineCourseModel model)
+        public void CreateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -68,6 +68,16 @@ namespace JournalLibrary.DataConnectors
                 connection.Execute("dbo.spOnlineCourses_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.ID = p.Get<int>("@id");
+
+                foreach (CategoryModel cm in currentCategories)
+                {
+                    p = new DynamicParameters();
+
+                    p.Add("@OnlineCourseid", model.ID);
+                    p.Add("@Categoryid", cm.ID);
+
+                    connection.Execute("dbo.spOnlineCourseCategories_Insert", p, commandType: CommandType.StoredProcedure);
+                }
             }
         }
 
@@ -134,6 +144,23 @@ namespace JournalLibrary.DataConnectors
             return output;
         }
 
+        public List<CategoryModel> LoadCategoriesByOnlineCourse(int courseID)
+        {
+            List<CategoryModel> output = new List<CategoryModel>();
+
+            var p = new DynamicParameters();
+
+            p.Add("@OnlineCourseid", courseID);
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<CategoryModel>("dbo.spCategories_GetByCourse", p, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            return output;
+
+        }
+
         public List<CategoryModel> LoadAllCategories()
         {
             List<CategoryModel> output = new List<CategoryModel>();
@@ -165,7 +192,7 @@ namespace JournalLibrary.DataConnectors
                 List<CategoryModel> storedCategories = new List<CategoryModel>();
                 p = new DynamicParameters();
                 p.Add("@Bookid", model.ID);
-                storedCategories = connection.Query<CategoryModel>("spBookCategories_GetByBook", p, commandType: CommandType.StoredProcedure).ToList();
+                storedCategories = connection.Query<CategoryModel>("spCategories_GetByBook", p, commandType: CommandType.StoredProcedure).ToList();
 
                 //TODO - refactor
                 //currentCategories list and storedCategories are both null then do nothing - nothing to update
@@ -224,7 +251,7 @@ namespace JournalLibrary.DataConnectors
             }
         }
 
-        public void UpdateOnlineCourseModel(OnlineCourseModel model)
+        public void UpdateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -234,8 +261,68 @@ namespace JournalLibrary.DataConnectors
                 p.Add("@CourseLink", model.CourseLink);
                 p.Add("@id", model.ID);
 
-                //call sp to update book model -- similar to CreateBook but without the output id
                 connection.Execute("dbo.spOnlineCourses_Update", p, commandType: CommandType.StoredProcedure);
+
+                //call sp to get list of stored Categories for the course
+                List<CategoryModel> storedCategories = new List<CategoryModel>();
+                p = new DynamicParameters();
+                p.Add("@OnlineCourseid", model.ID);
+                storedCategories = connection.Query<CategoryModel>("dbo.spCategories_GetByCourse", p, commandType: CommandType.StoredProcedure).ToList();
+
+                //TODO - refactor
+                //currentCategories list and storedCategories are both null then do nothing - nothing to update
+                if (currentCategories != null && storedCategories != null)
+                {
+                    //do checks
+                    foreach (CategoryModel c in currentCategories)
+                    {
+                        //if it already exists in the database remove it from further actions
+                        if (storedCategories.Exists(x => x.ID == c.ID))
+                        {
+                            storedCategories.RemoveAt(storedCategories.FindIndex(x => x.ID == c.ID));
+                        }
+                        else //it doesn't already exist in the database so add it
+                        {
+                            p = new DynamicParameters();
+                            p.Add("@OnlineCourseid", model.ID);
+                            p.Add("@Categoryid", c.ID);
+                            connection.Execute("dbo.spOnlineCourseCategories_Insert", p, commandType: CommandType.StoredProcedure);
+                        }
+                    }
+                    //if there are still categories that were on the database, but aren't in your list, remove them from database
+                    if (storedCategories.Count > 0)
+                    {
+                        foreach (CategoryModel storedC in storedCategories)
+                        {
+                            p = new DynamicParameters();
+                            p.Add("@OnlineCourseid", model.ID);
+                            p.Add("@Categoryid", storedC.ID);
+                            connection.Execute("dbo.spOnlineCourseCategories_Remove", p, commandType: CommandType.StoredProcedure);
+                        }
+                    }
+                }
+                else if (currentCategories == null && storedCategories != null)
+                {
+                    //remove all from db in stored categories since nothing is assigned to the model categories
+                    foreach (CategoryModel c in storedCategories)
+                    {
+                        p = new DynamicParameters();
+                        p.Add("@OnlineCourseid", model.ID);
+                        p.Add("@Categoryid", c.ID);
+                        connection.Execute("dbo.spOnlineCourseCategories_Remove", p, commandType: CommandType.StoredProcedure);
+                    }
+                }
+                else if (currentCategories != null && storedCategories == null)
+                {
+                    //add all from model.categories to db since nothing was previously saved in db
+                    foreach (CategoryModel c in currentCategories)
+                    {
+                        p = new DynamicParameters();
+                        p.Add("@OnlineCourseid", model.ID);
+                        p.Add("@Categoryid", c.ID);
+                        connection.Execute("dbo.spOnlineCourseCategories_Insert", p, commandType: CommandType.StoredProcedure);
+                    }
+                }
             }
         }
     }
