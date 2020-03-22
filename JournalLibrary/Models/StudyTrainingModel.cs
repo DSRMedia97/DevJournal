@@ -16,7 +16,7 @@ namespace JournalLibrary.Models
             Time = time;
             Date = date;
             StudyMaterialId = materialID;
-            trainingSource = source;
+            TrainingSource = source;
         }
     }
 }

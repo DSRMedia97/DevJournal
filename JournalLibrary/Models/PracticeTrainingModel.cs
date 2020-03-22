@@ -16,7 +16,7 @@ namespace JournalLibrary.Models
             Time = time;
             Date = date;
             ProjectName = name;
-            trainingSource = Source.Project;
+            TrainingSource = Source.Project;
         }
     }
 }
