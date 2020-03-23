@@ -17,14 +17,26 @@ namespace DevJournalUI.ViewElementForms
 {
     public partial class OnlineCoursesViewerForm : Form, IOnlineCourseRequester
     {
+        //allCourses can be removed once Category Filter is working
         private List<OnlineCourseModel> allCourses = GlobalConfig.Connection.LoadAllOnlineCourses();
+        private List<OnlineCourseModel> selectedCourses = new List<OnlineCourseModel>();
         private OnlineCourseModel selectedCourse = new OnlineCourseModel();
+        private List<CategoryModel> availableCategories = GlobalConfig.Connection.LoadAllCategories();
 
         public OnlineCoursesViewerForm()
         {
             InitializeComponent();
 
+            WireUpDropdowns();
             WireUpLists();
+        }
+
+        private void WireUpDropdowns()
+        {
+            FilterCategoryComboBox.DataSource = null;
+            FilterCategoryComboBox.DataSource = availableCategories;
+            FilterCategoryComboBox.DisplayMember = "CategoryName";
+            FilterCategoryComboBox.SelectedIndex = 0;
         }
 
         private void WireUpLists()
@@ -32,6 +44,21 @@ namespace DevJournalUI.ViewElementForms
             CoursesListBox.DataSource = null;
             CoursesListBox.DataSource = allCourses;
             CoursesListBox.DisplayMember = "Title";
+        }
+
+        private void RefreshSelectedCoursesList()
+        {
+            selectedCourses.Clear();
+
+            CategoryModel category = (CategoryModel)FilterCategoryComboBox.SelectedItem;
+
+            if (category == null)
+            {
+                category = new CategoryModel();
+                category.ID = 1;
+            }
+
+            selectedCourses = GlobalConfig.Connection.LoadCoursesByCategory(category.ID);
         }
 
         public void CourseComplete ()

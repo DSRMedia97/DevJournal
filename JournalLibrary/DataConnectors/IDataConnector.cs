@@ -12,6 +12,8 @@ namespace JournalLibrary.DataConnectors
 
         List<BookModel> LoadBooksByCategory(int categoryID, bool unreadOnly);
 
+        List<OnlineCourseModel> LoadCoursesByCategory(int categoryID);
+
         List<CategoryModel> LoadCategoriesByBook(int bookID);
 
         List<CategoryModel> LoadCategoriesByOnlineCourse(int courseID);

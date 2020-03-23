@@ -93,6 +93,13 @@ namespace JournalLibrary.DataConnectors
             return output;
         }
 
+        public List<OnlineCourseModel> LoadCoursesByCategory()
+        {
+            List<OnlineCourseModel> output = new List<OnlineCourseModel>();
+
+            return output;
+        }
+
         public List<BookModel> LoadAllBooks()
         {
             List<BookModel> output = new List<BookModel>();

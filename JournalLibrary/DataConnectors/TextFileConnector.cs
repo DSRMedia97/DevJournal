@@ -43,6 +43,11 @@ namespace JournalLibrary.DataConnectors
             return new List<OnlineCourseModel>();
         }
 
+        public List<OnlineCourseModel> LoadCoursesByCategory()
+        {
+            return new List<OnlineCourseModel>();
+        }
+
         public void UpdateBookModel(BookModel model, List<CategoryModel> selectedCategories)
         {
             List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();

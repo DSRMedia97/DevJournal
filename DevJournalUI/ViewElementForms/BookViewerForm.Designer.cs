@@ -52,7 +52,7 @@
             // BookListBox
             // 
             this.BookListBox.FormattingEnabled = true;
-            this.BookListBox.Location = new System.Drawing.Point(37, 105);
+            this.BookListBox.Location = new System.Drawing.Point(10, 94);
             this.BookListBox.Name = "BookListBox";
             this.BookListBox.Size = new System.Drawing.Size(320, 225);
             this.BookListBox.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             // NewBookButton
             // 
-            this.NewBookButton.Location = new System.Drawing.Point(92, 336);
+            this.NewBookButton.Location = new System.Drawing.Point(65, 325);
             this.NewBookButton.Name = "NewBookButton";
             this.NewBookButton.Size = new System.Drawing.Size(98, 23);
             this.NewBookButton.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             // EditBookButton
             // 
-            this.EditBookButton.Location = new System.Drawing.Point(453, 273);
+            this.EditBookButton.Location = new System.Drawing.Point(426, 262);
             this.EditBookButton.Name = "EditBookButton";
             this.EditBookButton.Size = new System.Drawing.Size(98, 23);
             this.EditBookButton.TabIndex = 2;
@@ -157,7 +157,7 @@
             // TotalCostValue
             // 
             this.TotalCostValue.AutoSize = true;
-            this.TotalCostValue.Location = new System.Drawing.Point(294, 341);
+            this.TotalCostValue.Location = new System.Drawing.Point(267, 330);
             this.TotalCostValue.Name = "TotalCostValue";
             this.TotalCostValue.Size = new System.Drawing.Size(22, 13);
             this.TotalCostValue.TabIndex = 13;
@@ -166,7 +166,7 @@
             // TotalCostLabel
             // 
             this.TotalCostLabel.AutoSize = true;
-            this.TotalCostLabel.Location = new System.Drawing.Point(230, 341);
+            this.TotalCostLabel.Location = new System.Drawing.Point(203, 330);
             this.TotalCostLabel.Name = "TotalCostLabel";
             this.TotalCostLabel.Size = new System.Drawing.Size(58, 13);
             this.TotalCostLabel.TabIndex = 12;
@@ -177,7 +177,7 @@
             this.FilterListGroupBox.Controls.Add(this.FilterCategoryLabel);
             this.FilterListGroupBox.Controls.Add(this.FilterCategoryDropdown);
             this.FilterListGroupBox.Controls.Add(this.UnreadOnlyCheckBox);
-            this.FilterListGroupBox.Location = new System.Drawing.Point(37, 27);
+            this.FilterListGroupBox.Location = new System.Drawing.Point(10, 16);
             this.FilterListGroupBox.Name = "FilterListGroupBox";
             this.FilterListGroupBox.Size = new System.Drawing.Size(213, 72);
             this.FilterListGroupBox.TabIndex = 16;
@@ -211,7 +211,7 @@
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookAuthorValue);
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookPriceValue);
             this.SelectedBookDetailsGroupBox.Controls.Add(this.SelectedBookReadValue);
-            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(363, 105);
+            this.SelectedBookDetailsGroupBox.Location = new System.Drawing.Point(336, 94);
             this.SelectedBookDetailsGroupBox.Name = "SelectedBookDetailsGroupBox";
             this.SelectedBookDetailsGroupBox.Size = new System.Drawing.Size(284, 162);
             this.SelectedBookDetailsGroupBox.TabIndex = 17;
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 380);
+            this.ClientSize = new System.Drawing.Size(638, 368);
             this.Controls.Add(this.SelectedBookDetailsGroupBox);
             this.Controls.Add(this.FilterListGroupBox);
             this.Controls.Add(this.TotalCostValue);
