@@ -34,8 +34,8 @@
             this.CourseLinkLabel = new System.Windows.Forms.Label();
             this.EditSelectedCourseButton = new System.Windows.Forms.Button();
             this.FiltersGroupBox = new System.Windows.Forms.GroupBox();
-            this.FilterCategoryLabel = new System.Windows.Forms.Label();
             this.FilterCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.FilterCategoryLabel = new System.Windows.Forms.Label();
             this.FiltersGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,15 @@
             this.FiltersGroupBox.TabStop = false;
             this.FiltersGroupBox.Text = "Filters";
             // 
+            // FilterCategoryComboBox
+            // 
+            this.FilterCategoryComboBox.FormattingEnabled = true;
+            this.FilterCategoryComboBox.Location = new System.Drawing.Point(73, 17);
+            this.FilterCategoryComboBox.Name = "FilterCategoryComboBox";
+            this.FilterCategoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.FilterCategoryComboBox.TabIndex = 1;
+            this.FilterCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.FilterCategoryComboBox_SelectedIndexChanged);
+            // 
             // FilterCategoryLabel
             // 
             this.FilterCategoryLabel.AutoSize = true;
@@ -108,14 +117,6 @@
             this.FilterCategoryLabel.Size = new System.Drawing.Size(67, 13);
             this.FilterCategoryLabel.TabIndex = 0;
             this.FilterCategoryLabel.Text = "By Category:";
-            // 
-            // FilterCategoryComboBox
-            // 
-            this.FilterCategoryComboBox.FormattingEnabled = true;
-            this.FilterCategoryComboBox.Location = new System.Drawing.Point(73, 17);
-            this.FilterCategoryComboBox.Name = "FilterCategoryComboBox";
-            this.FilterCategoryComboBox.Size = new System.Drawing.Size(121, 21);
-            this.FilterCategoryComboBox.TabIndex = 1;
             // 
             // OnlineCoursesViewerForm
             // 

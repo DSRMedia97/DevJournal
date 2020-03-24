@@ -176,8 +176,8 @@ namespace DevJournalUI.EditElementForms
             }
             else
             {
-                selectedCategories.Remove((CategoryModel)AvailableCategoriesListBox.SelectedItem);
-                availableCategories.Add((CategoryModel)AvailableCategoriesListBox.SelectedItem);
+                selectedCategories.Remove((CategoryModel)SelectedCategoriesListBox.SelectedItem);
+                availableCategories.Add((CategoryModel)SelectedCategoriesListBox.SelectedItem);
             }
             WireUpLists();
         }

@@ -93,9 +93,18 @@ namespace JournalLibrary.DataConnectors
             return output;
         }
 
-        public List<OnlineCourseModel> LoadCoursesByCategory()
+        public List<OnlineCourseModel> LoadCoursesByCategory(int categoryID)
         {
             List<OnlineCourseModel> output = new List<OnlineCourseModel>();
+
+            var p = new DynamicParameters();
+
+            p.Add("Categoryid", categoryID);
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<OnlineCourseModel>("dbo.spOnlineCourse_GetByCategory", p, commandType: CommandType.StoredProcedure).ToList();
+            }
 
             return output;
         }

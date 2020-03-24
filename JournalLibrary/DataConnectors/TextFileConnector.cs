@@ -43,7 +43,7 @@ namespace JournalLibrary.DataConnectors
             return new List<OnlineCourseModel>();
         }
 
-        public List<OnlineCourseModel> LoadCoursesByCategory()
+        public List<OnlineCourseModel> LoadCoursesByCategory(int categoryID)
         {
             return new List<OnlineCourseModel>();
         }
