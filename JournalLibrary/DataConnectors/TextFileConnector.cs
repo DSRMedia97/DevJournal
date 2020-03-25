@@ -7,7 +7,7 @@ using JournalLibrary.DataConnectors.TextFileHelpers;
 
 namespace JournalLibrary.DataConnectors
 {
-    class TextFileConnector : IDataConnector
+    class TextFileConnector //: IDataConnector
     {
         public List<BookModel> LoadAllBooks()
         {
