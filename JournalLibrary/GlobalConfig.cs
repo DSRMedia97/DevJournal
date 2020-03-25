@@ -24,8 +24,7 @@ namespace JournalLibrary
             }
             else if (db == DatabaseType.TextFile)
             {
-                TextFileConnector text = new TextFileConnector();
-                Connection = text;
+                //Support for Text Files removed 25 Mar 2020
             }
             else
             {
