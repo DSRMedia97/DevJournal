@@ -5,18 +5,16 @@ using System.Text;
 
 namespace JournalLibrary.Models
 {
-    class PracticeTrainingModel : TrainingModel
+    public class PracticeTrainingModel : TrainingModel
     {
-        public string ProjectName { get; set; } // TODO - eventually swap this for ProjectModel
-
         public PracticeTrainingModel() { }
 
-        public PracticeTrainingModel(double time, DateTime date, string name)
+        public PracticeTrainingModel(int categoryId, double time, DateTime date, string description)
         {
+            CategoryId = categoryId;
             Time = time;
             Date = date;
-            ProjectName = name;
-            TrainingSource = Source.Project;
+            TrainingDescription = description;
         }
     }
 }

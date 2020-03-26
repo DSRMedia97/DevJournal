@@ -17,6 +17,9 @@ namespace DevJournalUI.ViewElementForms
     public partial class DevOverviewForm : Form, ICategoryRequester
     {
         private List<CategoryModel> categoryModels = GlobalConfig.Connection.LoadAllCategories();
+        private CategoryModel selectedCategory = new CategoryModel();
+        private List<StudyTrainingModel> allStudyTrainings = new List<StudyTrainingModel>();
+        private List<PracticeTrainingModel> allPracticeTrainings = new List<PracticeTrainingModel>();
 
         public DevOverviewForm()
         {
@@ -37,6 +40,7 @@ namespace DevJournalUI.ViewElementForms
             CategoryListBox.DataSource = null;
             CategoryListBox.DataSource = categoryModels;
             CategoryListBox.DisplayMember = "CategoryName";
+            CategoryListBox.SelectedIndex = 0;
         }
 
         private void toolStripMenuExitOption_Click(object sender, EventArgs e)
