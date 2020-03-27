@@ -27,5 +27,35 @@ namespace JournalLibrary.Models
             CategoryName = name;
             Trainings = trainings;
         }
+
+        public double GetTotalStudyHours()
+        {
+            double output = 0;
+
+            if (Trainings != null)
+            {
+                foreach (StudyTrainingModel sm in Trainings)
+                {
+                    output += sm.Time;
+                }
+            }
+
+            return output;
+        }
+
+        public double GetTotalPracticeHours()
+        {
+            double output = 0;
+
+            if (Trainings != null)
+            {
+                foreach (PracticeTrainingModel pm in Trainings)
+                {
+                    output += pm.Time;
+                }
+            }
+
+            return output;
+        }
     }
 }

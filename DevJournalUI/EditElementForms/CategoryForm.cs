@@ -48,7 +48,7 @@ namespace DevJournalUI.EditElementForms
             }
             else
             {
-                MessageBox.Show("Category names cannot be blank and cannot commas.", "Incorrect Category Name");
+                MessageBox.Show("Category names cannot be blank and cannot contain commas.", "Incorrect Category Name");
             }
         }
 

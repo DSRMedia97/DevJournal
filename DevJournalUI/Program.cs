@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevJournalUI.ViewElementForms;
+using DevJournalUI.EditElementForms;
 
 namespace DevJournalUI
 {
@@ -22,6 +23,7 @@ namespace DevJournalUI
             JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.Sql);
 
             Application.Run(new DevOverviewForm());
+            //Application.Run(new TrainingStudyForm());
         }
     }
 }
