@@ -36,6 +36,7 @@ namespace DevJournalUI.ViewElementForms
         public void TrainingComplete(TrainingModel model)
         {
             selectedCategory.Trainings.Add(model);
+            RefreshGraphCollection();
         }
 
         private void WireUpLists()

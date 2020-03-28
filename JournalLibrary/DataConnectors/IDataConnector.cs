@@ -31,5 +31,7 @@ namespace JournalLibrary.DataConnectors
         void UpdateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories);
 
         void CreateOnlineCourseModel(OnlineCourseModel model, List<CategoryModel> currentCategories);
+
+        void CreateStudyTrainingModel(TrainingModel model);
     }
 }

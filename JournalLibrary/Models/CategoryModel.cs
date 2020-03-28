@@ -34,9 +34,12 @@ namespace JournalLibrary.Models
 
             if (Trainings != null)
             {
-                foreach (StudyTrainingModel sm in Trainings)
+                foreach (TrainingModel tm in Trainings)
                 {
-                    output += sm.Time;
+                    if (tm.TrainingSource == TrainingModel.Source.Book || tm.TrainingSource == TrainingModel.Source.OnlineCourse)
+                    {
+                        output += tm.Time;
+                    }
                 }
             }
 
@@ -49,9 +52,12 @@ namespace JournalLibrary.Models
 
             if (Trainings != null)
             {
-                foreach (PracticeTrainingModel pm in Trainings)
+                foreach (TrainingModel tm in Trainings)
                 {
-                    output += pm.Time;
+                    if (tm.TrainingSource == TrainingModel.Source.Project)
+                    {
+                        output += tm.Time;
+                    }
                 }
             }
 

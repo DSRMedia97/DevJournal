@@ -12,5 +12,14 @@ namespace JournalLibrary.Models
         public int CategoryId { get; set; }
         public double Time { get; set; }
         public DateTime Date { get; set; } = new DateTime();
+        public int MaterialId { get; set; }
+        public Source TrainingSource { get; set; }
+
+        public enum Source
+        {
+            Book,
+            OnlineCourse,
+            Project
+        }
     }
 }

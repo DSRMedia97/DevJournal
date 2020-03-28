@@ -341,5 +341,26 @@ namespace JournalLibrary.DataConnectors
                 }
             }
         }
+
+        public void CreateStudyTrainingModel(TrainingModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+
+                p.Add("@CategoryId", model.CategoryId);
+                p.Add("@Description", model.TrainingDescription);
+                p.Add("@DateTrained", model.Date);
+                p.Add("@TimeTrained", model.Time);
+                p.Add("@TrainingMaterialId", model.MaterialId);
+                p.Add("@TrainingMaterialType", model.TrainingSource);
+
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spStudyTrainings_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.Id = p.Get<int>("@id");
+            }
+        }
     }
 }

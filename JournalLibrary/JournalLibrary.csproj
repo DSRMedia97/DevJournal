@@ -54,8 +54,6 @@
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\LibraryModel.cs" />
     <Compile Include="Models\OnlineCourseModel.cs" />
-    <Compile Include="Models\PracticeTrainingModel.cs" />
-    <Compile Include="Models\StudyTrainingModel.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\TrainingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

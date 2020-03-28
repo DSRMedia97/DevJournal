@@ -19,14 +19,9 @@ namespace DevJournalUI.EditElementForms
         private LibraryModel selectedLibraryItem = new LibraryModel();
         private List<BookModel> BooksByCategory = new List<BookModel>();
         private List<OnlineCourseModel> CoursesByCategory = new List<OnlineCourseModel>();
-        private StudyTrainingModel model = new StudyTrainingModel();
+        private TrainingModel model = new TrainingModel();
+
         private double HoursStudied = 0;
-        //public int Id { get; set; }                           => From DB
-        //public string TrainingDescription { get; set; }
-        //public int CategoryId { get; set; }                   => From constructor
-        //public double Time { get; set; }                      => From user
-        //public DateTime Date { get; set; } = new DateTime();  => From user
-        //public LibraryModel StudyMaterial { get; set; }
 
         public TrainingStudyForm(ITrainingRequester caller, int categoryId)
         {
@@ -45,14 +40,21 @@ namespace DevJournalUI.EditElementForms
                 model.Date = DateStudiedPicker.Value;
                 model.Time = HoursStudied;
                 model.TrainingDescription = DescriptionValue.Text;
+
                 if (UseExistingMaterialCheckBox.Checked)
                 {
-                    model.StudyMaterial = selectedLibraryItem;
+                    model.MaterialId = selectedLibraryItem.ID;
+                    if (LibraryComboBox.SelectedIndex == 1)
+                    {
+                        model.TrainingSource = TrainingModel.Source.Book;
+                    }
+                    else if (LibraryComboBox.SelectedIndex == 2)
+                    {
+                        model.TrainingSource = TrainingModel.Source.OnlineCourse;
+                    }
                 }
-                else
-                {
-                    model.StudyMaterial = null;
-                }
+
+                GlobalConfig.Connection.CreateStudyTrainingModel(model);
 
                 callingForm.TrainingComplete(model);
                 this.Close();
@@ -153,7 +155,21 @@ namespace DevJournalUI.EditElementForms
             if(UseExistingMaterialCheckBox.Checked)
             {
                 selectedLibraryItem = (LibraryModel)LibraryListBox.SelectedItem;
-                DescriptionValue.Text = $"Studied: { LibraryListBox.Text }";
+                if (selectedLibraryItem != null)
+                {
+                    if (LibraryComboBox.SelectedIndex == 1)
+                    {
+                        DescriptionValue.Text = $"Read: { selectedLibraryItem.Title }";
+                    }
+                    else if (LibraryComboBox.SelectedIndex == 2)
+                    {
+                        DescriptionValue.Text = $"Watched: { selectedLibraryItem.Title }";
+                    } 
+                }
+                else
+                {
+                    DescriptionValue.Text = "";
+                }
             }
         }
     }
