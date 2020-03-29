@@ -189,6 +189,27 @@ namespace JournalLibrary.DataConnectors
             return output;   
         }
 
+        public List<CategoryModel> LoadAllCategoriesFull()
+        {
+            List<CategoryModel> output = new List<CategoryModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<CategoryModel>("dbo.spCategories_GetAll").ToList();
+
+                foreach (CategoryModel cm in output)
+                {
+                    var p = new DynamicParameters();
+
+                    p.Add("@Categoryid", cm.ID);
+
+                    cm.Trainings = connection.Query<TrainingModel>("dbo.spStudyTrainings_GetByCategory", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+
+            return output;
+        }
+
         public void UpdateBookModel(BookModel model, List<CategoryModel> currentCategories)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
@@ -354,6 +375,7 @@ namespace JournalLibrary.DataConnectors
                 p.Add("@TimeTrained", model.Time);
                 p.Add("@TrainingMaterialId", model.MaterialId);
                 p.Add("@TrainingMaterialType", model.TrainingSource);
+                p.Add("@TrainingType", model.TrainingType);
 
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 

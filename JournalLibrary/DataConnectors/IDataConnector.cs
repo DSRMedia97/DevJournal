@@ -20,6 +20,8 @@ namespace JournalLibrary.DataConnectors
 
         List<CategoryModel> LoadAllCategories();
 
+        List<CategoryModel> LoadAllCategoriesFull();
+
         List<OnlineCourseModel> LoadAllOnlineCourses();
 
         void UpdateBookModel(BookModel model, List<CategoryModel> currentCategories);

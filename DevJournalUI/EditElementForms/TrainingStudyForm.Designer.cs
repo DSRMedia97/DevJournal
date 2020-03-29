@@ -31,7 +31,7 @@
             this.HoursStudiedLabel = new System.Windows.Forms.Label();
             this.HoursStudiedValue = new System.Windows.Forms.TextBox();
             this.DateStudiedPicker = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DateStudiedLabel = new System.Windows.Forms.Label();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.LibraryComboBox = new System.Windows.Forms.ComboBox();
             this.UseExistingMaterialCheckBox = new System.Windows.Forms.CheckBox();
@@ -69,14 +69,14 @@
             this.DateStudiedPicker.TabIndex = 2;
             this.DateStudiedPicker.Value = new System.DateTime(2020, 3, 27, 15, 12, 14, 0);
             // 
-            // label1
+            // DateStudiedLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Date Studied:";
+            this.DateStudiedLabel.AutoSize = true;
+            this.DateStudiedLabel.Location = new System.Drawing.Point(64, 39);
+            this.DateStudiedLabel.Name = "DateStudiedLabel";
+            this.DateStudiedLabel.Size = new System.Drawing.Size(72, 13);
+            this.DateStudiedLabel.TabIndex = 3;
+            this.DateStudiedLabel.Text = "Date Studied:";
             // 
             // SubmitButton
             // 
@@ -171,7 +171,7 @@
             this.ClientSize = new System.Drawing.Size(364, 408);
             this.Controls.Add(this.DescriptionGroupBox);
             this.Controls.Add(this.SubmitButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DateStudiedLabel);
             this.Controls.Add(this.DateStudiedPicker);
             this.Controls.Add(this.HoursStudiedValue);
             this.Controls.Add(this.HoursStudiedLabel);
@@ -189,7 +189,7 @@
         private System.Windows.Forms.Label HoursStudiedLabel;
         private System.Windows.Forms.TextBox HoursStudiedValue;
         private System.Windows.Forms.DateTimePicker DateStudiedPicker;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DateStudiedLabel;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.ComboBox LibraryComboBox;
         private System.Windows.Forms.CheckBox UseExistingMaterialCheckBox;

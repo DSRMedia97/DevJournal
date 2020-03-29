@@ -13,7 +13,14 @@ namespace JournalLibrary.Models
         public double Time { get; set; }
         public DateTime Date { get; set; } = new DateTime();
         public int MaterialId { get; set; }
+        public Type TrainingType { get; set; }
         public Source TrainingSource { get; set; }
+
+        public enum Type
+        {
+            Studying,
+            Practicing
+        }
 
         public enum Source
         {

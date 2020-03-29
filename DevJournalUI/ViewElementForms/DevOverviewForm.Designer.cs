@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,12 +61,17 @@
             this.StudyTimeTotalLabel = new System.Windows.Forms.Label();
             this.trainingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SessionHoursLabel = new System.Windows.Forms.Label();
+            this.SessionDateLabel = new System.Windows.Forms.Label();
+            this.SessionHoursValue = new System.Windows.Forms.Label();
+            this.SessionDateValue = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.CategoryDataTabs.SuspendLayout();
             this.OverviewTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryChart)).BeginInit();
             this.CategoryDetailsTab.SuspendLayout();
             this.CategoryDetailGroupBox.SuspendLayout();
+            this.SessionDetailsGroupBox.SuspendLayout();
             this.RecentActivityGroupBox.SuspendLayout();
             this.TotalsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trainingsBindingSource)).BeginInit();
@@ -164,42 +169,42 @@
             // 
             // CategoryChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.CategoryChart.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.CategoryChart.ChartAreas.Add(chartArea3);
             this.CategoryChart.Enabled = false;
-            legend2.Name = "Legend1";
-            this.CategoryChart.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.CategoryChart.Legends.Add(legend3);
             this.CategoryChart.Location = new System.Drawing.Point(6, 6);
             this.CategoryChart.Name = "CategoryChart";
             this.CategoryChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series3.Legend = "Legend1";
-            series3.LegendText = "Study Time";
-            series3.Name = "StudyTime";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series4.Legend = "Legend1";
-            series4.LegendText = "Practice Time";
-            series4.Name = "PracticeTime";
-            this.CategoryChart.Series.Add(series3);
-            this.CategoryChart.Series.Add(series4);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series5.Legend = "Legend1";
+            series5.LegendText = "Study Time";
+            series5.Name = "StudyTime";
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series6.Legend = "Legend1";
+            series6.LegendText = "Practice Time";
+            series6.Name = "PracticeTime";
+            this.CategoryChart.Series.Add(series5);
+            this.CategoryChart.Series.Add(series6);
             this.CategoryChart.Size = new System.Drawing.Size(519, 278);
             this.CategoryChart.TabIndex = 0;
             this.CategoryChart.Text = "chart1";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.Name = "Title1";
-            title4.Text = "Total Time Spent per Category";
-            title5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title5.Name = "Title2";
-            title5.Text = "Hours";
-            title5.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            title6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title6.Name = "Title3";
-            title6.Text = "Category";
-            this.CategoryChart.Titles.Add(title4);
-            this.CategoryChart.Titles.Add(title5);
-            this.CategoryChart.Titles.Add(title6);
+            title7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title7.Name = "Title1";
+            title7.Text = "Total Time Spent per Category";
+            title8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title8.Name = "Title2";
+            title8.Text = "Hours";
+            title8.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            title9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title9.Name = "Title3";
+            title9.Text = "Category";
+            this.CategoryChart.Titles.Add(title7);
+            this.CategoryChart.Titles.Add(title8);
+            this.CategoryChart.Titles.Add(title9);
             this.CategoryChart.UseWaitCursor = true;
             // 
             // CategoryDetailsTab
@@ -227,6 +232,10 @@
             // 
             // SessionDetailsGroupBox
             // 
+            this.SessionDetailsGroupBox.Controls.Add(this.SessionDateValue);
+            this.SessionDetailsGroupBox.Controls.Add(this.SessionHoursValue);
+            this.SessionDetailsGroupBox.Controls.Add(this.SessionDateLabel);
+            this.SessionDetailsGroupBox.Controls.Add(this.SessionHoursLabel);
             this.SessionDetailsGroupBox.Location = new System.Drawing.Point(297, 85);
             this.SessionDetailsGroupBox.Name = "SessionDetailsGroupBox";
             this.SessionDetailsGroupBox.Size = new System.Drawing.Size(216, 187);
@@ -253,6 +262,7 @@
             this.RecentActivityListBox.Name = "RecentActivityListBox";
             this.RecentActivityListBox.Size = new System.Drawing.Size(273, 199);
             this.RecentActivityListBox.TabIndex = 2;
+            this.RecentActivityListBox.SelectedIndexChanged += new System.EventHandler(this.RecentActivityListBox_SelectedIndexChanged);
             // 
             // AddPracticeTimeSession
             // 
@@ -262,6 +272,7 @@
             this.AddPracticeTimeSession.TabIndex = 1;
             this.AddPracticeTimeSession.Text = "Add Practice Session";
             this.AddPracticeTimeSession.UseVisualStyleBackColor = true;
+            this.AddPracticeTimeSession.Click += new System.EventHandler(this.AddPracticeTimeSession_Click);
             // 
             // AddStudyTimeButton
             // 
@@ -331,6 +342,42 @@
             // 
             this.categoryModelBindingSource.DataSource = typeof(JournalLibrary.Models.CategoryModel);
             // 
+            // SessionHoursLabel
+            // 
+            this.SessionHoursLabel.AutoSize = true;
+            this.SessionHoursLabel.Location = new System.Drawing.Point(7, 20);
+            this.SessionHoursLabel.Name = "SessionHoursLabel";
+            this.SessionHoursLabel.Size = new System.Drawing.Size(38, 13);
+            this.SessionHoursLabel.TabIndex = 0;
+            this.SessionHoursLabel.Text = "Hours:";
+            // 
+            // SessionDateLabel
+            // 
+            this.SessionDateLabel.AutoSize = true;
+            this.SessionDateLabel.Location = new System.Drawing.Point(7, 37);
+            this.SessionDateLabel.Name = "SessionDateLabel";
+            this.SessionDateLabel.Size = new System.Drawing.Size(33, 13);
+            this.SessionDateLabel.TabIndex = 1;
+            this.SessionDateLabel.Text = "Date:";
+            // 
+            // SessionHoursValue
+            // 
+            this.SessionHoursValue.AutoSize = true;
+            this.SessionHoursValue.Location = new System.Drawing.Point(52, 20);
+            this.SessionHoursValue.Name = "SessionHoursValue";
+            this.SessionHoursValue.Size = new System.Drawing.Size(70, 13);
+            this.SessionHoursValue.TabIndex = 2;
+            this.SessionHoursValue.Text = "Not Available";
+            // 
+            // SessionDateValue
+            // 
+            this.SessionDateValue.AutoSize = true;
+            this.SessionDateValue.Location = new System.Drawing.Point(52, 37);
+            this.SessionDateValue.Name = "SessionDateValue";
+            this.SessionDateValue.Size = new System.Drawing.Size(70, 13);
+            this.SessionDateValue.TabIndex = 3;
+            this.SessionDateValue.Text = "Not Available";
+            // 
             // DevOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +397,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.CategoryChart)).EndInit();
             this.CategoryDetailsTab.ResumeLayout(false);
             this.CategoryDetailGroupBox.ResumeLayout(false);
+            this.SessionDetailsGroupBox.ResumeLayout(false);
+            this.SessionDetailsGroupBox.PerformLayout();
             this.RecentActivityGroupBox.ResumeLayout(false);
             this.TotalsGroupBox.ResumeLayout(false);
             this.TotalsGroupBox.PerformLayout();
@@ -387,5 +436,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart CategoryChart;
         private System.Windows.Forms.BindingSource categoryModelBindingSource;
         private System.Windows.Forms.BindingSource trainingsBindingSource;
+        private System.Windows.Forms.Label SessionDateValue;
+        private System.Windows.Forms.Label SessionHoursValue;
+        private System.Windows.Forms.Label SessionDateLabel;
+        private System.Windows.Forms.Label SessionHoursLabel;
     }
 }

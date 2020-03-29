@@ -16,21 +16,22 @@ namespace DevJournalUI.ViewElementForms
 {
     public partial class DevOverviewForm : Form, ICategoryRequester, ITrainingRequester
     {
-        private List<CategoryModel> categoryModels = GlobalConfig.Connection.LoadAllCategories();
+        private List<CategoryModel> categoryModels = GlobalConfig.Connection.LoadAllCategoriesFull();
         private CategoryModel selectedCategory = new CategoryModel();
+        private TrainingModel selectedTraining = new TrainingModel();
 
         public DevOverviewForm()
         {
             InitializeComponent();
             RefreshGraphCollection();
-            WireUpLists();
+            WireUpCategoryList();
         }
 
         public void CategoryComplete(CategoryModel model)
         {
             categoryModels.Add(model);
             RefreshGraphCollection();
-            WireUpLists();
+            WireUpCategoryList();
         }
 
         public void TrainingComplete(TrainingModel model)
@@ -39,7 +40,7 @@ namespace DevJournalUI.ViewElementForms
             RefreshGraphCollection();
         }
 
-        private void WireUpLists()
+        private void WireUpCategoryList()
         {
             CategoryListBox.DataSource = null;
             CategoryListBox.DataSource = categoryModels;
@@ -47,12 +48,22 @@ namespace DevJournalUI.ViewElementForms
             CategoryListBox.SelectedIndex = 0;
         }
 
+        private void WireUpTrainingList()
+        {
+            RecentActivityListBox.DataSource = null;
+            RecentActivityListBox.DataSource = selectedCategory.Trainings;
+            RecentActivityListBox.DisplayMember = "TrainingDescription";
+        }
+
         private void RefreshGraphCollection()
         {
             foreach (CategoryModel cm in categoryModels)
             {
-                CategoryChart.Series["StudyTime"].Points.AddXY(cm.CategoryName, cm.GetTotalStudyHours().ToString());
-                CategoryChart.Series["PracticeTime"].Points.AddXY(cm.CategoryName, cm.GetTotalPracticeHours().ToString());
+                if (cm.ID != 1)
+                {
+                    CategoryChart.Series["StudyTime"].Points.AddXY(cm.CategoryName, cm.GetTotalStudyHours().ToString());
+                    CategoryChart.Series["PracticeTime"].Points.AddXY(cm.CategoryName, cm.GetTotalPracticeHours().ToString()); 
+                }
             }
         }
 
@@ -98,6 +109,7 @@ namespace DevJournalUI.ViewElementForms
             CategoryDetailGroupBox.Text = selectedCategory.CategoryName;
             StudyTimeTotalValue.Text = selectedCategory.GetTotalStudyHours().ToString();
             PracticeTimeTotalValue.Text = selectedCategory.GetTotalPracticeHours().ToString();
+            WireUpTrainingList();
         }
 
         private void AddStudyTimeButton_Click(object sender, EventArgs e)
@@ -110,6 +122,39 @@ namespace DevJournalUI.ViewElementForms
             else
             {
                 MessageBox.Show("No category selected!","Error");
+            }
+        }
+
+        private void RecentActivityListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedTraining = (TrainingModel)RecentActivityListBox.SelectedItem;
+            RefreshSessionDetails();
+        }
+
+        private void RefreshSessionDetails()
+        {
+            if (selectedTraining != null)
+            {
+                SessionHoursValue.Text = selectedTraining.Time.ToString();
+                SessionDateValue.Text = selectedTraining.Date.ToString("dd MMM yyyy");
+            }
+            else
+            {
+                SessionHoursValue.Text = "Not Available";
+                SessionDateValue.Text = "Not Available";
+            }
+        }
+
+        private void AddPracticeTimeSession_Click(object sender, EventArgs e)
+        {
+            if (selectedCategory != null)
+            {
+                Form form = new TrainingStudyForm(this, selectedCategory.ID);
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No category selected!", "Error");
             }
         }
     }

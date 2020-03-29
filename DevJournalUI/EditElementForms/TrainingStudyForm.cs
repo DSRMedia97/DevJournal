@@ -40,6 +40,7 @@ namespace DevJournalUI.EditElementForms
                 model.Date = DateStudiedPicker.Value;
                 model.Time = HoursStudied;
                 model.TrainingDescription = DescriptionValue.Text;
+                model.TrainingType = TrainingModel.Type.Studying;
 
                 if (UseExistingMaterialCheckBox.Checked)
                 {
