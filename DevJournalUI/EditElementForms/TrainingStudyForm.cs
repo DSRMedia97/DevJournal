@@ -17,41 +17,80 @@ namespace DevJournalUI.EditElementForms
     {
         private ITrainingRequester callingForm;
         private LibraryModel selectedLibraryItem = new LibraryModel();
+        //TODO - selectedTaskItem
         private List<BookModel> BooksByCategory = new List<BookModel>();
         private List<OnlineCourseModel> CoursesByCategory = new List<OnlineCourseModel>();
+        private List<TaskModel> TasksByCategory = new List<TaskModel>();
         private TrainingModel model = new TrainingModel();
 
         private double HoursStudied = 0;
 
-        public TrainingStudyForm(ITrainingRequester caller, int categoryId)
+        public TrainingStudyForm(ITrainingRequester caller, int categoryId, TrainingModel.Type Type)
         {
             InitializeComponent();
-            BooksByCategory = GlobalConfig.Connection.LoadBooksByCategory(categoryId, false);
-            CoursesByCategory = GlobalConfig.Connection.LoadCoursesByCategory(categoryId);
 
             callingForm = caller;
             model.CategoryId = categoryId;
+            model.TrainingType = Type;
+
+            if (Type == TrainingModel.Type.Studying)
+            {
+                SetupStudyForm();
+                BooksByCategory = GlobalConfig.Connection.LoadBooksByCategory(categoryId, false);
+                CoursesByCategory = GlobalConfig.Connection.LoadCoursesByCategory(categoryId);
+            }
+            else if (Type == TrainingModel.Type.Practicing)
+            {
+                SetupPracticeForm();
+                //TODO - TasksByCategory = GlobalConfig.Connection.LoadTasksByCategory(categoryId);
+            }
+        }
+
+        private void SetupStudyForm()
+        {
+            this.Text = "Enter Studing Information";
+            DescriptionGroupBox.Text = "Study Material Description";
+            LibraryComboBox.Visible = true;
+            LibraryComboBox.Enabled = true;
+        }
+
+        private void SetupPracticeForm()
+        {
+            this.Text = "Enter Practice Information";
+            DescriptionGroupBox.Text = "Practice Material Description";
+            LibraryComboBox.Visible = false;
+            LibraryComboBox.Enabled = false;
+            OrLabel.Visible = false;
+            UseExistingMaterialCheckBox.Visible = false;
+            LibraryListBox.Visible = false;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             if (ValidFormData())
             {
-                model.Date = DateStudiedPicker.Value;
+                model.Date = DatePicker.Value;
                 model.Time = HoursStudied;
                 model.TrainingDescription = DescriptionValue.Text;
-                model.TrainingType = TrainingModel.Type.Studying;
 
                 if (UseExistingMaterialCheckBox.Checked)
                 {
-                    model.MaterialId = selectedLibraryItem.ID;
-                    if (LibraryComboBox.SelectedIndex == 1)
+                    if (model.TrainingType == TrainingModel.Type.Studying)
                     {
-                        model.TrainingSource = TrainingModel.Source.Book;
+                        model.MaterialId = selectedLibraryItem.ID;
+                        if (LibraryComboBox.SelectedIndex == 1)
+                        {
+                            model.TrainingSource = TrainingModel.Source.Book;
+                        }
+                        else if (LibraryComboBox.SelectedIndex == 2)
+                        {
+                            model.TrainingSource = TrainingModel.Source.OnlineCourse;
+                        } 
                     }
-                    else if (LibraryComboBox.SelectedIndex == 2)
+                    else if (model.TrainingType == TrainingModel.Type.Practicing)
                     {
-                        model.TrainingSource = TrainingModel.Source.OnlineCourse;
+                        //TODO - model.MaterialId = selectedLibraryItem.ID;
+                        model.TrainingSource = TrainingModel.Source.Project;
                     }
                 }
 
@@ -73,7 +112,7 @@ namespace DevJournalUI.EditElementForms
 
             string errorMessage = "";
 
-            if (DateStudiedPicker.Value != null)
+            if (DatePicker.Value != null)
             {
                 validDate = true;
             }
@@ -81,7 +120,7 @@ namespace DevJournalUI.EditElementForms
             {
                 errorMessage += "Date is not valid. ";
             }
-            if (double.TryParse(HoursStudiedValue.Text, out HoursStudied))
+            if (double.TryParse(HoursValue.Text, out HoursStudied))
             {
                 validHours = true;
             }
@@ -133,6 +172,7 @@ namespace DevJournalUI.EditElementForms
 
         private void WireUpListBox()
         {
+            //TODO - ListBox for Tasks including new display member
             LibraryListBox.DataSource = null;
 
             if (LibraryComboBox.SelectedIndex == 0)
@@ -155,6 +195,7 @@ namespace DevJournalUI.EditElementForms
         {
             if(UseExistingMaterialCheckBox.Checked)
             {
+                //TODO - implement TaskModel to Description
                 selectedLibraryItem = (LibraryModel)LibraryListBox.SelectedItem;
                 if (selectedLibraryItem != null)
                 {

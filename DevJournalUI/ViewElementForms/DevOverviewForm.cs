@@ -38,6 +38,7 @@ namespace DevJournalUI.ViewElementForms
         {
             selectedCategory.Trainings.Add(model);
             RefreshGraphCollection();
+            UpdateCategoryData();
         }
 
         private void WireUpCategoryList()
@@ -57,6 +58,9 @@ namespace DevJournalUI.ViewElementForms
 
         private void RefreshGraphCollection()
         {
+            CategoryChart.Series["StudyTime"].Points.Clear();
+            CategoryChart.Series["PracticeTime"].Points.Clear();
+
             foreach (CategoryModel cm in categoryModels)
             {
                 if (cm.ID != 1)
@@ -116,7 +120,7 @@ namespace DevJournalUI.ViewElementForms
         {
             if (selectedCategory != null)
             {
-                Form form = new TrainingStudyForm(this, selectedCategory.ID);
+                Form form = new TrainingStudyForm(this, selectedCategory.ID, TrainingModel.Type.Studying);
                 form.Show();
             }
             else
@@ -149,7 +153,7 @@ namespace DevJournalUI.ViewElementForms
         {
             if (selectedCategory != null)
             {
-                Form form = new TrainingStudyForm(this, selectedCategory.ID);
+                Form form = new TrainingStudyForm(this, selectedCategory.ID, TrainingModel.Type.Practicing);
                 form.Show();
             }
             else

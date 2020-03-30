@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.HoursStudiedLabel = new System.Windows.Forms.Label();
-            this.HoursStudiedValue = new System.Windows.Forms.TextBox();
-            this.DateStudiedPicker = new System.Windows.Forms.DateTimePicker();
-            this.DateStudiedLabel = new System.Windows.Forms.Label();
+            this.HoursLabel = new System.Windows.Forms.Label();
+            this.HoursValue = new System.Windows.Forms.TextBox();
+            this.DatePicker = new System.Windows.Forms.DateTimePicker();
+            this.DateLabel = new System.Windows.Forms.Label();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.LibraryComboBox = new System.Windows.Forms.ComboBox();
             this.UseExistingMaterialCheckBox = new System.Windows.Forms.CheckBox();
@@ -43,40 +43,40 @@
             this.DescriptionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // HoursStudiedLabel
+            // HoursLabel
             // 
-            this.HoursStudiedLabel.AutoSize = true;
-            this.HoursStudiedLabel.Location = new System.Drawing.Point(64, 62);
-            this.HoursStudiedLabel.Name = "HoursStudiedLabel";
-            this.HoursStudiedLabel.Size = new System.Drawing.Size(77, 13);
-            this.HoursStudiedLabel.TabIndex = 0;
-            this.HoursStudiedLabel.Text = "Hours Studied:";
+            this.HoursLabel.AutoSize = true;
+            this.HoursLabel.Location = new System.Drawing.Point(80, 62);
+            this.HoursLabel.Name = "HoursLabel";
+            this.HoursLabel.Size = new System.Drawing.Size(38, 13);
+            this.HoursLabel.TabIndex = 0;
+            this.HoursLabel.Text = "Hours:";
             // 
-            // HoursStudiedValue
+            // HoursValue
             // 
-            this.HoursStudiedValue.Location = new System.Drawing.Point(147, 59);
-            this.HoursStudiedValue.Name = "HoursStudiedValue";
-            this.HoursStudiedValue.Size = new System.Drawing.Size(100, 20);
-            this.HoursStudiedValue.TabIndex = 1;
+            this.HoursValue.Location = new System.Drawing.Point(137, 59);
+            this.HoursValue.Name = "HoursValue";
+            this.HoursValue.Size = new System.Drawing.Size(100, 20);
+            this.HoursValue.TabIndex = 1;
             // 
-            // DateStudiedPicker
+            // DatePicker
             // 
-            this.DateStudiedPicker.CustomFormat = "dd MMM yyyy";
-            this.DateStudiedPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateStudiedPicker.Location = new System.Drawing.Point(147, 33);
-            this.DateStudiedPicker.Name = "DateStudiedPicker";
-            this.DateStudiedPicker.Size = new System.Drawing.Size(100, 20);
-            this.DateStudiedPicker.TabIndex = 2;
-            this.DateStudiedPicker.Value = new System.DateTime(2020, 3, 27, 15, 12, 14, 0);
+            this.DatePicker.CustomFormat = "dd MMM yyyy";
+            this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DatePicker.Location = new System.Drawing.Point(137, 33);
+            this.DatePicker.Name = "DatePicker";
+            this.DatePicker.Size = new System.Drawing.Size(100, 20);
+            this.DatePicker.TabIndex = 2;
+            this.DatePicker.Value = new System.DateTime(2020, 3, 27, 15, 12, 14, 0);
             // 
-            // DateStudiedLabel
+            // DateLabel
             // 
-            this.DateStudiedLabel.AutoSize = true;
-            this.DateStudiedLabel.Location = new System.Drawing.Point(64, 39);
-            this.DateStudiedLabel.Name = "DateStudiedLabel";
-            this.DateStudiedLabel.Size = new System.Drawing.Size(72, 13);
-            this.DateStudiedLabel.TabIndex = 3;
-            this.DateStudiedLabel.Text = "Date Studied:";
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Location = new System.Drawing.Point(80, 39);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(33, 13);
+            this.DateLabel.TabIndex = 3;
+            this.DateLabel.Text = "Date:";
             // 
             // SubmitButton
             // 
@@ -162,7 +162,7 @@
             this.DescriptionGroupBox.Size = new System.Drawing.Size(326, 266);
             this.DescriptionGroupBox.TabIndex = 11;
             this.DescriptionGroupBox.TabStop = false;
-            this.DescriptionGroupBox.Text = "Study Material Description";
+            this.DescriptionGroupBox.Text = "Error";
             // 
             // TrainingStudyForm
             // 
@@ -171,12 +171,12 @@
             this.ClientSize = new System.Drawing.Size(364, 408);
             this.Controls.Add(this.DescriptionGroupBox);
             this.Controls.Add(this.SubmitButton);
-            this.Controls.Add(this.DateStudiedLabel);
-            this.Controls.Add(this.DateStudiedPicker);
-            this.Controls.Add(this.HoursStudiedValue);
-            this.Controls.Add(this.HoursStudiedLabel);
+            this.Controls.Add(this.DateLabel);
+            this.Controls.Add(this.DatePicker);
+            this.Controls.Add(this.HoursValue);
+            this.Controls.Add(this.HoursLabel);
             this.Name = "TrainingStudyForm";
-            this.Text = "Enter Study Information";
+            this.Text = "Error";
             this.DescriptionGroupBox.ResumeLayout(false);
             this.DescriptionGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -186,10 +186,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label HoursStudiedLabel;
-        private System.Windows.Forms.TextBox HoursStudiedValue;
-        private System.Windows.Forms.DateTimePicker DateStudiedPicker;
-        private System.Windows.Forms.Label DateStudiedLabel;
+        private System.Windows.Forms.Label HoursLabel;
+        private System.Windows.Forms.TextBox HoursValue;
+        private System.Windows.Forms.DateTimePicker DatePicker;
+        private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.ComboBox LibraryComboBox;
         private System.Windows.Forms.CheckBox UseExistingMaterialCheckBox;
