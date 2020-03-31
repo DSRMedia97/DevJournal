@@ -23,7 +23,6 @@ namespace DevJournalUI
             JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.Sql);
 
             Application.Run(new DevOverviewForm());
-            //Application.Run(new TrainingStudyForm());
         }
     }
 }
