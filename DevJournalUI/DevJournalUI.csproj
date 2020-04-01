@@ -59,6 +59,12 @@
     <Compile Include="EditElementForms\CategoryForm.Designer.cs">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditElementForms\CreateProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditElementForms\CreateProjectForm.Designer.cs">
+      <DependentUpon>CreateProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditElementForms\OnlineCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditElementForms\CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditElementForms\CreateProjectForm.resx">
+      <DependentUpon>CreateProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditElementForms\OnlineCourseForm.resx">
       <DependentUpon>OnlineCourseForm.cs</DependentUpon>
