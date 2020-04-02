@@ -5,11 +5,10 @@ using System.Text;
 
 namespace JournalLibrary.Models
 {
-    public partial class ProjectModel
+    public class ProjectModel
     {
         public int ID { get; set; }
         public string ProjectName { get; set; }
-        public string Description { get; set; }
         public DateTime CompleteByDate { get; set; }
         public DateTime CompletedOnDate { get; set; }
         public bool completed { get; set; }

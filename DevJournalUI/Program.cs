@@ -22,7 +22,8 @@ namespace DevJournalUI
             //initialize data connections
             JournalLibrary.GlobalConfig.InitializeConnections(JournalLibrary.DatabaseType.Sql);
 
-            Application.Run(new DevOverviewForm());
+            //Application.Run(new DevOverviewForm());
+            Application.Run(new CreateProjectForm());
         }
     }
 }

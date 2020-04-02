@@ -32,13 +32,13 @@
             this.TaskListBox = new System.Windows.Forms.ListBox();
             this.ProjectNameValue = new System.Windows.Forms.TextBox();
             this.EstimatedHoursLabel = new System.Windows.Forms.Label();
-            this.EstimatedHoursValue = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.EstimatedDateLabel = new System.Windows.Forms.Label();
             this.TasksGroupBox = new System.Windows.Forms.GroupBox();
-            this.AddTaskButton = new System.Windows.Forms.Button();
             this.EditTaskButton = new System.Windows.Forms.Button();
+            this.AddTaskButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
+            this.EstimatedTimeValue = new System.Windows.Forms.Label();
             this.TasksGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,13 +75,6 @@
             this.EstimatedHoursLabel.TabIndex = 3;
             this.EstimatedHoursLabel.Text = "Estimated Hours to Complete:";
             // 
-            // EstimatedHoursValue
-            // 
-            this.EstimatedHoursValue.Location = new System.Drawing.Point(217, 66);
-            this.EstimatedHoursValue.Name = "EstimatedHoursValue";
-            this.EstimatedHoursValue.Size = new System.Drawing.Size(100, 20);
-            this.EstimatedHoursValue.TabIndex = 4;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd MMM yyyy";
@@ -112,15 +105,6 @@
             this.TasksGroupBox.TabStop = false;
             this.TasksGroupBox.Text = "Tasks";
             // 
-            // AddTaskButton
-            // 
-            this.AddTaskButton.Location = new System.Drawing.Point(295, 73);
-            this.AddTaskButton.Name = "AddTaskButton";
-            this.AddTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.AddTaskButton.TabIndex = 2;
-            this.AddTaskButton.Text = "Add Task";
-            this.AddTaskButton.UseVisualStyleBackColor = true;
-            // 
             // EditTaskButton
             // 
             this.EditTaskButton.Location = new System.Drawing.Point(294, 102);
@@ -129,6 +113,16 @@
             this.EditTaskButton.TabIndex = 3;
             this.EditTaskButton.Text = "Edit Task";
             this.EditTaskButton.UseVisualStyleBackColor = true;
+            // 
+            // AddTaskButton
+            // 
+            this.AddTaskButton.Location = new System.Drawing.Point(294, 73);
+            this.AddTaskButton.Name = "AddTaskButton";
+            this.AddTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.AddTaskButton.TabIndex = 2;
+            this.AddTaskButton.Text = "Add Task";
+            this.AddTaskButton.UseVisualStyleBackColor = true;
+            this.AddTaskButton.Click += new System.EventHandler(this.AddTaskButton_Click);
             // 
             // SubmitButton
             // 
@@ -139,16 +133,25 @@
             this.SubmitButton.Text = "Submit";
             this.SubmitButton.UseVisualStyleBackColor = true;
             // 
+            // EstimatedTimeValue
+            // 
+            this.EstimatedTimeValue.AutoSize = true;
+            this.EstimatedTimeValue.Location = new System.Drawing.Point(217, 69);
+            this.EstimatedTimeValue.Name = "EstimatedTimeValue";
+            this.EstimatedTimeValue.Size = new System.Drawing.Size(98, 13);
+            this.EstimatedTimeValue.TabIndex = 9;
+            this.EstimatedTimeValue.Text = "<Based On Tasks>";
+            // 
             // CreateProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(416, 389);
+            this.Controls.Add(this.EstimatedTimeValue);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.TasksGroupBox);
             this.Controls.Add(this.EstimatedDateLabel);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.EstimatedHoursValue);
             this.Controls.Add(this.EstimatedHoursLabel);
             this.Controls.Add(this.ProjectNameValue);
             this.Controls.Add(this.ProjectNameLabel);
@@ -166,12 +169,12 @@
         private System.Windows.Forms.ListBox TaskListBox;
         private System.Windows.Forms.TextBox ProjectNameValue;
         private System.Windows.Forms.Label EstimatedHoursLabel;
-        private System.Windows.Forms.TextBox EstimatedHoursValue;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label EstimatedDateLabel;
         private System.Windows.Forms.GroupBox TasksGroupBox;
         private System.Windows.Forms.Button EditTaskButton;
         private System.Windows.Forms.Button AddTaskButton;
         private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.Label EstimatedTimeValue;
     }
 }

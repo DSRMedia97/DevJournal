@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditElementForms\AddTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditElementForms\AddTaskForm.Designer.cs">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditElementForms\BookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,7 @@
     <Compile Include="Interfaces\IBookRequester.cs" />
     <Compile Include="Interfaces\ICategoryRequester.cs" />
     <Compile Include="Interfaces\IOnlineCourseRequester.cs" />
+    <Compile Include="Interfaces\ITaskRequester.cs" />
     <Compile Include="Interfaces\ITrainingRequester.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +108,9 @@
     <Compile Include="ViewElementForms\OnlineCoursesViewerForm.Designer.cs">
       <DependentUpon>OnlineCoursesViewerForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditElementForms\AddTaskForm.resx">
+      <DependentUpon>AddTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditElementForms\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
