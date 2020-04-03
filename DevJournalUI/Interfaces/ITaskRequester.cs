@@ -10,5 +10,6 @@ namespace DevJournalUI.Interfaces
     public interface ITaskRequester
     {
         void TaskComplete(TaskModel model);
+        void TaskUpdate(TaskModel model);
     }
 }

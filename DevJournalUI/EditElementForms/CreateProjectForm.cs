@@ -15,7 +15,8 @@ namespace DevJournalUI.EditElementForms
     public partial class CreateProjectForm : Form, ITaskRequester
     {
         private ProjectModel Project = new ProjectModel();
-        double EstTime = 0;
+        private TaskModel selectedTask = new TaskModel();
+        private double EstTime = 0;
 
         public CreateProjectForm()
         {
@@ -23,7 +24,6 @@ namespace DevJournalUI.EditElementForms
 
             RefreshListData();
             CalculateEstTimeToComplete();
-            RefreshEstTimeDisplay();
         }
 
         private void AddTaskButton_Click(object sender, EventArgs e)
@@ -41,26 +41,52 @@ namespace DevJournalUI.EditElementForms
 
         private void CalculateEstTimeToComplete()
         {
+            EstTime = 0;
+
             foreach (TaskModel tm in Project.Tasks)
             {
                 EstTime += tm.EstimatedTimeToComplete;
             }
-        }
 
-        private void RefreshEstTimeDisplay()
-        {
-            if(EstTime != 0)
-            {
-                EstimatedTimeValue.Text = EstTime.ToString();
-            }
+            EstimatedTimeValue.Text = EstTime.ToString();
         }
 
         public void TaskComplete(TaskModel model)
         {
             Project.Tasks.Add(model);
             RefreshListData();
-            EstTime += model.EstimatedTimeToComplete;
-            RefreshEstTimeDisplay();
+            CalculateEstTimeToComplete();
+        }
+
+        public void TaskUpdate(TaskModel model)
+        {
+            RefreshListData();
+            CalculateEstTimeToComplete();
+        }
+
+        private void TaskListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedTask = (TaskModel)TaskListBox.SelectedItem;
+        }
+
+        private void DeleteTaskButton_Click(object sender, EventArgs e)
+        {
+            if (selectedTask != null)
+            {
+                DialogResult dialogResult = MessageBox.Show($"Remove task \"{ selectedTask.ShortDescription }\" from Project?", "Remove task?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Project.Tasks.Remove(selectedTask);
+                    RefreshListData();
+                    CalculateEstTimeToComplete();
+                } 
+            }
+        }
+
+        private void EditTaskButton_Click(object sender, EventArgs e)
+        {
+            Form form = new AddTaskForm(this, selectedTask);
+            form.Show();
         }
     }
 }

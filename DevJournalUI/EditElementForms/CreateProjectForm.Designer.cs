@@ -39,6 +39,7 @@
             this.AddTaskButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.EstimatedTimeValue = new System.Windows.Forms.Label();
+            this.DeleteTaskButton = new System.Windows.Forms.Button();
             this.TasksGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@
             this.TaskListBox.Name = "TaskListBox";
             this.TaskListBox.Size = new System.Drawing.Size(282, 186);
             this.TaskListBox.TabIndex = 1;
+            this.TaskListBox.SelectedIndexChanged += new System.EventHandler(this.TaskListBox_SelectedIndexChanged);
             // 
             // ProjectNameValue
             // 
@@ -95,6 +97,7 @@
             // 
             // TasksGroupBox
             // 
+            this.TasksGroupBox.Controls.Add(this.DeleteTaskButton);
             this.TasksGroupBox.Controls.Add(this.EditTaskButton);
             this.TasksGroupBox.Controls.Add(this.AddTaskButton);
             this.TasksGroupBox.Controls.Add(this.TaskListBox);
@@ -113,6 +116,7 @@
             this.EditTaskButton.TabIndex = 3;
             this.EditTaskButton.Text = "Edit Task";
             this.EditTaskButton.UseVisualStyleBackColor = true;
+            this.EditTaskButton.Click += new System.EventHandler(this.EditTaskButton_Click);
             // 
             // AddTaskButton
             // 
@@ -141,6 +145,16 @@
             this.EstimatedTimeValue.Size = new System.Drawing.Size(98, 13);
             this.EstimatedTimeValue.TabIndex = 9;
             this.EstimatedTimeValue.Text = "<Based On Tasks>";
+            // 
+            // DeleteTaskButton
+            // 
+            this.DeleteTaskButton.Location = new System.Drawing.Point(294, 131);
+            this.DeleteTaskButton.Name = "DeleteTaskButton";
+            this.DeleteTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteTaskButton.TabIndex = 4;
+            this.DeleteTaskButton.Text = "Delete Task";
+            this.DeleteTaskButton.UseVisualStyleBackColor = true;
+            this.DeleteTaskButton.Click += new System.EventHandler(this.DeleteTaskButton_Click);
             // 
             // CreateProjectForm
             // 
@@ -176,5 +190,6 @@
         private System.Windows.Forms.Button AddTaskButton;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Label EstimatedTimeValue;
+        private System.Windows.Forms.Button DeleteTaskButton;
     }
 }

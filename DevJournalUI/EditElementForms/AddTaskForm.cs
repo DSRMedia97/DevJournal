@@ -14,15 +14,31 @@ namespace DevJournalUI.EditElementForms
 {
     public partial class AddTaskForm : Form
     {
-        ITaskRequester callingForm;
+        private ITaskRequester callingForm;
 
-        TaskModel model = new TaskModel();
+        private TaskModel model = new TaskModel();
+
+        private bool updateModel = false;
 
         public AddTaskForm(ITaskRequester caller)
         {
             InitializeComponent();
 
             callingForm = caller;
+        }
+
+        public AddTaskForm(ITaskRequester caller, TaskModel incomingModel)
+        {
+            InitializeComponent();
+
+            callingForm = caller;
+            model = incomingModel;
+            updateModel = true;
+
+            this.Text = $"Edit { incomingModel.ShortDescription }";
+            TaskNameValue.Text = incomingModel.ShortDescription;
+            DescriptionValue.Text = incomingModel.Description;
+            EstimatedTimeValue.Text = incomingModel.EstimatedTimeToComplete.ToString();
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -34,8 +50,15 @@ namespace DevJournalUI.EditElementForms
             model.Description = DescriptionValue.Text;
             model.EstimatedTimeToComplete = double.Parse(EstimatedTimeValue.Text);
 
-            //Call calling form complete
-            callingForm.TaskComplete(model);
+            if (!updateModel)
+            {
+                //Call calling form complete
+                callingForm.TaskComplete(model); 
+            }
+            else if (updateModel)
+            {
+                callingForm.TaskUpdate(model);
+            }
 
             //Close Form
             this.Close();
