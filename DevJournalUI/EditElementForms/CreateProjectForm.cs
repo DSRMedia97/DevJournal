@@ -15,7 +15,7 @@ namespace DevJournalUI.EditElementForms
     public partial class CreateProjectForm : Form, ITaskRequester
     {
         private ProjectModel Project = new ProjectModel();
-        private TaskModel selectedTask = new TaskModel();
+        private TaskModel selectedTask;
         private double EstTime = 0;
 
         public CreateProjectForm()
@@ -24,6 +24,7 @@ namespace DevJournalUI.EditElementForms
 
             RefreshListData();
             CalculateEstTimeToComplete();
+            EnableFormButtons();
         }
 
         private void AddTaskButton_Click(object sender, EventArgs e)
@@ -37,6 +38,20 @@ namespace DevJournalUI.EditElementForms
             TaskListBox.DataSource = null;
             TaskListBox.DataSource = Project.Tasks;
             TaskListBox.DisplayMember = "ShortDescription";
+        }
+
+        private void EnableFormButtons()
+        {
+            if (Project.Tasks.Count() > 0)
+            {
+                EditTaskButton.Enabled = true;
+                DeleteTaskButton.Enabled = true;
+            }
+            else
+            {
+                EditTaskButton.Enabled = false;
+                DeleteTaskButton.Enabled = false;
+            }
         }
 
         private void CalculateEstTimeToComplete()
@@ -56,6 +71,7 @@ namespace DevJournalUI.EditElementForms
             Project.Tasks.Add(model);
             RefreshListData();
             CalculateEstTimeToComplete();
+            EnableFormButtons();
         }
 
         public void TaskUpdate(TaskModel model)
@@ -66,19 +82,23 @@ namespace DevJournalUI.EditElementForms
 
         private void TaskListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedTask = (TaskModel)TaskListBox.SelectedItem;
+            if (TaskListBox.SelectedIndex >= 0)
+            {
+                selectedTask = (TaskModel)TaskListBox.SelectedItem;
+            }
         }
 
         private void DeleteTaskButton_Click(object sender, EventArgs e)
         {
             if (selectedTask != null)
             {
-                DialogResult dialogResult = MessageBox.Show($"Remove task \"{ selectedTask.ShortDescription }\" from Project?", "Remove task?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Remove task \"{ selectedTask.ShortDescription }\" from Project? {TaskListBox.SelectedIndex.ToString()}", "Remove task?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Project.Tasks.Remove(selectedTask);
                     RefreshListData();
                     CalculateEstTimeToComplete();
+                    EnableFormButtons();
                 } 
             }
         }
