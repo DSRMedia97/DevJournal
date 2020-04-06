@@ -25,6 +25,25 @@ namespace DevJournalUI.EditElementForms
             RefreshListData();
             CalculateEstTimeToComplete();
             EnableFormButtons();
+            AddTestingData();
+        }
+
+        private void AddTestingData()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                treeView1.Nodes.Add($"Node{ i }");
+            }
+
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                for (int i = 0; i < node.Index; i++)
+                {
+                    treeView1.Nodes[node.Index].Nodes.Add($"Child Node {i}");
+                }
+            }
+
+            treeView1.ExpandAll();
         }
 
         private void AddTaskButton_Click(object sender, EventArgs e)
@@ -37,7 +56,7 @@ namespace DevJournalUI.EditElementForms
         {
             TaskListBox.DataSource = null;
             TaskListBox.DataSource = Project.Tasks;
-            TaskListBox.DisplayMember = "ShortDescription";
+            TaskListBox.DisplayMember = "ProjectName";
         }
 
         private void EnableFormButtons()
@@ -92,7 +111,7 @@ namespace DevJournalUI.EditElementForms
         {
             if (selectedTask != null)
             {
-                DialogResult dialogResult = MessageBox.Show($"Remove task \"{ selectedTask.ShortDescription }\" from Project? {TaskListBox.SelectedIndex.ToString()}", "Remove task?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Remove task \"{ selectedTask.ProjectName }\" from Project? {TaskListBox.SelectedIndex.ToString()}", "Remove task?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Project.Tasks.Remove(selectedTask);

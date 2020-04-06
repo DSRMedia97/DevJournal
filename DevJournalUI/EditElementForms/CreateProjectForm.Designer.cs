@@ -35,11 +35,12 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.EstimatedDateLabel = new System.Windows.Forms.Label();
             this.TasksGroupBox = new System.Windows.Forms.GroupBox();
+            this.DeleteTaskButton = new System.Windows.Forms.Button();
             this.EditTaskButton = new System.Windows.Forms.Button();
             this.AddTaskButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.EstimatedTimeValue = new System.Windows.Forms.Label();
-            this.DeleteTaskButton = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.TasksGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +109,16 @@
             this.TasksGroupBox.TabStop = false;
             this.TasksGroupBox.Text = "Tasks";
             // 
+            // DeleteTaskButton
+            // 
+            this.DeleteTaskButton.Location = new System.Drawing.Point(294, 131);
+            this.DeleteTaskButton.Name = "DeleteTaskButton";
+            this.DeleteTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteTaskButton.TabIndex = 4;
+            this.DeleteTaskButton.Text = "Delete Task";
+            this.DeleteTaskButton.UseVisualStyleBackColor = true;
+            this.DeleteTaskButton.Click += new System.EventHandler(this.DeleteTaskButton_Click);
+            // 
             // EditTaskButton
             // 
             this.EditTaskButton.Location = new System.Drawing.Point(294, 102);
@@ -146,21 +157,20 @@
             this.EstimatedTimeValue.TabIndex = 9;
             this.EstimatedTimeValue.Text = "<Based On Tasks>";
             // 
-            // DeleteTaskButton
+            // treeView1
             // 
-            this.DeleteTaskButton.Location = new System.Drawing.Point(294, 131);
-            this.DeleteTaskButton.Name = "DeleteTaskButton";
-            this.DeleteTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteTaskButton.TabIndex = 4;
-            this.DeleteTaskButton.Text = "Delete Task";
-            this.DeleteTaskButton.UseVisualStyleBackColor = true;
-            this.DeleteTaskButton.Click += new System.EventHandler(this.DeleteTaskButton_Click);
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.Location = new System.Drawing.Point(411, 136);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(260, 207);
+            this.treeView1.TabIndex = 10;
             // 
             // CreateProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 389);
+            this.ClientSize = new System.Drawing.Size(747, 389);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.EstimatedTimeValue);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.TasksGroupBox);
@@ -191,5 +201,6 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Label EstimatedTimeValue;
         private System.Windows.Forms.Button DeleteTaskButton;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

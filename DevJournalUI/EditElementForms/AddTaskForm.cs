@@ -36,8 +36,8 @@ namespace DevJournalUI.EditElementForms
             model = incomingModel;
             updateModel = true;
 
-            this.Text = $"Edit { incomingModel.ShortDescription }";
-            TaskNameValue.Text = incomingModel.ShortDescription;
+            this.Text = $"Edit { incomingModel.ProjectName }";
+            TaskNameValue.Text = incomingModel.ProjectName;
             DescriptionValue.Text = incomingModel.Description;
             EstimatedTimeValue.Text = incomingModel.EstimatedTimeToComplete.ToString();
         }
@@ -47,7 +47,7 @@ namespace DevJournalUI.EditElementForms
             //ValidateData
 
             //Complete data model
-            model.ShortDescription = TaskNameValue.Text;
+            model.ProjectName = TaskNameValue.Text;
             model.Description = DescriptionValue.Text;
             model.EstimatedTimeToComplete = double.Parse(EstimatedTimeValue.Text);
 
