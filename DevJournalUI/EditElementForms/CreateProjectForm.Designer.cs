@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ProjectNameLabel = new System.Windows.Forms.Label();
             this.TaskListBox = new System.Windows.Forms.ListBox();
             this.ProjectNameValue = new System.Windows.Forms.TextBox();
@@ -40,8 +41,9 @@
             this.AddTaskButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.EstimatedTimeValue = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.projectModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TasksGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ProjectNameLabel
@@ -157,20 +159,15 @@
             this.EstimatedTimeValue.TabIndex = 9;
             this.EstimatedTimeValue.Text = "<Based On Tasks>";
             // 
-            // treeView1
+            // projectModelBindingSource
             // 
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Location = new System.Drawing.Point(411, 136);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(260, 207);
-            this.treeView1.TabIndex = 10;
+            this.projectModelBindingSource.DataSource = typeof(JournalLibrary.Models.ProjectModel);
             // 
             // CreateProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 389);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(408, 389);
             this.Controls.Add(this.EstimatedTimeValue);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.TasksGroupBox);
@@ -182,6 +179,7 @@
             this.Name = "CreateProjectForm";
             this.Text = "Create a Project";
             this.TasksGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.projectModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +199,6 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Label EstimatedTimeValue;
         private System.Windows.Forms.Button DeleteTaskButton;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.BindingSource projectModelBindingSource;
     }
 }
