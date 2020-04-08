@@ -144,8 +144,6 @@
     <EmbeddedResource Include="ViewElementForms\OnlineCoursesViewerForm.resx">
       <DependentUpon>OnlineCoursesViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\JournalLibrary.Models.ProjectModel.datasource" />
-    <None Include="Properties\DataSources\JournalLibrary.Models.TrainingModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,6 +163,8 @@
       <Name>JournalLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
