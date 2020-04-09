@@ -14,7 +14,6 @@ namespace DevJournalUI.EditElementForms
 {
     public partial class AddTaskForm : Form
     {
-        //4 Apr 2020 is a study day
         private ITaskRequester callingForm;
 
         private TaskModel model = new TaskModel();
@@ -45,24 +44,64 @@ namespace DevJournalUI.EditElementForms
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             //ValidateData
-
-            //Complete data model
-            model.ProjectName = TaskNameValue.Text;
-            model.Description = DescriptionValue.Text;
-            model.EstimatedTimeToComplete = double.Parse(EstimatedTimeValue.Text);
-
-            if (!updateModel)
+            if (ValidData())
             {
-                //Call calling form complete
-                callingForm.TaskComplete(model); 
+                //Complete data model
+                model.ProjectName = TaskNameValue.Text;
+                model.Description = DescriptionValue.Text;
+                model.EstimatedTimeToComplete = double.Parse(EstimatedTimeValue.Text);
+
+                if (!updateModel)
+                {
+                    //Call calling form complete
+                    callingForm.TaskComplete(model);
+                }
+                else if (updateModel)
+                {
+                    callingForm.TaskUpdate(model);
+                }
+
+                //Close Form
+                this.Close(); 
             }
-            else if (updateModel)
+        }
+
+        private bool ValidData()
+        {
+            bool output = false;
+
+            bool validName = false;
+            bool validEstTime = false;
+            double estTime = 0;
+            string errorMessage = "";
+
+            if (TaskNameValue.Text.Length > 0)
             {
-                callingForm.TaskUpdate(model);
+                validName = true;
+            }
+            else
+            {
+                errorMessage += "Task name cannot be blank. ";
+            }
+            if (double.TryParse(EstimatedTimeValue.Text, out estTime))
+            {
+                validEstTime = true;
+            }
+            else
+            {
+                errorMessage += "Invalid time entered for estimate. ";
             }
 
-            //Close Form
-            this.Close();
+            if (validName && validEstTime)
+            {
+                output = true;
+            }
+            else
+            {
+                MessageBox.Show($"{ errorMessage }", "Formatting Error");
+            }
+
+            return output;
         }
     }
 }
