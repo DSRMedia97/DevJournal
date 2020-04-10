@@ -161,5 +161,11 @@ namespace DevJournalUI.ViewElementForms
                 MessageBox.Show("No category selected!", "Error");
             }
         }
+
+        private void addNewProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new CreateProjectForm();
+            form.Show();
+        }
     }
 }

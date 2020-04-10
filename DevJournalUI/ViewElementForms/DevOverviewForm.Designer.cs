@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +50,10 @@
             this.CategoryDetailsTab = new System.Windows.Forms.TabPage();
             this.CategoryDetailGroupBox = new System.Windows.Forms.GroupBox();
             this.SessionDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.SessionDateValue = new System.Windows.Forms.Label();
+            this.SessionHoursValue = new System.Windows.Forms.Label();
+            this.SessionDateLabel = new System.Windows.Forms.Label();
+            this.SessionHoursLabel = new System.Windows.Forms.Label();
             this.RecentActivityGroupBox = new System.Windows.Forms.GroupBox();
             this.RecentActivityListBox = new System.Windows.Forms.ListBox();
             this.AddPracticeTimeSession = new System.Windows.Forms.Button();
@@ -61,10 +65,8 @@
             this.StudyTimeTotalLabel = new System.Windows.Forms.Label();
             this.trainingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.SessionHoursLabel = new System.Windows.Forms.Label();
-            this.SessionDateLabel = new System.Windows.Forms.Label();
-            this.SessionHoursValue = new System.Windows.Forms.Label();
-            this.SessionDateValue = new System.Windows.Forms.Label();
+            this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.CategoryDataTabs.SuspendLayout();
             this.OverviewTab.SuspendLayout();
@@ -82,7 +84,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripHeader,
-            this.libraryToolStripHeader});
+            this.libraryToolStripHeader,
+            this.projectsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -169,42 +172,42 @@
             // 
             // CategoryChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.CategoryChart.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.CategoryChart.ChartAreas.Add(chartArea1);
             this.CategoryChart.Enabled = false;
-            legend3.Name = "Legend1";
-            this.CategoryChart.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.CategoryChart.Legends.Add(legend1);
             this.CategoryChart.Location = new System.Drawing.Point(6, 6);
             this.CategoryChart.Name = "CategoryChart";
             this.CategoryChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series5.Legend = "Legend1";
-            series5.LegendText = "Study Time";
-            series5.Name = "StudyTime";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series6.Legend = "Legend1";
-            series6.LegendText = "Practice Time";
-            series6.Name = "PracticeTime";
-            this.CategoryChart.Series.Add(series5);
-            this.CategoryChart.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series1.Legend = "Legend1";
+            series1.LegendText = "Study Time";
+            series1.Name = "StudyTime";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Practice Time";
+            series2.Name = "PracticeTime";
+            this.CategoryChart.Series.Add(series1);
+            this.CategoryChart.Series.Add(series2);
             this.CategoryChart.Size = new System.Drawing.Size(519, 278);
             this.CategoryChart.TabIndex = 0;
             this.CategoryChart.Text = "chart1";
-            title7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title7.Name = "Title1";
-            title7.Text = "Total Time Spent per Category";
-            title8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title8.Name = "Title2";
-            title8.Text = "Hours";
-            title8.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            title9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title9.Name = "Title3";
-            title9.Text = "Category";
-            this.CategoryChart.Titles.Add(title7);
-            this.CategoryChart.Titles.Add(title8);
-            this.CategoryChart.Titles.Add(title9);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Total Time Spent per Category";
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title2.Name = "Title2";
+            title2.Text = "Hours";
+            title2.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            title3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title3.Name = "Title3";
+            title3.Text = "Category";
+            this.CategoryChart.Titles.Add(title1);
+            this.CategoryChart.Titles.Add(title2);
+            this.CategoryChart.Titles.Add(title3);
             this.CategoryChart.UseWaitCursor = true;
             // 
             // CategoryDetailsTab
@@ -242,6 +245,42 @@
             this.SessionDetailsGroupBox.TabIndex = 2;
             this.SessionDetailsGroupBox.TabStop = false;
             this.SessionDetailsGroupBox.Text = "Session Details";
+            // 
+            // SessionDateValue
+            // 
+            this.SessionDateValue.AutoSize = true;
+            this.SessionDateValue.Location = new System.Drawing.Point(52, 37);
+            this.SessionDateValue.Name = "SessionDateValue";
+            this.SessionDateValue.Size = new System.Drawing.Size(70, 13);
+            this.SessionDateValue.TabIndex = 3;
+            this.SessionDateValue.Text = "Not Available";
+            // 
+            // SessionHoursValue
+            // 
+            this.SessionHoursValue.AutoSize = true;
+            this.SessionHoursValue.Location = new System.Drawing.Point(52, 20);
+            this.SessionHoursValue.Name = "SessionHoursValue";
+            this.SessionHoursValue.Size = new System.Drawing.Size(70, 13);
+            this.SessionHoursValue.TabIndex = 2;
+            this.SessionHoursValue.Text = "Not Available";
+            // 
+            // SessionDateLabel
+            // 
+            this.SessionDateLabel.AutoSize = true;
+            this.SessionDateLabel.Location = new System.Drawing.Point(7, 37);
+            this.SessionDateLabel.Name = "SessionDateLabel";
+            this.SessionDateLabel.Size = new System.Drawing.Size(33, 13);
+            this.SessionDateLabel.TabIndex = 1;
+            this.SessionDateLabel.Text = "Date:";
+            // 
+            // SessionHoursLabel
+            // 
+            this.SessionHoursLabel.AutoSize = true;
+            this.SessionHoursLabel.Location = new System.Drawing.Point(7, 20);
+            this.SessionHoursLabel.Name = "SessionHoursLabel";
+            this.SessionHoursLabel.Size = new System.Drawing.Size(38, 13);
+            this.SessionHoursLabel.TabIndex = 0;
+            this.SessionHoursLabel.Text = "Hours:";
             // 
             // RecentActivityGroupBox
             // 
@@ -342,41 +381,20 @@
             // 
             this.categoryModelBindingSource.DataSource = typeof(JournalLibrary.Models.CategoryModel);
             // 
-            // SessionHoursLabel
+            // projectsToolStripMenuItem
             // 
-            this.SessionHoursLabel.AutoSize = true;
-            this.SessionHoursLabel.Location = new System.Drawing.Point(7, 20);
-            this.SessionHoursLabel.Name = "SessionHoursLabel";
-            this.SessionHoursLabel.Size = new System.Drawing.Size(38, 13);
-            this.SessionHoursLabel.TabIndex = 0;
-            this.SessionHoursLabel.Text = "Hours:";
+            this.projectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewProjectToolStripMenuItem});
+            this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
+            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.projectsToolStripMenuItem.Text = "Projects";
             // 
-            // SessionDateLabel
+            // addNewProjectToolStripMenuItem
             // 
-            this.SessionDateLabel.AutoSize = true;
-            this.SessionDateLabel.Location = new System.Drawing.Point(7, 37);
-            this.SessionDateLabel.Name = "SessionDateLabel";
-            this.SessionDateLabel.Size = new System.Drawing.Size(33, 13);
-            this.SessionDateLabel.TabIndex = 1;
-            this.SessionDateLabel.Text = "Date:";
-            // 
-            // SessionHoursValue
-            // 
-            this.SessionHoursValue.AutoSize = true;
-            this.SessionHoursValue.Location = new System.Drawing.Point(52, 20);
-            this.SessionHoursValue.Name = "SessionHoursValue";
-            this.SessionHoursValue.Size = new System.Drawing.Size(70, 13);
-            this.SessionHoursValue.TabIndex = 2;
-            this.SessionHoursValue.Text = "Not Available";
-            // 
-            // SessionDateValue
-            // 
-            this.SessionDateValue.AutoSize = true;
-            this.SessionDateValue.Location = new System.Drawing.Point(52, 37);
-            this.SessionDateValue.Name = "SessionDateValue";
-            this.SessionDateValue.Size = new System.Drawing.Size(70, 13);
-            this.SessionDateValue.TabIndex = 3;
-            this.SessionDateValue.Text = "Not Available";
+            this.addNewProjectToolStripMenuItem.Name = "addNewProjectToolStripMenuItem";
+            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewProjectToolStripMenuItem.Text = "Add New Project";
+            this.addNewProjectToolStripMenuItem.Click += new System.EventHandler(this.addNewProjectToolStripMenuItem_Click);
             // 
             // DevOverviewForm
             // 
@@ -440,5 +458,7 @@
         private System.Windows.Forms.Label SessionHoursValue;
         private System.Windows.Forms.Label SessionDateLabel;
         private System.Windows.Forms.Label SessionHoursLabel;
+        private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewProjectToolStripMenuItem;
     }
 }
