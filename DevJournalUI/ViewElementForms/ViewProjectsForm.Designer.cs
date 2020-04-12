@@ -28,12 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.ProjectsListBox = new System.Windows.Forms.ListBox();
+            this.OpenProjectButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // ProjectsListBox
+            // 
+            this.ProjectsListBox.FormattingEnabled = true;
+            this.ProjectsListBox.Location = new System.Drawing.Point(22, 77);
+            this.ProjectsListBox.Name = "ProjectsListBox";
+            this.ProjectsListBox.Size = new System.Drawing.Size(218, 264);
+            this.ProjectsListBox.TabIndex = 0;
+            // 
+            // OpenProjectButton
+            // 
+            this.OpenProjectButton.Location = new System.Drawing.Point(80, 347);
+            this.OpenProjectButton.Name = "OpenProjectButton";
+            this.OpenProjectButton.Size = new System.Drawing.Size(97, 23);
+            this.OpenProjectButton.TabIndex = 1;
+            this.OpenProjectButton.Text = "Open Project";
+            this.OpenProjectButton.UseVisualStyleBackColor = true;
+            // 
+            // ViewProjectsForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.OpenProjectButton);
+            this.Controls.Add(this.ProjectsListBox);
+            this.Name = "ViewProjectsForm";
             this.Text = "ViewProjectsForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox ProjectsListBox;
+        private System.Windows.Forms.Button OpenProjectButton;
     }
 }
