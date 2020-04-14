@@ -42,6 +42,8 @@
             this.libraryToolStripHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.viewBooksToolStripLibraryItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewOnlineCoursesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CategoryListBox = new System.Windows.Forms.ListBox();
             this.AddCategoryButton = new System.Windows.Forms.Button();
             this.CategoryDataTabs = new System.Windows.Forms.TabControl();
@@ -65,8 +67,8 @@
             this.StudyTimeTotalLabel = new System.Windows.Forms.Label();
             this.trainingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProjectsTab = new System.Windows.Forms.TabPage();
+            this.ProjectsListBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.CategoryDataTabs.SuspendLayout();
             this.OverviewTab.SuspendLayout();
@@ -78,6 +80,7 @@
             this.TotalsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trainingsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryModelBindingSource)).BeginInit();
+            this.ProjectsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -130,6 +133,21 @@
             this.viewOnlineCoursesToolStripMenuItem.Text = "View Online Courses";
             this.viewOnlineCoursesToolStripMenuItem.Click += new System.EventHandler(this.viewOnlineCoursesToolStripMenuItem_Click);
             // 
+            // projectsToolStripMenuItem
+            // 
+            this.projectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewProjectToolStripMenuItem});
+            this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
+            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.projectsToolStripMenuItem.Text = "Projects";
+            // 
+            // addNewProjectToolStripMenuItem
+            // 
+            this.addNewProjectToolStripMenuItem.Name = "addNewProjectToolStripMenuItem";
+            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewProjectToolStripMenuItem.Text = "Add New Project";
+            this.addNewProjectToolStripMenuItem.Click += new System.EventHandler(this.addNewProjectToolStripMenuItem_Click);
+            // 
             // CategoryListBox
             // 
             this.CategoryListBox.FormattingEnabled = true;
@@ -153,6 +171,7 @@
             // 
             this.CategoryDataTabs.Controls.Add(this.OverviewTab);
             this.CategoryDataTabs.Controls.Add(this.CategoryDetailsTab);
+            this.CategoryDataTabs.Controls.Add(this.ProjectsTab);
             this.CategoryDataTabs.Location = new System.Drawing.Point(249, 27);
             this.CategoryDataTabs.Name = "CategoryDataTabs";
             this.CategoryDataTabs.SelectedIndex = 0;
@@ -381,20 +400,24 @@
             // 
             this.categoryModelBindingSource.DataSource = typeof(JournalLibrary.Models.CategoryModel);
             // 
-            // projectsToolStripMenuItem
+            // ProjectsTab
             // 
-            this.projectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewProjectToolStripMenuItem});
-            this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
-            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.projectsToolStripMenuItem.Text = "Projects";
+            this.ProjectsTab.Controls.Add(this.ProjectsListBox);
+            this.ProjectsTab.Location = new System.Drawing.Point(4, 22);
+            this.ProjectsTab.Name = "ProjectsTab";
+            this.ProjectsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ProjectsTab.Size = new System.Drawing.Size(531, 290);
+            this.ProjectsTab.TabIndex = 2;
+            this.ProjectsTab.Text = "Projects";
+            this.ProjectsTab.UseVisualStyleBackColor = true;
             // 
-            // addNewProjectToolStripMenuItem
+            // ProjectsListBox
             // 
-            this.addNewProjectToolStripMenuItem.Name = "addNewProjectToolStripMenuItem";
-            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addNewProjectToolStripMenuItem.Text = "Add New Project";
-            this.addNewProjectToolStripMenuItem.Click += new System.EventHandler(this.addNewProjectToolStripMenuItem_Click);
+            this.ProjectsListBox.FormattingEnabled = true;
+            this.ProjectsListBox.Location = new System.Drawing.Point(15, 24);
+            this.ProjectsListBox.Name = "ProjectsListBox";
+            this.ProjectsListBox.Size = new System.Drawing.Size(222, 212);
+            this.ProjectsListBox.TabIndex = 0;
             // 
             // DevOverviewForm
             // 
@@ -422,6 +445,7 @@
             this.TotalsGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trainingsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryModelBindingSource)).EndInit();
+            this.ProjectsTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,5 +484,7 @@
         private System.Windows.Forms.Label SessionHoursLabel;
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewProjectToolStripMenuItem;
+        private System.Windows.Forms.TabPage ProjectsTab;
+        private System.Windows.Forms.ListBox ProjectsListBox;
     }
 }
