@@ -65,10 +65,12 @@
             this.PracticeTimeTotalValue = new System.Windows.Forms.Label();
             this.PracticeTimeTotalLabel = new System.Windows.Forms.Label();
             this.StudyTimeTotalLabel = new System.Windows.Forms.Label();
-            this.trainingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ProjectsTab = new System.Windows.Forms.TabPage();
             this.ProjectsListBox = new System.Windows.Forms.ListBox();
+            this.trainingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ViewProjectButton = new System.Windows.Forms.Button();
+            this.AddProjectButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.CategoryDataTabs.SuspendLayout();
             this.OverviewTab.SuspendLayout();
@@ -78,9 +80,9 @@
             this.SessionDetailsGroupBox.SuspendLayout();
             this.RecentActivityGroupBox.SuspendLayout();
             this.TotalsGroupBox.SuspendLayout();
+            this.ProjectsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trainingsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryModelBindingSource)).BeginInit();
-            this.ProjectsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -391,17 +393,10 @@
             this.StudyTimeTotalLabel.TabIndex = 0;
             this.StudyTimeTotalLabel.Text = "Study Time:";
             // 
-            // trainingsBindingSource
-            // 
-            this.trainingsBindingSource.DataMember = "Trainings";
-            this.trainingsBindingSource.DataSource = this.categoryModelBindingSource;
-            // 
-            // categoryModelBindingSource
-            // 
-            this.categoryModelBindingSource.DataSource = typeof(JournalLibrary.Models.CategoryModel);
-            // 
             // ProjectsTab
             // 
+            this.ProjectsTab.Controls.Add(this.AddProjectButton);
+            this.ProjectsTab.Controls.Add(this.ViewProjectButton);
             this.ProjectsTab.Controls.Add(this.ProjectsListBox);
             this.ProjectsTab.Location = new System.Drawing.Point(4, 22);
             this.ProjectsTab.Name = "ProjectsTab";
@@ -418,6 +413,33 @@
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(222, 212);
             this.ProjectsListBox.TabIndex = 0;
+            // 
+            // trainingsBindingSource
+            // 
+            this.trainingsBindingSource.DataMember = "Trainings";
+            this.trainingsBindingSource.DataSource = this.categoryModelBindingSource;
+            // 
+            // categoryModelBindingSource
+            // 
+            this.categoryModelBindingSource.DataSource = typeof(JournalLibrary.Models.CategoryModel);
+            // 
+            // ViewProjectButton
+            // 
+            this.ViewProjectButton.Location = new System.Drawing.Point(243, 90);
+            this.ViewProjectButton.Name = "ViewProjectButton";
+            this.ViewProjectButton.Size = new System.Drawing.Size(75, 23);
+            this.ViewProjectButton.TabIndex = 1;
+            this.ViewProjectButton.Text = "View Project";
+            this.ViewProjectButton.UseVisualStyleBackColor = true;
+            // 
+            // AddProjectButton
+            // 
+            this.AddProjectButton.Location = new System.Drawing.Point(243, 119);
+            this.AddProjectButton.Name = "AddProjectButton";
+            this.AddProjectButton.Size = new System.Drawing.Size(75, 23);
+            this.AddProjectButton.TabIndex = 2;
+            this.AddProjectButton.Text = "Add Project";
+            this.AddProjectButton.UseVisualStyleBackColor = true;
             // 
             // DevOverviewForm
             // 
@@ -443,9 +465,9 @@
             this.RecentActivityGroupBox.ResumeLayout(false);
             this.TotalsGroupBox.ResumeLayout(false);
             this.TotalsGroupBox.PerformLayout();
+            this.ProjectsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trainingsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryModelBindingSource)).EndInit();
-            this.ProjectsTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,5 +508,7 @@
         private System.Windows.Forms.ToolStripMenuItem addNewProjectToolStripMenuItem;
         private System.Windows.Forms.TabPage ProjectsTab;
         private System.Windows.Forms.ListBox ProjectsListBox;
+        private System.Windows.Forms.Button AddProjectButton;
+        private System.Windows.Forms.Button ViewProjectButton;
     }
 }

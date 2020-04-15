@@ -35,14 +35,14 @@
             // ProjectsListBox
             // 
             this.ProjectsListBox.FormattingEnabled = true;
-            this.ProjectsListBox.Location = new System.Drawing.Point(22, 77);
+            this.ProjectsListBox.Location = new System.Drawing.Point(29, 58);
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(218, 264);
             this.ProjectsListBox.TabIndex = 0;
             // 
             // OpenProjectButton
             // 
-            this.OpenProjectButton.Location = new System.Drawing.Point(80, 347);
+            this.OpenProjectButton.Location = new System.Drawing.Point(89, 328);
             this.OpenProjectButton.Name = "OpenProjectButton";
             this.OpenProjectButton.Size = new System.Drawing.Size(97, 23);
             this.OpenProjectButton.TabIndex = 1;
